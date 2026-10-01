@@ -346,3 +346,75 @@ html.leaving main,html.leaving .ft{opacity:0;transition:opacity .18s ease-in}
 /* Bagian "Pilihan produk": 2 kolom penuh, tanpa ruang kosong */
 #types{grid-template-columns:repeat(2,1fr)}
 @media (max-width:700px){#types{grid-template-columns:1fr}}
+
+/* ==========================================================
+   BERANDA: tampilan lebih rapi (v20)
+   Semua aturan di bawah hanya berlaku di halaman beranda,
+   jadi halaman lain tidak berubah.
+   ========================================================== */
+[data-page="beranda"] .sec{padding:72px 0}
+
+/* Judul bagian: rata tengah dan seragam */
+[data-page="beranda"] .sec-h{text-align:center;margin-bottom:40px}
+[data-page="beranda"] .sec-h .kick{justify-content:center;letter-spacing:.1em}
+[data-page="beranda"] .sec-h h2{max-width:26ch;margin:0 auto}
+[data-page="beranda"] .sec-h p{max-width:58ch;margin:10px auto 0}
+
+/* Hero: satu label saja, kolom seimbang, foto tidak lagi melayang */
+[data-page="beranda"] .hero{padding:72px 0 80px}
+[data-page="beranda"] .hero .crumb{display:none}
+[data-page="beranda"] .hero-in{grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+[data-page="beranda"] .hero .kick{margin-bottom:16px;letter-spacing:.1em}
+[data-page="beranda"] .hero h1{font-size:clamp(30px,4vw,46px);line-height:1.15;max-width:16ch}
+[data-page="beranda"] .hero .lead{max-width:46ch;margin-top:20px}
+[data-page="beranda"] .hero .btns{margin-top:32px}
+[data-page="beranda"] .hero .btn{padding:13px 28px}
+[data-page="beranda"] .hero .stage{animation:up .8s .15s both;border:0;border-radius:20px;box-shadow:0 24px 48px rgba(5,15,40,.35)}
+[data-page="beranda"] .hero-in .tiles{margin-top:16px;border:0;border-radius:16px;box-shadow:0 12px 28px rgba(5,15,40,.25)}
+[data-page="beranda"] .tiles div{font:500 12.5px/1.4 var(--body);text-align:center;padding:14px 12px}
+[data-page="beranda"] .tiles b{font:700 15px/1.3 var(--head);color:var(--navy);margin-bottom:2px}
+
+/* Kartu "Permasalahan" dan "Keunggulan": 4 kolom rata, tinggi sama */
+[data-page="beranda"] #prob,[data-page="beranda"] #adv{grid-template-columns:repeat(4,1fr);gap:20px}
+[data-page="beranda"] .proc div{padding:24px;border-radius:16px;display:flex;flex-direction:column;align-items:flex-start}
+[data-page="beranda"] .proc div:before{display:inline-block}
+[data-page="beranda"] .proc h3{margin:14px 0 6px}
+
+/* Kartu industri, tipe produk, dan artikel: sudut, jarak, dan tinggi seragam */
+[data-page="beranda"] .grid{gap:24px}
+[data-page="beranda"] .card{border-radius:16px}
+[data-page="beranda"] .card .bd{padding:20px 22px 24px;gap:8px}
+[data-page="beranda"] .pj.pj-photo .pjp{aspect-ratio:3/2}
+[data-page="beranda"] .tags{margin-top:10px}
+[data-page="beranda"] #grid-artikel{grid-template-columns:repeat(3,1fr)}
+
+/* Tombol di bawah bagian: rata tengah */
+[data-page="beranda"] .sec .btns{justify-content:center;margin-top:36px}
+
+/* FAQ: di tengah, tidak menempel ke kiri */
+[data-page="beranda"] #faq-list{max-width:860px;margin:0 auto}
+
+/* Animasi muncul saat scroll dibuat lebih halus (jarak geser pendek) */
+.js [data-page="beranda"] .rv{transition-duration:.6s}
+.js [data-page="beranda"] .rv-up{transform:translateY(20px)}
+.js [data-page="beranda"] .rv-up.rv-top{transform:translateY(-20px)}
+.js [data-page="beranda"] .rv-zoom{transform:scale(.97)}
+.js [data-page="beranda"] .rv.in{opacity:1;transform:none}
+
+/* Responsif */
+@media (max-width:1040px){
+  [data-page="beranda"] #prob,[data-page="beranda"] #adv{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  [data-page="beranda"] .sec{padding:56px 0}
+  [data-page="beranda"] .hero{padding:48px 0 56px}
+  [data-page="beranda"] .hero-in{grid-template-columns:1fr;gap:36px}
+  [data-page="beranda"] .hero h1{max-width:none}
+}
+@media (max-width:820px){
+  [data-page="beranda"] #grid-artikel{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  [data-page="beranda"] #prob,[data-page="beranda"] #adv{grid-template-columns:1fr}
+  [data-page="beranda"] .sec-h{margin-bottom:28px}
+}
