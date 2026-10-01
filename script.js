@@ -90,15 +90,15 @@ var PRODUCTS = [
       art: [["Capacity and drive", "The 102 ZC has 30 compartments and is driven by a rotary hand wheel, so rows full of files stay easy to move."], ["TKDN certified", "Like the MF 4-22-ZC, this model is TKDN certified and available in the LKPP e-Catalogue, which makes agency procurement easier."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]] } }
 ];
 
-/* Foto proyek (opsional): tambahkan  foto: 'images/proyek/rs-1.jpg'  pada proyek. Tanpa foto, kotak biru berisi huruf awal sektor dipakai. */
+/* Foto proyek (opsional): simpan foto di images/proyek/ sesuai nama pada baris foto: tiap proyek. fotoPos (opsional) menggeser fokus foto, mis. '50% 30%'. Foto belum ada / gagal dimuat: kotak biru berisi huruf awal sektor dipakai. */
 var PROJECTS = [
-  { id: 'p1', judul: 'Ruang arsip rumah sakit', sektor: 'Kesehatan', unit: 'Zeco MF 102 ZC', ket: 'Penataan rekam arsip dalam ruangan terbatas dengan satu lorong bergerak.',
+  { id: 'p1', foto: 'images/proyek rumahsakit.png', judul: 'Ruang arsip rumah sakit', sektor: 'Kesehatan', unit: 'Zeco MF 102 ZC', ket: 'Penataan rekam arsip dalam ruangan terbatas dengan satu lorong bergerak.',
     en: { judul: 'Hospital archive room', sektor: 'Healthcare', ket: 'Organizing records in a limited space with a single movable aisle.' } },
-  { id: 'p2', judul: 'Arsip kantor notaris', sektor: 'Hukum', unit: 'Zeco MF 4-22-ZC', ket: 'Dokumen legal tersimpan rapi dan mudah ditemukan.',
+  { id: 'p2', foto: 'images/proyek/notaris.jpg', judul: 'Arsip kantor notaris', sektor: 'Hukum', unit: 'Zeco MF 4-22-ZC', ket: 'Dokumen legal tersimpan rapi dan mudah ditemukan.',
     en: { judul: 'Notary office archive', sektor: 'Legal', ket: 'Legal documents stored neatly and easy to find.' } },
-  { id: 'p3', judul: 'Pusat arsip instansi', sektor: 'Pemerintahan', unit: 'Zeco MF 102 ZC', ket: 'Kapasitas arsip besar dengan produk ber-TKDN.',
+  { id: 'p3', foto: 'images/proyek/instansi.jpg', judul: 'Pusat arsip instansi', sektor: 'Pemerintahan', unit: 'Zeco MF 102 ZC', ket: 'Kapasitas arsip besar dengan produk ber-TKDN.',
     en: { judul: 'Government agency archive center', sektor: 'Government', ket: 'Large archive capacity with TKDN-certified products.' } },
-  { id: 'p4', judul: 'Gudang dokumen perusahaan', sektor: 'Swasta', unit: 'Zeco MF 4-22-ZC', ket: 'Kapasitas simpan naik tanpa memperluas ruangan.',
+  { id: 'p4', foto: 'images/proyek/perusahaan.jpg', judul: 'Gudang dokumen perusahaan', sektor: 'Swasta', unit: 'Zeco MF 4-22-ZC', ket: 'Kapasitas simpan naik tanpa memperluas ruangan.',
     en: { judul: 'Corporate document warehouse', sektor: 'Private sector', ket: 'Storage capacity increased without expanding the room.' } }
 ];
 
@@ -382,9 +382,9 @@ function productCard(p, i) {
 function projectCard(j) {
   var sek = L(j, 'sektor');
   var pjp = j.foto
-    ? '<div class="pjp has-img"><img class="pj-img" src="' + esc(j.foto) + '" alt="' + esc(L(j, 'judul')) + '" loading="lazy" data-l="' + esc(sek.charAt(0)) + '"></div>'
+    ? '<div class="pjp has-img"><img class="pj-img" src="' + esc(j.foto) + '" alt="' + esc(L(j, 'judul')) + '" loading="lazy" data-l="' + esc(sek.charAt(0)) + '" style="object-position:' + esc(j.fotoPos || '50% 50%') + '"></div>'
     : '<div class="pjp">' + esc(sek.charAt(0)) + '</div>';
-  return '<div class="card static"><div class="pj">' + pjp + '<div class="bd"><span class="meta">' + esc(sek) + '</span><h3>' + esc(L(j, 'judul')) + '</h3>' +
+  return '<div class="card static"><div class="pj' + (j.foto ? ' pj-photo' : '') + '">' + pjp + '<div class="bd"><span class="meta">' + esc(sek) + '</span><h3>' + esc(L(j, 'judul')) + '</h3>' +
     '<p class="ex">' + esc(L(j, 'ket')) + '</p><div class="tags"><span>' + esc(j.unit) + '</span></div></div></div></div>';
 }
 function articleCard(a) {
