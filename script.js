@@ -383,7 +383,7 @@ function projectCard(j) {
   var sek = L(j, 'sektor');
   var pjp = j.foto
     ? '<div class="pjp has-img"><img class="pj-img" src="' + esc(j.foto) + '" alt="' + esc(L(j, 'judul')) + '" loading="lazy" data-l="' + esc(sek.charAt(0)) + '" style="object-position:' + esc(j.fotoPos || '50% 50%') + '"></div>'
-    : '<div class="pjp">' + esc(sek.charAt(0)) + '</div>';
+    : '';
   return '<div class="card static"><div class="pj' + (j.foto ? ' pj-photo' : '') + '">' + pjp + '<div class="bd"><span class="meta">' + esc(sek) + '</span><h3>' + esc(L(j, 'judul')) + '</h3>' +
     '<p class="ex">' + esc(L(j, 'ket')) + '</p><div class="tags"><span>' + esc(j.unit) + '</span></div></div></div></div>';
 }

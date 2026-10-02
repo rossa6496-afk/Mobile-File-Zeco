@@ -95,7 +95,7 @@ a{color:inherit}p{margin:0}
 .cta .btn.gold:hover{background:#fff;color:var(--blue);border-color:#fff}
 
 /* Portofolio */
-.pj{display:grid;grid-template-columns:96px 1fr;align-items:stretch}
+.pj{display:grid;grid-template-columns:1fr;align-items:stretch}
 .pjp{background:linear-gradient(160deg,var(--blue),var(--navy));display:grid;place-items:center;color:#fff;font:800 24px var(--head)}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .tags span{background:var(--soft);border:1px solid var(--line);border-radius:999px;font:500 11px var(--mono);padding:2px 12px;color:var(--mut)}
@@ -144,7 +144,7 @@ dialog::backdrop{background:rgba(10,26,61,.55);backdrop-filter:blur(3px)}
 /* Responsif */
 @media (max-width:900px){.hero-in,.ct{grid-template-columns:1fr;gap:32px}.ft-in{grid-template-columns:1fr}.sec{padding:60px 0}.dl-prod{grid-template-columns:1fr}.dl{padding:26px 20px 30px}}
 @media (max-width:1040px){.burger{display:block}.menu{position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;padding:10px 24px 20px;display:none}.menu.open{display:flex}.menu a{padding:12px 14px}.menu .btn{margin:10px 0 0}}
-@media (max-width:520px){.pj{grid-template-columns:72px 1fr}.tiles{grid-template-columns:1fr}.tiles div{border-left:0;border-top:1px solid var(--line)}.tiles div:first-child{border-top:0}.map iframe{height:180px}}
+@media (max-width:520px){.tiles{grid-template-columns:1fr}.tiles div{border-left:0;border-top:1px solid var(--line)}.tiles div:first-child{border-top:0}.map iframe{height:180px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
 /* ===== Animasi ===== */
