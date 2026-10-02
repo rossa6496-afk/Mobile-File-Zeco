@@ -96,6 +96,7 @@ a{color:inherit}p{margin:0}
 
 /* Portofolio */
 .pj{display:grid;grid-template-columns:1fr;align-items:stretch}
+.pjp:not(.has-img){display:none!important}
 .pjp{background:linear-gradient(160deg,var(--blue),var(--navy));display:grid;place-items:center;color:#fff;font:800 24px var(--head)}
 .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
 .tags span{background:var(--soft);border:1px solid var(--line);border-radius:999px;font:500 11px var(--mono);padding:2px 12px;color:var(--mut)}
