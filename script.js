@@ -1,8 +1,9 @@
 var CFG = {
   // Gambar latar tiap halaman (di bawah lapisan gradasi biru). Ganti dengan foto ruang arsip lebar, mis. 'images/bg-produk.jpg'.
   // Jika file tidak ditemukan, yang tampil hanya gradasi warna.
-  bg: { beranda: 'images/beranda.png', produk: 'images/zeco 3.png', portofolio: 'images/zecco 102.png', artikel: 'images/zeco 2.png', kontak: 'images/zeco 1.png' },
+  bg: { beranda: 'images/beranda.png', produk: 'images/zeco 3.png', portofolio: ['images/zecco 102.png', 'images/zeco 102.png', 'images/zeco 102.jpg', 'images/zeco 102.webp'], artikel: 'images/zeco 2.png', kontak: 'images/zeco 1.png' },
   logo: 'images/logo CMI.JPG.png',           // logo header & footer (cukup ubah di sini)
+  autoFoto: false,                          // true = cari foto otomatis di images/produk/ (menambah banyak permintaan 404)
   wa: '6281137911115',                       // nomor WhatsApp (format 62...)
   tel: '+62 811-3791-1115',
   email: 'contact@cahayamustikainternesia.com',
@@ -402,11 +403,12 @@ $('hero-art').insertAdjacentHTML('afterbegin', CFG.heroFoto
   ? '<img class="hero-foto" fetchpriority="high" decoding="async" src="' + esc(CFG.heroFoto) + '" alt="Mobile file Zeco" style="--y:' + esc(CFG.heroFotoY || '0%') + '">'
   : drawUnit(20));
 
+var UI_ID = { 'nav-beranda': 'Beranda' };   // cadangan bila teks Indonesia di HTML kosong
 /* Teks statis: simpan teks Indonesia dari HTML, lalu tukar sesuai bahasa */
 function applyStatic() {
   [].slice.call(document.querySelectorAll('[data-i18n]')).forEach(function (el) {
     var key = el.getAttribute('data-i18n'), attr = el.getAttribute('data-i18n-attr');
-    if (el._id === undefined) el._id = attr ? el.getAttribute(attr) : el.textContent;
+    if (el._id === undefined) { el._id = attr ? el.getAttribute(attr) : el.textContent; if (!el._id && UI_ID[key]) el._id = UI_ID[key]; }
     var v = LANG === 'en' && UI_EN[key] != null ? UI_EN[key] : el._id;
     if (attr) el.setAttribute(attr, v); else el.textContent = v;
   });
@@ -472,6 +474,12 @@ function render() {
     b.setAttribute('aria-pressed', b.getAttribute('data-lang') === LANG ? 'true' : 'false');
   });
 
+  if (document.getElementById('faq-list')) {
+    var ld = document.getElementById('ld-faq');
+    if (!ld) { ld = document.createElement('script'); ld.type = 'application/ld+json'; ld.id = 'ld-faq'; document.head.appendChild(ld); }
+    ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: LANG,
+      mainEntity: FAQS.map(function (f) { return { '@type': 'Question', name: L(f, 'q'), acceptedAnswer: { '@type': 'Answer', text: L(f, 'a') } }; }) });
+  }
   if (dlg.open && curKey) dlgBody.innerHTML = detailHtml(curKey);   // jendela detail yang sedang terbuka ikut berganti
   if (window.revealDyn) window.revealDyn();                          // animasi untuk kartu yang baru dibuat
 }
@@ -570,6 +578,10 @@ menu.addEventListener('click', function (e) {
   if (e.target.closest('a')) { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }
 });
 
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && menu.classList.contains('open')) { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); burger.focus(); }
+});
+
 /* ===== Navbar berubah warna + menu aktif saat scroll ===== */
 var hd = document.querySelector('.hd');
 var PAGE = document.body.getAttribute('data-page');
@@ -601,6 +613,7 @@ function probeName(base) {
   }, Promise.resolve(null));
 }
 (function autoFoto() {
+  if (!CFG.autoFoto) return;
   var changed = 0;
   Promise.all(PRODUCTS.map(function (p) {
     return probeName(FOTO_DIR + p.id).then(function (main) {
@@ -682,7 +695,10 @@ onScroll();
 /* ===== Gambar latar per halaman + animasi pindah halaman ===== */
 (function () {
   var pg = document.body.getAttribute('data-page'), b = CFG.bg && CFG.bg[pg];
-  if (b) document.documentElement.style.setProperty('--bg', 'url("' + encodeURI(b) + '")');
+  // b boleh satu nama file atau daftar nama; yang pertama berhasil dimuat dipakai
+  if (b) [].concat(b).reduce(function (chain, u) {
+    return chain.then(function (found) { return found || probeImg(encodeURI(u)); });
+  }, Promise.resolve(null)).then(function (ok) { if (ok) document.documentElement.style.setProperty('--bg', 'url("' + ok + '")'); });
   var still = matchMedia('(prefers-reduced-motion:reduce)').matches;
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href]');

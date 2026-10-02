@@ -419,3 +419,5 @@ html.leaving main,html.leaving .ft{opacity:0;transition:opacity .18s ease-in}
   [data-page="beranda"] #prob,[data-page="beranda"] #adv{grid-template-columns:1fr}
   [data-page="beranda"] .sec-h{margin-bottom:28px}
 }
+/* Pemisah breadcrumb (halaman produk) */
+.crumb a+span:before{content:"/";margin:0 10px;opacity:.55}
