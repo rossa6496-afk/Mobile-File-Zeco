@@ -664,7 +664,7 @@ function detailHtml(key) {
   var S = STR[LANG], k = key.split(':'), html = '';
   if (k[0] === 'produk') {
     var p = find(PRODUCTS, k[1]); if (!p) return '';
-    html = '<span class="meta">' + esc(p.brand) + ' · ' + esc(L(p, 'tipe')) + '</span><h3 id="dlg-title">' + esc(L(p, 'name')) + '</h3><p class="lead2">' + esc(L(p, 'short')) + '</p>' +
+    html = '<h3 id="dlg-title">' + esc(L(p, 'name')) + '</h3><p class="lead2">' + esc(L(p, 'short')) + '</p>' +
       '<div class="dl-prod"><div>' + galleryHtml(p) +
       '<table class="spec"><tr><td>' + S.brand + '</td><td>' + esc(p.brand) + '</td></tr><tr><td>' + S.drive + '</td><td>' + esc(L(p, 'tipe')) + '</td></tr><tr><td>' + S.cap + '</td><td>' + esc(L(p, 'kap')) + '</td></tr>' +
       (L(p, 'spek') || []).map(function (r) { return '<tr><td>' + esc(r[0]) + '</td><td>' + esc(r[1]) + '</td></tr>'; }).join('') + '</table>' +
@@ -693,7 +693,7 @@ function produkPageHtml() {
     var el = document.querySelector(m[0]); if (el) el.setAttribute('content', m[1]);
   });
   var inner = detailHtml('produk:' + p.id).replace('<h3 id="dlg-title">', '<h1 id="pd-title">').replace('</h3>', '</h1>');
-  return '<div class="pd-crumb"><a href="produk.html">' + esc(listName) + '</a><span>' + esc(L(p, 'name')) + '</span></div>' + inner + back;
+  return inner + back;
 }
 /* ===== Halaman artikel (artikel-<id>.html): banner di atas, isi bernomor, daftar isi dan "Baca juga" di samping ===== */
 var AR_CLOCK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
