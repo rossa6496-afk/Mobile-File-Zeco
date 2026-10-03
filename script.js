@@ -1,7 +1,111 @@
+/* ===== Artikel, Portofolio, Beranda: judul bagian di tengah ===== */
+(function () {
+  var st = document.createElement('style');
+  st.id = 'center-heads-style';
+  var P = ['artikel', 'portofolio', 'beranda'].map(function (n) { return 'body[data-page="' + n + '"]'; });
+    st.textContent =
+    P.map(function (p) { return p + ' .sec-h,' + p + ' .sec-h *'; }).join(',') + '{text-align:center !important;}' +
+    P.map(function (p) { return p + ' .sec-h'; }).join(',') + '{margin-left:auto !important;margin-right:auto !important;}' +
+    P.map(function (p) { return p + ' .sec-h p,' + p + ' .sec-h h2'; }).join(',') + '{margin-left:auto !important;margin-right:auto !important;max-width:720px;}' +
+    '';
+  document.head.appendChild(st);
+})();
+
+/* ===== Portofolio dan Artikel: teks header rata kiri ===== */
+(function () {
+  var st = document.createElement('style');
+  st.id = 'port-hero-left-style';
+  var L = ['portofolio', 'artikel'].map(function (n) { return 'body[data-page="' + n + '"]'; });
+  function f(suffix) { return L.map(function (b) { return b + suffix; }).join(','); }
+  st.textContent =
+    f(' .phd > .w') + '{max-width:none !important;margin:0 !important;padding-left:64px !important;padding-right:24px !important;}' +
+    f(' .phd') + ',' + f(' .phd *') + '{text-align:left !important;}' +
+    f(' .phd h1') + ',' + f(' .phd p') + '{margin-left:0 !important;margin-right:auto !important;}' +
+    f(' .phd h1') + '{max-width:18ch;}' +
+    f(' .phd p') + '{max-width:50ch;}' +
+    '@media (max-width:900px){' + f(' .phd > .w') + '{padding-left:24px !important;}}';
+  document.head.appendChild(st);
+})();
+
+/* ===== Halaman Kontak: tanpa gambar latar, teks di tengah ===== */
+(function () {
+  var st = document.createElement('style');
+  st.id = 'kontak-hero-style';
+  st.textContent =
+    'body[data-page="kontak"] .phd{background-image:none !important;text-align:center !important;}' +
+    'body[data-page="kontak"] .phd .bgslide{display:none !important;}' +
+    'body[data-page="kontak"] .phd *{text-align:center !important;margin-left:auto !important;margin-right:auto !important;}' +
+    'body[data-page="kontak"] .phd h1,body[data-page="kontak"] .phd p{max-width:760px;}';
+  document.head.appendChild(st);
+})();
+
+/* ===== Gaya kartu artikel (otomatis dipasang, tidak perlu edit CSS) ===== */
+(function () {
+  var st = document.createElement('style');
+  st.id = 'artikel-card-style';
+  st.textContent = "#grid-artikel .acard.card{ position:relative; display:flex; flex-direction:column; overflow:hidden; padding:0; border:1px solid #e3e9f6; border-radius:20px; background:#fff; text-decoration:none; box-shadow:0 1px 2px rgba(11,31,77,.04); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; } #grid-artikel .acard.card::before{ content:\"\"; position:absolute; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg,#1d4ed8,#5b8cff); transform:scaleX(.18); transform-origin:left; transition:transform .35s ease; } #grid-artikel .acard.card:hover{ transform:translateY(-6px); border-color:#bcd0ff; box-shadow:0 18px 40px -16px rgba(29,78,216,.35); } #grid-artikel .acard.card:hover::before{ transform:scaleX(1); } #grid-artikel .acard .a-no{ position:absolute; top:6px; right:18px; font-size:84px; font-weight:800; line-height:1; color:#eef3ff; letter-spacing:-.04em; pointer-events:none; user-select:none; } #grid-artikel .acard .bd{ position:relative; z-index:1; display:flex; flex-direction:column; flex:1; padding:30px 26px 24px; gap:0; } #grid-artikel .acard .a-cat{ align-self:flex-start; padding:5px 12px; border-radius:999px; background:#e8efff; color:#1d4ed8; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:16px; } #grid-artikel .acard h3{ margin:0 0 10px; font-size:19px; line-height:1.3; color:#0b1f4d; } #grid-artikel .acard .ex{ margin:0 0 22px; font-size:15px; line-height:1.65; color:#5b6784; } #grid-artikel .acard .a-foot{ margin-top:auto; padding-top:16px; border-top:1px dashed #dbe3f5; display:flex; align-items:center; justify-content:space-between; gap:10px; } #grid-artikel .acard .a-time{ display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#7a86a3; } #grid-artikel .acard .go{ display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:#1d4ed8; } #grid-artikel .acard .a-arr{ display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#1d4ed8; color:#fff; font-style:normal; font-size:14px; transition:transform .25s ease; } #grid-artikel .acard.card:hover .a-arr{ transform:translateX(4px); } @media (max-width:640px){ #grid-artikel .acard .a-no{ font-size:64px; } #grid-artikel .acard .bd{ padding:26px 20px 20px; } } #grid-artikel .acard.card{min-height:0 !important;height:100%;} #grid-artikel .acard .meta{display:none !important;} #grid-artikel .acard .a-no{font-family:inherit;} #grid-artikel .acard .bd{width:100%;box-sizing:border-box;} ";
+  document.head.appendChild(st);
+})();
+
+/* ===== Tampilan artikel: daftar baris bernomor, warna biru dan putih diseling ===== */
+(function () {
+  var G = 'body[data-page] #grid-artikel';
+  var C = G + ' .acard.card';
+  var css = [
+    G + '{display:grid !important;grid-template-columns:1fr !important;gap:14px !important;max-width:920px;margin:0 auto;}',
+
+    /* Baris artikel */
+    C + '{flex-direction:row !important;align-items:center;height:auto !important;border-radius:18px;padding:0;background:#fff;}',
+    C + ':hover{transform:translateX(6px) !important;box-shadow:0 14px 34px -18px rgba(29,78,216,.45);}',
+    C + '::before{inset:0 auto 0 0;width:4px;height:auto;transform:scaleY(.25);transform-origin:top;}',
+    C + ':hover::before{transform:scaleY(1);}',
+    G + ' .acard .a-no{position:static !important;flex:0 0 auto;width:96px;padding-left:26px;font-size:42px;color:#c4d4fb;text-align:left;}',
+    G + ' .acard .bd{padding:22px 26px 22px 0 !important;gap:0;}',
+    G + ' .acard .a-cat{margin-bottom:10px;}',
+    G + ' .acard h3{font-size:19px;margin:0 0 6px;}',
+    G + ' .acard .ex{margin:0 0 14px;font-size:14.5px;}',
+    G + ' .acard .a-foot{margin-top:0;padding-top:0;border-top:0;justify-content:flex-start;gap:22px;}',
+
+    /* Warna diseling: nomor ganjil (1, 3, 5...) biru, nomor genap putih.
+       Mau dibalik? Ganti ":nth-child(odd)" di bawah menjadi ":nth-child(even)". */
+    C + ':nth-child(odd){background:linear-gradient(135deg,#0a1a3d,#0f2350 55%,#1d4ed8);border-color:transparent;box-shadow:0 18px 36px -20px rgba(15,35,80,.55);}',
+    C + ':nth-child(odd)::before{background:linear-gradient(180deg,#93b8ff,#fff);}',
+    G + ' .acard:nth-child(odd) .a-no{color:rgba(255,255,255,.28);}',
+    G + ' .acard:nth-child(odd) .a-cat{background:rgba(255,255,255,.16);color:#fff;}',
+    G + ' .acard:nth-child(odd) h3{color:#fff;}',
+    G + ' .acard:nth-child(odd) .ex{color:#c9d8f5;}',
+    G + ' .acard:nth-child(odd) .a-time{color:#9fb6e6;}',
+    G + ' .acard:nth-child(odd) .go{color:#fff;}',
+    G + ' .acard:nth-child(odd) .a-arr{background:#fff;color:#1d4ed8;}',
+
+    /* HP */
+    '@media (max-width:640px){',
+      C + '{flex-direction:column !important;align-items:stretch;}',
+      G + ' .acard .a-no{position:absolute !important;top:12px;right:18px;width:auto;padding:0;font-size:44px;}',
+      G + ' .acard .bd{padding:22px 20px 20px !important;}',
+    '}'
+  ].join('');
+  var st = document.createElement('style');
+  st.id = 'artikel-list-style';
+  st.textContent = css;
+  document.head.appendChild(st);
+})();
+
+/* ===== Halaman detail produk dan detail artikel: bagian ajakan "Siap merapikan arsip..." disembunyikan =====
+   Halaman daftar (produk, mobile file manual/mekanik, artikel) tetap menampilkannya. */
+(function () {
+  if (!document.getElementById('pd-body') && !document.getElementById('art-body')) return;   // hanya halaman detail produk dan detail artikel
+  var st = document.createElement('style');
+  st.id = 'produk-no-cta-style';
+  st.textContent = '.cta{display:none !important;}';
+  document.head.appendChild(st);
+})();
+
 var CFG = {
   // Gambar latar tiap halaman (di bawah lapisan gradasi biru). Ganti dengan foto ruang arsip lebar, mis. 'images/bg-produk.jpg'.
   // Jika file tidak ditemukan, yang tampil hanya gradasi warna.
-  bg: { beranda: 'images/beranda.png', produk: 'images/zeco 3.png', portofolio: ['images/zecco 102.png', 'images/zeco 102.png', 'images/zeco 102.jpg', 'images/zeco 102.webp'], artikel: 'images/zeco 2.png', kontak: 'images/zeco 1.png' },
+  bg: { beranda: 'images/beranda.png', produk: 'images/beranda.png', portofolio: 'images/beranda.png', artikel: 'images/beranda.png', kontak: '' },
+  bgGanti: false,                          // true = latar bergantian otomatis antar foto; false = tiap halaman pakai fotonya sendiri
   logo: 'images/logo CMI.JPG.png',           // logo header & footer (cukup ubah di sini)
   autoFoto: false,                          // true = cari foto otomatis di images/produk/ (menambah banyak permintaan 404)
   wa: '6281137911115',                       // nomor WhatsApp (format 62...)
@@ -88,8 +192,34 @@ var PRODUCTS = [
       cocok: 'Government agencies, hospitals, and archive centers with large document volumes',
       spek: [['Dimensions', 'H 2200 x W 1000 x D 3600 mm'], ['Plate thickness', '0.8 mm - 2 mm (1 mm body plate)'],
              ['Finishing', 'Degreasing, phosphating, anti-rust, powder coating'], ['Colour', 'Light grey']],
-      art: [["Capacity and drive", "The 102 ZC has 30 compartments and is driven by a rotary hand wheel, so rows full of files stay easy to move."], ["TKDN certified", "Like the MF 4-22-ZC, this model is TKDN certified and available in the LKPP e-Catalogue, which makes agency procurement easier."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]] } }
+      art: [["Capacity and drive", "The 102 ZC has 30 compartments and is driven by a rotary hand wheel, so rows full of files stay easy to move."], ["TKDN certified", "Like the MF 4-22-ZC, this model is TKDN certified and available in the LKPP e-Catalogue, which makes agency procurement easier."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]] } },
+  {"id": "zeco-mf-103-zc", "brand": "Zeco", "tag": "Roda kemudi", "name": "Zeco Mobile File MF-103-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 40, "foto": ["images/produk/MOBILE_FILE_MF-103-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-103 dengan roda kemudi putar, kedalaman 4400 mm, plat SPCC warna abu-abu muda.", "cocok": "Instansi, rumah sakit, dan pusat arsip dengan volume dokumen besar", "spek": [["Ukuran", "T 2200 x L 1000 x D 4400 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Cara kerjanya", "MF-103-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Memilih kedalaman yang tepat", "Semakin dalam modelnya, semakin panjang barisannya dan semakin banyak arsip yang tertampung. Sesuaikan dengan jumlah arsip dan ukuran ruangan Anda."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "Hand wheel", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-103 with a rotary hand wheel, 4400 mm deep, SPCC plate in light grey.", "cocok": "Government agencies, hospitals, and archive centers with large document volumes", "spek": [["Dimensions", "H 2200 x W 1000 x D 4400 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How it works", "The MF-103-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Choosing the right depth", "The deeper the model, the longer the row and the more archives it holds. Match it to your archive volume and room size."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
+  {"id": "zeco-mf-104-zc", "brand": "Zeco", "tag": "Roda kemudi", "name": "Zeco Mobile File MF-104-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 50, "foto": ["images/produk/MOBILE_FILE_MF-104-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-104 dengan roda kemudi putar, kedalaman 5200 mm, plat SPCC warna abu-abu muda.", "cocok": "Pusat arsip, instansi, dan rumah sakit dengan volume dokumen besar", "spek": [["Ukuran", "T 2200 x L 1000 x D 5200 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Cara kerjanya", "MF-104-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Memilih kedalaman yang tepat", "Semakin dalam modelnya, semakin panjang barisannya dan semakin banyak arsip yang tertampung. Sesuaikan dengan jumlah arsip dan ukuran ruangan Anda."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "Hand wheel", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-104 with a rotary hand wheel, 5200 mm deep, SPCC plate in light grey.", "cocok": "Archive centers, agencies, and hospitals with large document volumes", "spek": [["Dimensions", "H 2200 x W 1000 x D 5200 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How it works", "The MF-104-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Choosing the right depth", "The deeper the model, the longer the row and the more archives it holds. Match it to your archive volume and room size."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
+  {"id": "zeco-mf-201-zc", "brand": "Zeco", "tag": "Lebar 2000", "name": "Zeco Mobile File MF-201-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 20, "foto": ["images/produk/MOBILE_FILE_MF-201-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-201 versi lebar 2000 mm dengan roda kemudi putar, kedalaman 2800 mm, plat SPCC warna abu-abu muda.", "cocok": "Instansi, notaris, dan ruang arsip yang menginginkan penggerak ringan", "spek": [["Ukuran", "T 2200 x L 2000 x D 2800 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Apa bedanya dengan seri lebar 1000?", "MF-201-ZC memakai lebar kabinet 2000 mm, dua kali lipat seri MF-1xx-ZC yang 1000 mm. Kedalaman total 2800 mm sama dengan model seri MF-1xx pada kedalaman itu, jadi yang berubah hanya lebarnya. Penggeraknya tetap roda kemudi putar."], ["Cara kerjanya", "MF-201-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "2000 wide", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-201 in the 2000 mm wide version with a rotary hand wheel, 2800 mm deep, SPCC plate in light grey.", "cocok": "Agencies, notaries, and archive rooms that want an easy-moving drive", "spek": [["Dimensions", "H 2200 x W 2000 x D 2800 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the 1000 wide series?", "The MF-201-ZC has a 2000 mm cabinet width, twice the 1000 mm of the MF-1xx-ZC series. The total depth of 2800 mm matches the MF-1xx model at that depth, so only the width changes. The drive is still a rotary hand wheel."], ["How it works", "The MF-201-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
+  {"id": "zeco-mf-202-zc", "brand": "Zeco", "tag": "Lebar 2000", "name": "Zeco Mobile File MF-202-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 30, "foto": ["images/produk/MOBILE_FILE_MF-202-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-202 versi lebar 2000 mm dengan roda kemudi putar, kedalaman 3600 mm, plat SPCC warna abu-abu muda.", "cocok": "Kantor menengah, notaris, sekolah, perusahaan", "spek": [["Ukuran", "T 2200 x L 2000 x D 3600 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Apa bedanya dengan seri lebar 1000?", "MF-202-ZC memakai lebar kabinet 2000 mm, dua kali lipat seri MF-1xx-ZC yang 1000 mm. Kedalaman total 3600 mm sama dengan model seri MF-1xx pada kedalaman itu, jadi yang berubah hanya lebarnya. Penggeraknya tetap roda kemudi putar."], ["Cara kerjanya", "MF-202-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "2000 wide", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-202 in the 2000 mm wide version with a rotary hand wheel, 3600 mm deep, SPCC plate in light grey.", "cocok": "Mid-sized offices, notaries, schools, companies", "spek": [["Dimensions", "H 2200 x W 2000 x D 3600 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the 1000 wide series?", "The MF-202-ZC has a 2000 mm cabinet width, twice the 1000 mm of the MF-1xx-ZC series. The total depth of 3600 mm matches the MF-1xx model at that depth, so only the width changes. The drive is still a rotary hand wheel."], ["How it works", "The MF-202-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
+  {"id": "zeco-mf-203-zc", "brand": "Zeco", "tag": "Lebar 2000", "name": "Zeco Mobile File MF-203-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 40, "foto": ["images/produk/MOBILE_FILE_MF-203-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-203 versi lebar 2000 mm dengan roda kemudi putar, kedalaman 4400 mm, plat SPCC warna abu-abu muda.", "cocok": "Instansi, perusahaan, dan ruang arsip dengan volume dokumen sedang hingga besar", "spek": [["Ukuran", "T 2200 x L 2000 x D 4400 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Apa bedanya dengan seri lebar 1000?", "MF-203-ZC memakai lebar kabinet 2000 mm, dua kali lipat seri MF-1xx-ZC yang 1000 mm. Kedalaman total 4400 mm sama dengan model seri MF-1xx pada kedalaman itu, jadi yang berubah hanya lebarnya. Penggeraknya tetap roda kemudi putar."], ["Cara kerjanya", "MF-203-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "2000 wide", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-203 in the 2000 mm wide version with a rotary hand wheel, 4400 mm deep, SPCC plate in light grey.", "cocok": "Agencies, companies, and archive rooms with medium to large document volumes", "spek": [["Dimensions", "H 2200 x W 2000 x D 4400 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the 1000 wide series?", "The MF-203-ZC has a 2000 mm cabinet width, twice the 1000 mm of the MF-1xx-ZC series. The total depth of 4400 mm matches the MF-1xx model at that depth, so only the width changes. The drive is still a rotary hand wheel."], ["How it works", "The MF-203-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
+  {"id": "zeco-mf-204-zc", "brand": "Zeco", "tag": "Lebar 2000", "name": "Zeco Mobile File MF-204-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 50, "foto": ["images/produk/MOBILE_FILE_MF-204-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-204 versi lebar 2000 mm dengan roda kemudi putar, kedalaman 5200 mm, plat SPCC warna abu-abu muda.", "cocok": "Pusat arsip, instansi, dan rumah sakit dengan volume dokumen besar", "spek": [["Ukuran", "T 2200 x L 2000 x D 5200 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Apa bedanya dengan seri lebar 1000?", "MF-204-ZC memakai lebar kabinet 2000 mm, dua kali lipat seri MF-1xx-ZC yang 1000 mm. Kedalaman total 5200 mm sama dengan model seri MF-1xx pada kedalaman itu, jadi yang berubah hanya lebarnya. Penggeraknya tetap roda kemudi putar."], ["Cara kerjanya", "MF-204-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "2000 wide", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-204 in the 2000 mm wide version with a rotary hand wheel, 5200 mm deep, SPCC plate in light grey.", "cocok": "Archive centers, agencies, and hospitals with large document volumes", "spek": [["Dimensions", "H 2200 x W 2000 x D 5200 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the 1000 wide series?", "The MF-204-ZC has a 2000 mm cabinet width, twice the 1000 mm of the MF-1xx-ZC series. The total depth of 5200 mm matches the MF-1xx model at that depth, so only the width changes. The drive is still a rotary hand wheel."], ["How it works", "The MF-204-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}}
 ];
+
+/* ===== GANTI FOTO PRODUK DI SINI =====
+   Satu baris = satu produk:  'id-produk': 'images/produk/nama-file.jpg'
+   Untuk mengganti foto: simpan foto baru di folder images/produk/, lalu ubah nama file di baris produk yang bersangkutan.
+   Untuk beberapa foto (galeri di jendela detail), tulis dalam kurung siku: ['images/produk/a.jpg', 'images/produk/b.jpg'] (yang pertama jadi foto utama).
+   Produk lain juga bisa diganti fotonya dari sini: cukup tambah baris dengan id-nya, mis. 'zeco-mf-101-zc': 'images/produk/mf-101.jpg'.
+   Kosongkan ('') bila ingin memakai ilustrasi bawaan. Daftar id produk ada di properti id pada array PRODUCTS di atas. */
+var FOTO_PRODUK = {
+  'zeco-mf-103-zc': 'images/mobile file zeco 103.png',
+  'zeco-mf-104-zc': 'images/mobile file zeco 104.png',
+  'zeco-mf-201-zc': 'images/mobile file zeco 201.png',
+  'zeco-mf-202-zc': 'images/mobile file 202.png',
+  'zeco-mf-203-zc': 'images/mobile file zeco 203.png',
+  'zeco-mf-204-zc': 'images/mobile file zeco 204.png'
+};
+PRODUCTS.forEach(function (p) {
+  if (!Object.prototype.hasOwnProperty.call(FOTO_PRODUK, p.id)) return;
+  var f = FOTO_PRODUK[p.id];
+  p.foto = f ? [].concat(f) : [];
+});
 
 /* Foto proyek (opsional): simpan foto di images/proyek/ sesuai nama pada baris foto: tiap proyek. fotoPos (opsional) menggeser fokus foto, mis. '50% 30%'. Foto belum ada / gagal dimuat: kotak biru berisi huruf awal sektor dipakai. */
 var PROJECTS = [
@@ -223,7 +353,7 @@ function cmpHtml() {
   var S = STR[LANG];
   return '<table><thead><tr><th>' + S.cmpModel + '</th><th>' + S.drive + '</th><th>' + S.cap + '</th><th>' + S.cmpFor + '</th></tr></thead><tbody>' +
     PRODUCTS.map(function (p) {
-      return '<tr><td><a href="produk.html" data-open="produk:' + p.id + '">' + esc(L(p, 'name')) + '</a></td><td>' + esc(L(p, 'tipe')) + '</td><td>' + esc(L(p, 'kap')) + '</td><td>' + esc(L(p, 'cocok')) + '</td></tr>';
+      return '<tr><td><a href="' + produkUrl(p.id) + '" data-open="produk:' + p.id + '">' + esc(L(p, 'name')) + '</a></td><td>' + esc(L(p, 'tipe')) + '</td><td>' + esc(L(p, 'kap')) + '</td><td>' + esc(L(p, 'cocok')) + '</td></tr>';
     }).join('') + '</tbody></table>';
 }
 
@@ -259,7 +389,7 @@ var UI_EN = {
   'fc-h': 'Need a Zeco model recommendation?', 'fc-p': 'Tell us your room size and number of archives. Our team will help you choose.',
   'chatwa': 'Chat on WhatsApp',
   'ft-about': 'PT Cahaya Mustika Internesia, distributor of Zeco mobile files for offices, agencies, and companies.',
-  'ft-pages': 'Pages',
+  'ft-pages': 'Page Information',
   'ft-bot': '© 2026 PT Cahaya Mustika Internesia. Specifications and availability are subject to change.',
   'top': 'Back to top ↑', 'close': 'Close',
   'cmp-h': 'Compare models', 'cmp-aria': 'Model comparison',
@@ -275,6 +405,12 @@ var UI_EN = {
   'c2-k': 'Category 02 · Mechanical system', 'c2-h': 'Mechanical Mobile File', 'c2-p': 'A rotary hand wheel makes large, dense rows easy to move.',
   'gp-k': 'Selection guide', 'gp-h': 'Manual vs mechanical mobile file', 'gp-p': 'Choose the type that fits your archive volume, room size, and how often it is used.',
   'port-h2': 'Project examples',
+  'phd-produk': 'Save up to 50% of space · Sturdy steel frame · TKDN-certified models in the LKPP e-Catalogue',
+  'phd-port': 'From hospitals and notary offices to government agencies and private companies.',
+  'phd-art': 'Choosing, installing, and maintaining a mobile file, explained briefly and clearly.',
+  'phd-kon': 'Monday to Friday, 08:00 - 16:00 · WhatsApp +62 811-3791-1115',
+  'phd-man': 'Suited to small offices, clinics, and departmental archive rooms.',
+  'phd-mek': 'Suited to agencies, hospitals, and archive centers with large volumes. No electricity needed.',
   'title-man': 'Manual Mobile File | PT Cahaya Mustika Internesia', 'desc-man': 'Zeco manual mobile files: MF-4, MF-6, MF-8, and MF-10 series, including the 2000 mm wide version.',
   'title-mek': 'Mechanical Mobile File | PT Cahaya Mustika Internesia', 'desc-mek': 'Zeco mechanical mobile files with a rotary hand wheel for dense archives and large volumes.',
   'back-all': '← All products', 'go-mek': 'View Mechanical Mobile Files →', 'go-man': 'View Manual Mobile Files →', 'port-p2': 'Archive layouts we have completed.',
@@ -325,6 +461,9 @@ function esc(s) { return String(s).replace(/[&<>\"']/g, function (c) { return { 
 function wa(text) { return 'https://wa.me/' + CFG.wa + '?text=' + encodeURIComponent(text); }
 function waHai() { return wa(STR[LANG].waHai); }
 function find(arr, id) { return arr.filter(function (x) { return x.id === id; })[0]; }
+/* Tiap produk punya halaman sendiri: nama file = id produk, mis. zeco-mf-102-zc.html */
+function produkUrl(id) { return id + '.html'; }
+function artikelUrl(id) { return 'artikel-' + id + '.html'; }
 
 function drawUnit(komp, brand) {
   var m = Math.min(4, Math.max(2, Math.round(komp / 4))), D = '#2b2f36';
@@ -372,13 +511,17 @@ function galleryHtml(p) {
 var WA_ICON = '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.44 1.32-1.98 1.37-.5.05-1.13.07-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.37-.14-.19-1.18-1.57-1.18-3s.75-2.13 1.02-2.42c.27-.29.58-.36.78-.36h.56c.18 0 .42-.07.66.5.25.6.85 2.07.92 2.22.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.65-.14.27.1 1.7.8 1.99.95.29.14.48.22.55.34.07.12.07.7-.18 1.39z"/></svg>';
 var EYE_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 12S5.5 4.5 12 4.5 22.5 12 22.5 12 18.5 19.5 12 19.5 1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg>';
 function productCard(p, i) {
-  var S = STR[LANG], name = L(p, 'name'), kap = L(p, 'kap'), f = p.foto && p.foto[0];
+  var S = STR[LANG], name = L(p, 'name'), kap = L(p, 'kap'), f = p.foto && p.foto[0], en = LANG === 'en';
   var code = name.replace(/^Zeco Mobile File\s*/, '') || name;
   var pill = /^\d/.test(kap) ? kap : L(p, 'tag');
-  return '<div class="card pcard" data-open="produk:' + p.id + '"><div class="pic' + (f ? ' has-foto' : '') + '"><span class="pnum">' + ('0' + (i + 1)).slice(-2) + '</span><span class="tag">' + esc(pill) + '</span>' + picHtml(p) + '</div>' +
-    '<div class="bd"><span class="meta">' + esc(code) + ' • ' + esc(L(p, 'tipe')) + '</span><h3>' + esc(name) + '</h3><p class="ex">' + esc(L(p, 'short')) + '</p>' +
-    '<div class="pact"><button type="button" class="bd-btn">' + EYE_ICON + (LANG === 'en' ? 'View Details' : 'Lihat Detail') + '</button>' +
-    '<a class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp" href="' + wa(S.waProd(name)) + '">' + WA_ICON + '</a></div></div></div>';
+  var sp = L(p, 'spek') || [], ukr = sp.filter(function (x) { return /^(Ukuran|Dimensions)$/.test(x[0]); })[0] || sp[0];
+  var spec = '<dl class="pc-spec">' + (ukr ? '<div><dt>' + esc(ukr[0]) + '</dt><dd>' + esc(ukr[1]) + '</dd></div>' : '') +
+    '<div><dt>' + (en ? 'Capacity' : 'Kapasitas') + '</dt><dd>' + esc(kap) + '</dd></div></dl>';
+  return '<article class="card pcard pc2" data-open="produk:' + p.id + '"><div class="pic' + (f ? ' has-foto' : '') + '"><span class="tag">' + esc(pill) + '</span>' + picHtml(p) + '</div>' +
+    '<div class="bd"><div class="pc-top"><span class="pc-type">' + esc(L(p, 'tipe')) + '</span><span class="pc-code">' + esc(code) + '</span></div>' +
+    '<h3>' + esc(name) + '</h3><p class="ex">' + esc(L(p, 'short')) + '</p>' + spec +
+    '<div class="pact"><button type="button" class="bd-btn">' + (en ? 'View Details' : 'Lihat Detail') + ' <span aria-hidden="true">&rarr;</span></button>' +
+    '<a class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp" href="' + wa(S.waProd(name)) + '">' + WA_ICON + '</a></div></div></article>';
 }
 function projectCard(j) {
   var sek = L(j, 'sektor');
@@ -388,10 +531,16 @@ function projectCard(j) {
   return '<div class="card static"><div class="pj' + (j.foto ? ' pj-photo' : '') + '">' + pjp + '<div class="bd"><span class="meta">' + esc(sek) + '</span><h3>' + esc(L(j, 'judul')) + '</h3>' +
     '<p class="ex">' + esc(L(j, 'ket')) + '</p><div class="tags"><span>' + esc(j.unit) + '</span></div></div></div></div>';
 }
-function articleCard(a) {
-  var S = STR[LANG];
-  return '<a class="card txt" href="artikel.html" data-open="artikel:' + a.id + '"><div class="bd"><span class="meta">' + esc(L(a, 'kat')) + ' · ' + a.menit + ' ' + esc(S.minRead) + '</span><h3>' + esc(L(a, 'judul')) + '</h3>' +
-    '<p class="ex">' + esc(L(a, 'ex')) + '</p><span class="go">' + esc(S.read) + '</span></div></a>';
+function articleCard(a, i) {
+  var S = STR[LANG], no = ('0' + ((i || 0) + 1)).slice(-2);
+  var clock = '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+  return '<a class="card txt acard" href="' + artikelUrl(a.id) + '" data-open="artikel:' + a.id + '">' +
+    '<span class="a-no" aria-hidden="true">' + no + '</span>' +
+    '<div class="bd"><span class="a-cat">' + esc(L(a, 'kat')) + '</span>' +
+    '<h3>' + esc(L(a, 'judul')) + '</h3>' +
+    '<p class="ex">' + esc(L(a, 'ex')) + '</p>' +
+    '<div class="a-foot"><span class="a-time">' + clock + a.menit + ' ' + esc(S.minRead) + '</span>' +
+    '<span class="go">' + esc(S.read.replace(/\s*\u2192\s*$/, '')) + '<i class="a-arr" aria-hidden="true">\u2192</i></span></div></div></a>';
 }
 
 /* ===== Isi bagian-bagian halaman ===== */
@@ -453,8 +602,7 @@ function render() {
   $('kontak-info').innerHTML =
     '<h3>' + S.kTel + '</h3><p>' + esc(CFG.tel) + '</p><h3>' + S.kEmail + '</h3><p>' + esc(CFG.email) + '</p>' +
     '<h3>' + S.kAddr + '</h3><p>' + esc(CFG.alamat) + '</p><h3>' + S.kHours + '</h3><p>' + esc(LANG === 'en' ? CFG.jamEn : CFG.jam) + '</p>';
-  $('ft-kontak').innerHTML = '<h4>' + S.fKontak + '</h4><a href="tel:+' + CFG.wa + '"><i>' + S.lTel + '</i>' + esc(CFG.tel) + '</a><a href="mailto:' + esc(CFG.email) + '"><i>' + S.lEmail + '</i>' + esc(CFG.email) + '</a><a href="kontak.html"><i>' + S.lAddr + '</i>' + esc(CFG.alamat) + '</a><a href="kontak.html"><i>' + S.lHours + '</i>' + esc(LANG === 'en' ? CFG.jamEn : CFG.jam) + '</a>';
-  $('ft-produk').innerHTML = '<h4>' + S.fProd + '</h4>' + PRODUCTS.map(function (p) { return '<a href="produk.html" data-open="produk:' + p.id + '">' + esc(L(p, 'name').replace('Zeco Mobile File ', 'Zeco ')) + '</a>'; }).join('');
+  $('ft-kontak').innerHTML = '<h4>' + S.fKontak + '</h4><a href="tel:+' + CFG.wa + '"><i>' + S.lTel + '</i>' + esc(CFG.tel) + '</a><a href="kontak.html"><i>' + S.lAddr + '</i>' + esc(CFG.alamat) + '</a>';
 
   /* Teks jenis penggerak mengikuti data PRODUCTS, jadi tidak pernah menjanjikan model yang belum ada */
   var TIPE = PRODUCTS.map(function (p) { return L(p, 'tipe'); }).filter(function (v, i, a) { return a.indexOf(v) === i; });
@@ -467,6 +615,7 @@ function render() {
   $('ft-wa').href = waHai();
   $('hd-wa').href = waHai();
   $('cta-wa').href = waHai();
+  $('phd-wa').href = waHai();
   var fw = document.querySelector('.fwa');
   if (fw) { fw.href = waHai(); fw.setAttribute('aria-label', S.chatWa); }
 
@@ -479,6 +628,15 @@ function render() {
     if (!ld) { ld = document.createElement('script'); ld.type = 'application/ld+json'; ld.id = 'ld-faq'; document.head.appendChild(ld); }
     ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', inLanguage: LANG,
       mainEntity: FAQS.map(function (f) { return { '@type': 'Question', name: L(f, 'q'), acceptedAnswer: { '@type': 'Answer', text: L(f, 'a') } }; }) });
+  }
+  var pdb = document.getElementById('pd-body');
+  if (pdb) pdb.innerHTML = produkPageHtml();
+  var adb = document.getElementById('art-body');
+  if (adb) {
+    adb.innerHTML = artikelPageHtml();
+    var oldHero = document.getElementById('ar-hero'); if (oldHero) oldHero.parentNode.removeChild(oldHero);
+    var heroHtml = artikelHeroHtml(), heroSec = adb.closest ? adb.closest('section') : null;
+    if (heroHtml && heroSec) heroSec.insertAdjacentHTML('beforebegin', heroHtml);
   }
   if (dlg.open && curKey) dlgBody.innerHTML = detailHtml(curKey);   // jendela detail yang sedang terbuka ikut berganti
   if (window.revealDyn) window.revealDyn();                          // animasi untuk kartu yang baru dibuat
@@ -521,6 +679,62 @@ function detailHtml(key) {
   }
   return html;
 }
+/* Halaman detail produk (detail-produk.html?id=...): isi sama dengan jendela detail, tetapi tampil sebagai halaman sendiri */
+function produkPageHtml() {
+  var S = STR[LANG], en = LANG === 'en', id = '';
+  id = document.body.getAttribute('data-product') || '';
+  if (!id) { try { id = new URLSearchParams(location.search).get('id') || ''; } catch (e) {} }   // cadangan untuk tautan lama detailproduk.html?id=...
+  var p = find(PRODUCTS, id);
+  var listName = (en && S['nav-produk']) || 'Produk Zeco';
+  var back = '<div class="btns pd-back"><a class="btn line" href="produk.html">' + (en ? '\u2190 All products' : '\u2190 Semua produk') + '</a></div>';
+  if (!p) return '<div class="pd-crumb"><a href="produk.html">' + esc(listName) + '</a></div><h1 id="pd-title">' + (en ? 'Product not found' : 'Produk tidak ditemukan') + '</h1>' + back;
+  document.title = L(p, 'name') + ' | PT Cahaya Mustika Internesia';
+  [['meta[name="description"]', L(p, 'short')], ['meta[property="og:title"]', document.title], ['meta[property="og:description"]', L(p, 'short')]].forEach(function (m) {
+    var el = document.querySelector(m[0]); if (el) el.setAttribute('content', m[1]);
+  });
+  var inner = detailHtml('produk:' + p.id).replace('<h3 id="dlg-title">', '<h1 id="pd-title">').replace('</h3>', '</h1>');
+  return '<div class="pd-crumb"><a href="produk.html">' + esc(listName) + '</a><span>' + esc(L(p, 'name')) + '</span></div>' + inner + back;
+}
+/* ===== Halaman artikel (artikel-<id>.html): banner di atas, isi bernomor, daftar isi dan "Baca juga" di samping ===== */
+var AR_CLOCK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+function pad2(n) { return (n < 10 ? '0' : '') + n; }
+function artikelCur() {
+  var id = document.body.getAttribute('data-article') || '';
+  if (!id) { try { id = new URLSearchParams(location.search).get('id') || ''; } catch (e) {} }
+  return find(ARTICLES, id);
+}
+/* Banner penuh lebar (dipasang di luar #art-body supaya melebar sampai tepi layar) */
+function artikelHeroHtml() {
+  var a = artikelCur(); if (!a) return '';
+  var S = STR[LANG], en = LANG === 'en', listName = (en && S['nav-artikel']) || 'Artikel', isi = L(a, 'isi');
+  return '<section class="phd ar-hero" id="ar-hero"><div class="w">' +
+    '<h1 id="pd-title">' + esc(L(a, 'judul')) + '</h1>' +
+    '<p class="lead2">' + esc(L(a, 'ex')) + '</p>' +
+    '<div class="ar-meta"><span>' + AR_CLOCK + a.menit + ' ' + esc(S.minRead) + '</span><span>' + isi.length + ' ' + (en ? 'sections' : 'bagian') + '</span></div>' +
+    '</div></section>';
+}
+function artikelPageHtml() {
+  var S = STR[LANG], en = LANG === 'en', a = artikelCur();
+  var listName = (en && S['nav-artikel']) || 'Artikel';
+  var back = '<div class="btns pd-back"><a class="btn line" href="artikel.html">' + (en ? '\u2190 All articles' : '\u2190 Semua artikel') + '</a></div>';
+  if (!a) return '<div class="pd-crumb"><a href="artikel.html">' + esc(listName) + '</a></div><h1 id="pd-title">' + (en ? 'Article not found' : 'Artikel tidak ditemukan') + '</h1>' + back;
+  document.title = L(a, 'judul') + ' | PT Cahaya Mustika Internesia';
+  [['meta[name="description"]', L(a, 'ex')], ['meta[property="og:title"]', document.title], ['meta[property="og:description"]', L(a, 'ex')]].forEach(function (m) {
+    var el = document.querySelector(m[0]); if (el) el.setAttribute('content', m[1]);
+  });
+  var isi = L(a, 'isi');
+  var secs = isi.map(function (s, i) {
+    return '<section class="ar-sec" id="bagian-' + (i + 1) + '"><span class="ar-n">' + pad2(i + 1) + '</span><div><h2>' + esc(s[0]) + '</h2><p>' + esc(s[1]) + '</p></div></section>';
+  }).join('');
+  var more = ARTICLES.map(function (x, i) {
+    return x.id === a.id ? '' : '<a href="' + artikelUrl(x.id) + '"><i>' + pad2(i + 1) + '</i><span><b>' + esc(L(x, 'judul')) + '</b><small>' + esc(L(x, 'kat')) + ' \u00b7 ' + x.menit + ' ' + esc(S.minRead) + '</small></span></a>';
+  }).join('');
+  var cta = '<div class="ar-cta"><div><h3>' + (en ? 'Need help choosing a Zeco model?' : 'Butuh bantuan memilih model Zeco?') + '</h3>' +
+    '<p>' + (en ? 'Tell us about your archive and room. Our team will help.' : 'Ceritakan kebutuhan arsip dan ruangan Anda. Tim kami siap membantu.') + '</p></div>' +
+    '<a class="btn gold" target="_blank" rel="noopener" href="' + waHai() + '">' + S.consult + '</a></div>';
+  return '<div class="ar-wrap"><div class="ar-main"><article class="art ar-art">' + secs + '</article>' + cta + back + '</div>' +
+    '<aside class="ar-side"><div class="ar-box ar-more"><h4>' + (en ? 'Keep reading' : 'Baca juga') + '</h4>' + more + '</div></aside></div>';
+}
 function openDetail(key) {
   var html = detailHtml(key); if (!html) return;
   curKey = key;
@@ -548,7 +762,13 @@ document.addEventListener('click', function (e) {
   }
   if (e.target.closest('.wa-btn')) return;   // tombol WhatsApp di kartu: biarkan tautan terbuka
   var b = e.target.closest('[data-open]');
-  if (b) { e.preventDefault(); openDetail(b.getAttribute('data-open')); }
+  if (b) {
+    e.preventDefault();
+    var key = b.getAttribute('data-open');
+    if (key.indexOf('produk:') === 0) location.href = produkUrl(key.slice(7));
+    else if (key.indexOf('artikel:') === 0) location.href = artikelUrl(key.slice(8));
+    else openDetail(key);
+  }
 });
 
 /* Foto gagal dimuat -> pakai ilustrasi bawaan */
@@ -700,6 +920,37 @@ onScroll();
     return chain.then(function (found) { return found || probeImg(encodeURI(u)); });
   }, Promise.resolve(null)).then(function (ok) { if (ok) document.documentElement.style.setProperty('--bg', 'url("' + ok + '")'); });
   var still = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* Latar berganti otomatis di semua halaman: foto halaman ini tampil dulu, lalu bergantian dengan foto halaman lain.
+     Daftar foto diambil dari CFG.bg. Atur jeda (milidetik) lewat CFG.bgJeda. */
+  (function slideshow() {
+    var host = document.querySelector('.hero, .phd');
+    if (!host || !CFG.bg || !CFG.bgGanti) return;
+    var urls = [], seen = {};
+    [pg].concat(Object.keys(CFG.bg)).forEach(function (k) {
+      var v = CFG.bg[k]; if (!v) return;
+      [].concat(v).forEach(function (u) { if (!seen[u]) { seen[u] = 1; urls.push(u); } });
+    });
+    Promise.all(urls.map(function (u) { return probeImg(encodeURI(u)); })).then(function (list) {
+      var ok = list.filter(Boolean);
+      // Portofolio punya beberapa nama cadangan untuk satu foto; pakai satu saja per halaman
+      if (ok.length < 2) return;
+      var layers = ok.map(function (u, i) {
+        var d = document.createElement('div');
+        d.className = 'bgslide' + (i === 0 ? ' on' : '');
+        d.style.backgroundImage = 'url("' + u + '")';
+        d.setAttribute('aria-hidden', 'true');
+        host.insertBefore(d, host.firstChild);
+        return d;
+      });
+      if (still) return;
+      var n = 0;
+      setInterval(function () {
+        layers[n].classList.remove('on');
+        n = (n + 1) % layers.length;
+        layers[n].classList.add('on');
+      }, CFG.bgJeda || 6000);
+    });
+  })();
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href]');
     if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || still) return;

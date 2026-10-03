@@ -19,7 +19,7 @@ a{color:inherit}p{margin:0}
 .hd.scrolled{box-shadow:0 8px 24px rgba(15,35,80,.08)}
 .hd-in{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;font:800 17px var(--head);color:var(--navy);text-decoration:none}
-.logo-img{height:40px;width:auto;max-width:160px;display:block;object-fit:contain}
+.logo-img{height:52px;width:auto;max-width:160px;display:block;object-fit:contain}
 .menu{display:flex;align-items:center;gap:4px}
 .menu a{font-size:14px;font-weight:500;color:var(--mut);text-decoration:none;padding:8px 14px;border-radius:999px;transition:background .2s,color .2s}
 .menu a:hover{color:var(--navy);background:var(--soft)}
@@ -167,14 +167,14 @@ dialog::backdrop{background:rgba(10,26,61,.55);backdrop-filter:blur(3px)}
 
 /* ===== Footer lebih hidup ===== */
 .ft{position:relative;overflow:hidden;background:radial-gradient(circle at 1px 1px,#cfdefc 1px,transparent 0) 0 0/22px 22px,linear-gradient(180deg,#fff,var(--sky));padding-top:64px}
-.ft:after{content:"CMI";position:absolute;right:-10px;bottom:-60px;font:800 240px/1 var(--head);color:rgba(37,99,235,.06);pointer-events:none}
+.ft:after{content:"CMI";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;font:800 240px/1 var(--head);color:rgba(37,99,235,.06);pointer-events:none}
 .ft .w{position:relative;z-index:1}
 .ftcta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;border-radius:22px;padding:28px 32px;margin-bottom:48px;box-shadow:0 20px 40px rgba(37,99,235,.25)}
 .ftcta h3{color:#fff;font-size:20px}
 .ftcta p{color:#c9dcff;font-size:14px;margin-top:4px}
 .ftcta .btn.gold{background:#fff;color:var(--blue);border-color:#fff}
 .ftcta .btn.gold:hover{background:var(--sky);border-color:var(--sky);color:var(--blue)}
-.ft-in{grid-template-columns:1.5fr .8fr 1fr 1.5fr}
+.ft-in{grid-template-columns:1.5fr .9fr 1.5fr}
 .ft-in a:not(.logo){transition:transform .2s,color .2s}
 .ft-in a:not(.logo):hover{transform:translateX(4px)}
 .ft-in #ft-kontak a{display:flex;gap:10px;align-items:flex-start}
@@ -421,3 +421,132 @@ html.leaving main,html.leaving .ft{opacity:0;transition:opacity .18s ease-in}
 }
 /* Pemisah breadcrumb (halaman produk) */
 .crumb a+span:before{content:"/";margin:0 10px;opacity:.55}
+
+/* Kotak CTA footer dihapus */
+.ftcta{display:none!important}
+
+/* ===== Latar berganti + tinggi header semua halaman sama dengan hero beranda ===== */
+:root{--hero-h:660px}
+.hero,.phd{min-height:var(--hero-h);display:flex;align-items:center;padding:72px 0 80px}
+.hero>.w,.phd>.w{width:100%}
+.bgslide{position:absolute;inset:0;z-index:-2;background:center/cover no-repeat;opacity:0;transition:opacity 1.4s ease}
+.bgslide.on{opacity:1}
+@media (max-width:900px){:root{--hero-h:520px}.hero,.phd{padding:48px 0 56px}}
+@media (max-width:520px){:root{--hero-h:460px}}
+@media (prefers-reduced-motion:reduce){.bgslide{transition:none}}
+
+/* Teks header halaman dalam dibuat sebesar hero beranda supaya ruangnya terisi */
+.phd h1{font-size:clamp(30px,4vw,46px);line-height:1.15;max-width:18ch}
+.phd p{font-size:16px;max-width:50ch;margin-top:20px}
+.phd .crumb{margin-bottom:18px;letter-spacing:.1em}
+.phd .btns{margin-top:32px}
+.phd .btn{padding:13px 28px}
+.phd .btn:not(.line){background:var(--blue);border-color:var(--blue)}
+.phd .btn:not(.line):hover{background:#fff;border-color:#fff;color:var(--blue)}
+.phd .btn.line{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.phd .btn.line:hover{background:rgba(255,255,255,.14);border-color:#fff;color:#fff}
+
+/* ===== Hero dan header semua halaman dikecilkan ===== */
+:root{--hero-h:440px}
+.hero,.phd,[data-page="beranda"] .hero{min-height:var(--hero-h);padding:48px 0 52px}
+.hero h1,.phd h1,[data-page="beranda"] .hero h1{font-size:clamp(26px,3.2vw,38px);line-height:1.15}
+.hero .lead,.phd p,[data-page="beranda"] .hero .lead{font-size:15px;margin-top:14px}
+.hero .btns,.phd .btns,[data-page="beranda"] .hero .btns{margin-top:22px}
+.hero .btn,.phd .btn,[data-page="beranda"] .hero .btn{padding:11px 24px;font-size:14px}
+.phd .crumb{margin-bottom:12px}
+@media (max-width:900px){:root{--hero-h:380px}.hero,.phd,[data-page="beranda"] .hero{padding:40px 0 44px}}
+@media (max-width:520px){:root{--hero-h:340px}}
+
+
+/* ===== Kartu produk: tata letak mendatar (foto kiri, info kanan), dua kartu per baris ===== */
+#grid-produk,#grid-manual,#grid-mekanik{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.pc2{flex-direction:row;align-items:stretch;border-radius:20px;overflow:hidden;transition:box-shadow .2s,transform .2s,border-color .2s}
+.pc2:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(15,35,80,.14);border-color:var(--lt)}
+.pc2 .pic{flex:0 0 42%;max-width:42%;padding:0;background:linear-gradient(180deg,#f7faff,#e6eefb);border-bottom:0;border-right:1px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.pc2 .pic img.foto{width:100%;height:100%;aspect-ratio:auto;min-height:280px;object-fit:contain}
+.pc2 .pic svg{width:100%;height:auto}
+.pc2 .tag{left:12px;right:auto;top:12px;background:#fff;color:var(--navy);border:1px solid var(--line);font:700 11px var(--head);padding:5px 12px;box-shadow:0 4px 12px rgba(15,35,80,.1)}
+.pc2 .bd{padding:22px 24px;gap:10px}
+.pc-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pc-type{font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;background:var(--navy);color:#fff;padding:4px 10px;border-radius:6px}
+.pc-code{font:600 12px var(--mono);color:var(--mut);letter-spacing:.04em}
+.pc2 h3{font-size:19px;line-height:1.3}
+.pc2 .ex{font-size:14px;line-height:1.6;color:var(--mut)}
+.pc-spec{margin:2px 0 0;padding:12px 14px;background:var(--soft);border-radius:12px;display:grid;gap:6px}
+.pc-spec div{display:flex;justify-content:space-between;gap:12px;font-size:13px}
+.pc-spec dt{color:var(--mut);margin:0}
+.pc-spec dd{margin:0;font-weight:600;color:var(--navy);text-align:right}
+.pc2 .pact{margin-top:auto;padding-top:6px;display:flex;gap:10px}
+.pc2 .bd-btn{background:#fff;color:var(--navy);border:2px solid var(--navy);padding:11px 16px;font:700 14px var(--head)}
+.pc2:hover .bd-btn,.pc2 .bd-btn:hover{background:var(--navy);color:#fff}
+.pc2 .wa-btn{flex:0 0 48px}
+@media (max-width:1040px){#grid-produk,#grid-manual,#grid-mekanik{grid-template-columns:1fr}}
+@media (max-width:560px){.pc2{flex-direction:column}.pc2 .pic{flex:none;max-width:none;border-right:0;border-bottom:1px solid var(--line)}.pc2 .pic img.foto{min-height:0;aspect-ratio:4/3}}
+
+
+/* ===== Halaman detail produk ===== */
+.pd-sec{padding:36px 0 72px}
+.pd.dl{padding:0;background:none;box-shadow:none;border:0}
+.pd-crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:18px;font:600 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.pd-crumb a{color:var(--blue);text-decoration:none}
+.pd-crumb a:hover{text-decoration:underline}
+.pd-crumb span:before{content:"/";margin-right:8px;color:#b8c6e0}
+.pd h1{font-size:clamp(26px,3.4vw,38px);font-weight:800;letter-spacing:-.02em;color:var(--navy);margin:6px 0 10px;line-height:1.2}
+.pd .dl-prod{gap:40px}
+.pd .dl-prod .pic img.foto{aspect-ratio:1/1}
+.pd-back{margin-top:40px}
+@media (max-width:900px){.pd-sec{padding:24px 0 56px}.pd .dl-prod{gap:24px}}
+/* Menu atas: tanpa latar belakang saat aktif, disorot, atau diklik; hanya warna teks yang berubah */
+.menu a:not(.btn),.menu a:not(.btn):hover,.menu a:not(.btn):focus,.menu a:not(.btn):active,.menu a.on,.menu a.on:hover{background:transparent}
+
+/* Logo di footer: besar, tanpa teks */
+.ft .ft-logo{height:110px;max-width:280px}
+@media (max-width:640px){.ft .ft-logo{height:84px}}
+/* ===== Header melayang (tidak mepet tepi layar) ===== */
+html{scroll-padding-top:104px}
+.hd{background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;border-bottom:0;padding:16px clamp(16px,5.5vw,80px) 0;box-shadow:none!important}
+.hd .hd-in{max-width:1000px;margin:0 auto;height:68px;padding:0 10px 0 30px;gap:20px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:999px;box-shadow:0 10px 30px rgba(15,35,80,.10);transition:box-shadow .3s}
+.hd.scrolled .hd-in{box-shadow:0 14px 36px rgba(15,35,80,.18)}
+.hd .logo-img{height:46px;max-width:140px}
+@media (min-width:1041px){.hd .menu{gap:4px}.hd .menu a:not(.btn){padding:8px 12px}}
+@media (max-width:1040px){
+  .hd{padding:12px clamp(14px,4vw,40px) 0}
+  .hd .hd-in{height:62px;padding:0 8px 0 18px}
+  .hd .logo-img{height:42px}
+  .hd .menu{top:calc(100% + 8px);left:clamp(14px,4vw,40px);right:clamp(14px,4vw,40px);border:1px solid var(--line);border-radius:22px;box-shadow:0 16px 40px rgba(15,35,80,.16);padding:12px 18px 18px}
+}
+
+/* ===== Halaman detail artikel (desain baru): banner, isi bernomor, daftar isi dan "Baca juga" ===== */
+body[data-article] .pd-sec{padding:52px 0 84px;background:linear-gradient(180deg,#f6f9ff 0,#fff 380px)}
+.ar-hero{display:block!important;min-height:0!important;padding:60px 0 54px!important}
+.ar-hero .pd-crumb{margin-bottom:20px;color:#9fb6e6}
+.ar-hero .pd-crumb a{color:var(--lt)}
+.ar-hero .pd-crumb span:before{color:#5f7bb8}
+.ar-hero .ar-pill{display:inline-block;padding:5px 14px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;font:700 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.ar-hero h1{max-width:22ch!important;margin-top:0}
+.ar-hero p.lead2{max-width:58ch;font-size:17px;margin-top:16px}
+.ar-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;color:#c9d8f5;font-size:13.5px}
+.ar-meta span{display:inline-flex;align-items:center;gap:7px}
+.ar-wrap{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:44px;align-items:start}
+.ar-art{display:grid;gap:18px}
+.ar-art .ar-sec{display:grid;grid-template-columns:52px 1fr;gap:22px;padding:28px 30px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 1px 2px rgba(11,31,77,.04);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.ar-art .ar-sec:hover{transform:translateY(-3px);border-color:#bcd0ff;box-shadow:0 18px 40px -22px rgba(29,78,216,.35)}
+.ar-n{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#0f2350,#1d4ed8);color:#fff;font:800 17px var(--head)}
+.ar-art .ar-sec h2{font-size:21px;margin:2px 0 8px;color:var(--navy)}
+.ar-art .ar-sec p{font-size:16px;line-height:1.8;color:#33456a;margin:0}
+.ar-cta{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:22px;padding:28px 30px;border-radius:20px;background:linear-gradient(135deg,#0a1a3d,#0f2350 55%,#1d4ed8);color:#fff}
+.ar-cta h3{color:#fff;font-size:20px;margin:0 0 4px}
+.ar-cta p{color:#c9d8f5;margin:0;font-size:14.5px}
+.ar-cta .btn{width:auto}
+body[data-article] .pd-back .btn{width:auto;display:inline-flex}
+.ar-side{position:sticky;top:104px;display:grid;gap:18px}
+.ar-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+.ar-box h4{font:700 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 8px}
+.ar-box a{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px dashed #dbe3f5;text-decoration:none;color:var(--navy);font-weight:600;font-size:14.5px;line-height:1.4}
+.ar-box h4+a{border-top:0}
+.ar-box a:hover span{color:var(--blue)}
+.ar-box i{font:700 12px var(--mono);font-style:normal;color:#9db3e6;padding-top:2px}
+.ar-more b{font-weight:600}
+.ar-more small{display:block;color:var(--mut);font-weight:400;font-size:12.5px;margin-top:2px}
+@media (max-width:900px){.ar-wrap{grid-template-columns:1fr;gap:28px}.ar-side{position:static}body[data-article] .pd-sec{padding:32px 0 56px}.ar-hero{padding:44px 0 40px!important}}
+@media (max-width:640px){.ar-art .ar-sec{grid-template-columns:1fr;gap:14px;padding:22px 20px}.ar-n{width:44px;height:44px;font-size:15px}.ar-cta{padding:24px 20px}.ar-cta .btn{width:100%}}
