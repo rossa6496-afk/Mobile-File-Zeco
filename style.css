@@ -550,3 +550,5 @@ body[data-article] .pd-back .btn{width:auto;display:inline-flex}
 .ar-more small{display:block;color:var(--mut);font-weight:400;font-size:12.5px;margin-top:2px}
 @media (max-width:900px){.ar-wrap{grid-template-columns:1fr;gap:28px}.ar-side{position:static}body[data-article] .pd-sec{padding:32px 0 56px}.ar-hero{padding:44px 0 40px!important}}
 @media (max-width:640px){.ar-art .ar-sec{grid-template-columns:1fr;gap:14px;padding:22px 20px}.ar-n{width:44px;height:44px;font-size:15px}.ar-cta{padding:24px 20px}.ar-cta .btn{width:100%}}
+/* Sembunyikan label kecil "Industri kami" dan "Portofolio" */
+[data-i18n="ind-k"],[data-i18n="port-k"]{display:none!important}

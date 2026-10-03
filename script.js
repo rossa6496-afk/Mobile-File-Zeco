@@ -223,13 +223,13 @@ PRODUCTS.forEach(function (p) {
 
 /* Foto proyek (opsional): simpan foto di images/proyek/ sesuai nama pada baris foto: tiap proyek. fotoPos (opsional) menggeser fokus foto, mis. '50% 30%'. Foto belum ada / gagal dimuat: kotak biru berisi huruf awal sektor dipakai. */
 var PROJECTS = [
-  { id: 'p1', foto: 'images/proyek rumahsakit.png', judul: 'Ruang arsip rumah sakit', sektor: 'Kesehatan', unit: 'Zeco MF 102 ZC', ket: 'Penataan rekam medis dan arsip dalam ruangan terbatas dengan satu lorong bergerak.',
+  { id: 'p1', foto: 'images/proyek rumah sakit.png', judul: 'Ruang arsip rumah sakit', sektor: 'Kesehatan', ket: 'Penataan rekam medis dan arsip dalam ruangan terbatas dengan satu lorong bergerak.',
     en: { judul: 'Hospital archive room', sektor: 'Healthcare', ket: 'Organizing medical records and archives in a limited space with a single movable aisle.' } },
-  { id: 'p2', foto: 'images/proyek/notaris.jpg', judul: 'Arsip kantor notaris', sektor: 'Hukum', unit: 'Zeco MF 4-22-ZC', ket: 'Dokumen legal tersimpan rapi dan mudah ditemukan.',
+  { id: 'p2', foto: 'images/proyek notaris.png', judul: 'Arsip kantor notaris', sektor: 'Hukum', ket: 'Dokumen legal tersimpan rapi dan mudah ditemukan.',
     en: { judul: 'Notary office archive', sektor: 'Legal', ket: 'Legal documents stored neatly and easy to find.' } },
-  { id: 'p3', foto: 'images/proyek/instansi.jpg', judul: 'Pusat arsip instansi', sektor: 'Pemerintahan', unit: 'Zeco MF 102 ZC', ket: 'Kapasitas arsip besar dengan produk ber-TKDN.',
+  { id: 'p3', foto: 'images/proyek pemerintah.png', judul: 'Pusat arsip instansi', sektor: 'Pemerintahan', ket: 'Kapasitas arsip besar dengan produk ber-TKDN.',
     en: { judul: 'Government agency archive center', sektor: 'Government', ket: 'Large archive capacity with TKDN-certified products.' } },
-  { id: 'p4', foto: 'images/proyek/perusahaan.jpg', judul: 'Gudang dokumen perusahaan', sektor: 'Swasta', unit: 'Zeco MF 4-22-ZC', ket: 'Kapasitas simpan naik tanpa memperluas ruangan.',
+  { id: 'p4', foto: 'images/proyek gudang dokumen.png', judul: 'Gudang dokumen perusahaan', sektor: 'Swasta', ket: 'Kapasitas simpan naik tanpa memperluas ruangan.',
     en: { judul: 'Corporate document warehouse', sektor: 'Private sector', ket: 'Storage capacity increased without expanding the room.' } }
 ];
 
@@ -529,7 +529,7 @@ function projectCard(j) {
     ? '<div class="pjp has-img"><img class="pj-img" src="' + esc(j.foto) + '" alt="' + esc(L(j, 'judul')) + '" loading="lazy" data-l="' + esc(sek.charAt(0)) + '" style="object-position:' + esc(j.fotoPos || '50% 50%') + '"></div>'
     : '';
   return '<div class="card static"><div class="pj' + (j.foto ? ' pj-photo' : '') + '">' + pjp + '<div class="bd"><span class="meta">' + esc(sek) + '</span><h3>' + esc(L(j, 'judul')) + '</h3>' +
-    '<p class="ex">' + esc(L(j, 'ket')) + '</p><div class="tags"><span>' + esc(j.unit) + '</span></div></div></div></div>';
+    '<p class="ex">' + esc(L(j, 'ket')) + '</p></div></div></div>';
 }
 function articleCard(a, i) {
   var S = STR[LANG], no = ('0' + ((i || 0) + 1)).slice(-2);
