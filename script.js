@@ -108,8 +108,8 @@ var CFG = {
   bgGanti: false,                          // true = latar bergantian otomatis antar foto; false = tiap halaman pakai fotonya sendiri
   logo: 'images/logo CMI.JPG.png',           // logo header & footer (cukup ubah di sini)
   autoFoto: false,                          // true = cari foto otomatis di images/produk/ (menambah banyak permintaan 404)
-  wa: '6281137911115',                       // nomor WhatsApp (format 62...)
-  tel: '+62 811-3791-1115',
+  wa: '628113301819',                       // nomor WhatsApp (format 62...)
+  tel: '+62 811-330-1819',
   email: 'contact@cahayamustikainternesia.com',
   alamat: 'Jl. Penjernihan II No.7, RT.11/RW.6, Bend. Hilir, Kec. Tanah Abang, Kota Jakarta Pusat, DKI Jakarta 10210',
   jam: 'Senin sampai Jumat, 08.00 - 16.00',
@@ -408,7 +408,7 @@ var UI_EN = {
   'phd-produk': 'Save up to 50% of space · Sturdy steel frame · TKDN-certified models in the LKPP e-Catalogue',
   'phd-port': 'From hospitals and notary offices to government agencies and private companies.',
   'phd-art': 'Choosing, installing, and maintaining a mobile file, explained briefly and clearly.',
-  'phd-kon': 'Monday to Friday, 08:00 - 16:00 · WhatsApp +62 811-3791-1115',
+  'phd-kon': 'Monday to Friday, 08:00 - 16:00 · WhatsApp +62 811-330-1819',
   'phd-man': 'Suited to small offices, clinics, and departmental archive rooms.',
   'phd-mek': 'Suited to agencies, hospitals, and archive centers with large volumes. No electricity needed.',
   'title-man': 'Manual Mobile File | PT Cahaya Mustika Internesia', 'desc-man': 'Zeco manual mobile files: MF-4, MF-6, MF-8, and MF-10 series, including the 2000 mm wide version.',
