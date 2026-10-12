@@ -1,106 +1,3 @@
-/* ===== Artikel, Portofolio, Beranda: judul bagian di tengah ===== */
-(function () {
-  var st = document.createElement('style');
-  st.id = 'center-heads-style';
-  var P = ['artikel', 'portofolio', 'beranda'].map(function (n) { return 'body[data-page="' + n + '"]'; });
-    st.textContent =
-    P.map(function (p) { return p + ' .sec-h,' + p + ' .sec-h *'; }).join(',') + '{text-align:center !important;}' +
-    P.map(function (p) { return p + ' .sec-h'; }).join(',') + '{margin-left:auto !important;margin-right:auto !important;}' +
-    P.map(function (p) { return p + ' .sec-h p,' + p + ' .sec-h h2'; }).join(',') + '{margin-left:auto !important;margin-right:auto !important;max-width:720px;}' +
-    '';
-  document.head.appendChild(st);
-})();
-
-/* ===== Portofolio dan Artikel: teks header rata kiri ===== */
-(function () {
-  var st = document.createElement('style');
-  st.id = 'port-hero-left-style';
-  var L = ['portofolio', 'artikel'].map(function (n) { return 'body[data-page="' + n + '"]'; });
-  function f(suffix) { return L.map(function (b) { return b + suffix; }).join(','); }
-  st.textContent =
-    f(' .phd > .w') + '{max-width:none !important;margin:0 !important;padding-left:64px !important;padding-right:24px !important;}' +
-    f(' .phd') + ',' + f(' .phd *') + '{text-align:left !important;}' +
-    f(' .phd h1') + ',' + f(' .phd p') + '{margin-left:0 !important;margin-right:auto !important;}' +
-    f(' .phd h1') + '{max-width:18ch;}' +
-    f(' .phd p') + '{max-width:50ch;}' +
-    '@media (max-width:900px){' + f(' .phd > .w') + '{padding-left:24px !important;}}';
-  document.head.appendChild(st);
-})();
-
-/* ===== Halaman Kontak: tanpa gambar latar, teks di tengah ===== */
-(function () {
-  var st = document.createElement('style');
-  st.id = 'kontak-hero-style';
-  st.textContent =
-    'body[data-page="kontak"] .phd{background-image:none !important;text-align:center !important;}' +
-    'body[data-page="kontak"] .phd .bgslide{display:none !important;}' +
-    'body[data-page="kontak"] .phd *{text-align:center !important;margin-left:auto !important;margin-right:auto !important;}' +
-    'body[data-page="kontak"] .phd h1,body[data-page="kontak"] .phd p{max-width:760px;}';
-  document.head.appendChild(st);
-})();
-
-/* ===== Gaya kartu artikel (otomatis dipasang, tidak perlu edit CSS) ===== */
-(function () {
-  var st = document.createElement('style');
-  st.id = 'artikel-card-style';
-  st.textContent = "#grid-artikel .acard.card{ position:relative; display:flex; flex-direction:column; overflow:hidden; padding:0; border:1px solid #e3e9f6; border-radius:20px; background:#fff; text-decoration:none; box-shadow:0 1px 2px rgba(11,31,77,.04); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; } #grid-artikel .acard.card::before{ content:\"\"; position:absolute; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg,#1d4ed8,#5b8cff); transform:scaleX(.18); transform-origin:left; transition:transform .35s ease; } #grid-artikel .acard.card:hover{ transform:translateY(-6px); border-color:#bcd0ff; box-shadow:0 18px 40px -16px rgba(29,78,216,.35); } #grid-artikel .acard.card:hover::before{ transform:scaleX(1); } #grid-artikel .acard .a-no{ position:absolute; top:6px; right:18px; font-size:84px; font-weight:800; line-height:1; color:#eef3ff; letter-spacing:-.04em; pointer-events:none; user-select:none; } #grid-artikel .acard .bd{ position:relative; z-index:1; display:flex; flex-direction:column; flex:1; padding:30px 26px 24px; gap:0; } #grid-artikel .acard .a-cat{ align-self:flex-start; padding:5px 12px; border-radius:999px; background:#e8efff; color:#1d4ed8; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:16px; } #grid-artikel .acard h3{ margin:0 0 10px; font-size:19px; line-height:1.3; color:#0b1f4d; } #grid-artikel .acard .ex{ margin:0 0 22px; font-size:15px; line-height:1.65; color:#5b6784; } #grid-artikel .acard .a-foot{ margin-top:auto; padding-top:16px; border-top:1px dashed #dbe3f5; display:flex; align-items:center; justify-content:space-between; gap:10px; } #grid-artikel .acard .a-time{ display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#7a86a3; } #grid-artikel .acard .go{ display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700; color:#1d4ed8; } #grid-artikel .acard .a-arr{ display:grid; place-items:center; width:30px; height:30px; border-radius:50%; background:#1d4ed8; color:#fff; font-style:normal; font-size:14px; transition:transform .25s ease; } #grid-artikel .acard.card:hover .a-arr{ transform:translateX(4px); } @media (max-width:640px){ #grid-artikel .acard .a-no{ font-size:64px; } #grid-artikel .acard .bd{ padding:26px 20px 20px; } } #grid-artikel .acard.card{min-height:0 !important;height:100%;} #grid-artikel .acard .meta{display:none !important;} #grid-artikel .acard .a-no{font-family:inherit;} #grid-artikel .acard .bd{width:100%;box-sizing:border-box;} ";
-  document.head.appendChild(st);
-})();
-
-/* ===== Tampilan artikel: daftar baris bernomor, warna biru dan putih diseling ===== */
-(function () {
-  var G = 'body[data-page] #grid-artikel';
-  var C = G + ' .acard.card';
-  var css = [
-    G + '{display:grid !important;grid-template-columns:1fr !important;gap:14px !important;max-width:920px;margin:0 auto;}',
-
-    /* Baris artikel */
-    C + '{flex-direction:row !important;align-items:center;height:auto !important;border-radius:18px;padding:0;background:#fff;}',
-    C + ':hover{transform:translateX(6px) !important;box-shadow:0 14px 34px -18px rgba(29,78,216,.45);}',
-    C + '::before{inset:0 auto 0 0;width:4px;height:auto;transform:scaleY(.25);transform-origin:top;}',
-    C + ':hover::before{transform:scaleY(1);}',
-    G + ' .acard .a-no{position:static !important;flex:0 0 auto;width:96px;padding-left:26px;font-size:42px;color:#c4d4fb;text-align:left;}',
-    G + ' .acard .bd{padding:22px 26px 22px 0 !important;gap:0;}',
-    G + ' .acard .a-cat{margin-bottom:10px;}',
-    G + ' .acard h3{font-size:19px;margin:0 0 6px;}',
-    G + ' .acard .ex{margin:0 0 14px;font-size:14.5px;}',
-    G + ' .acard .a-foot{margin-top:0;padding-top:0;border-top:0;justify-content:flex-start;gap:22px;}',
-
-    /* Warna diseling: nomor ganjil (1, 3, 5...) biru, nomor genap putih.
-       Mau dibalik? Ganti ":nth-child(odd)" di bawah menjadi ":nth-child(even)". */
-    C + ':nth-child(odd){background:linear-gradient(135deg,#0a1a3d,#0f2350 55%,#1d4ed8);border-color:transparent;box-shadow:0 18px 36px -20px rgba(15,35,80,.55);}',
-    C + ':nth-child(odd)::before{background:linear-gradient(180deg,#93b8ff,#fff);}',
-    G + ' .acard:nth-child(odd) .a-no{color:rgba(255,255,255,.28);}',
-    G + ' .acard:nth-child(odd) .a-cat{background:rgba(255,255,255,.16);color:#fff;}',
-    G + ' .acard:nth-child(odd) h3{color:#fff;}',
-    G + ' .acard:nth-child(odd) .ex{color:#c9d8f5;}',
-    G + ' .acard:nth-child(odd) .a-time{color:#9fb6e6;}',
-    G + ' .acard:nth-child(odd) .go{color:#fff;}',
-    G + ' .acard:nth-child(odd) .a-arr{background:#fff;color:#1d4ed8;}',
-
-    /* HP */
-    '@media (max-width:640px){',
-      C + '{flex-direction:column !important;align-items:stretch;}',
-      G + ' .acard .a-no{position:absolute !important;top:12px;right:18px;width:auto;padding:0;font-size:44px;}',
-      G + ' .acard .bd{padding:22px 20px 20px !important;}',
-    '}'
-  ].join('');
-  var st = document.createElement('style');
-  st.id = 'artikel-list-style';
-  st.textContent = css;
-  document.head.appendChild(st);
-})();
-
-/* ===== Halaman detail produk dan detail artikel: bagian ajakan "Siap merapikan arsip..." disembunyikan =====
-   Halaman daftar (produk, mobile file manual/mekanik, artikel) tetap menampilkannya. */
-(function () {
-  if (!document.getElementById('pd-body') && !document.getElementById('art-body')) return;   // hanya halaman detail produk dan detail artikel
-  var st = document.createElement('style');
-  st.id = 'produk-no-cta-style';
-  st.textContent = '.cta{display:none !important;}';
-  document.head.appendChild(st);
-})();
-
 var CFG = {
   // Gambar latar tiap halaman (di bawah lapisan gradasi biru). Ganti dengan foto ruang arsip lebar, mis. 'images/bg-produk.jpg'.
   // Jika file tidak ditemukan, yang tampil hanya gradasi warna.
@@ -114,11 +11,6 @@ var CFG = {
   alamat: 'Jl. Penjernihan II No.7, RT.11/RW.6, Bend. Hilir, Kec. Tanah Abang, Kota Jakarta Pusat, DKI Jakarta 10210',
   jam: 'Senin sampai Jumat, 08.00 - 16.00',
   jamEn: 'Monday to Friday, 08:00 - 16:00',
-  // Foto di bagian Beranda (kotak besar di kanan judul).
-  // Ganti dengan nama file fotomu, mis. 'images/beranda.jpg'. Kosongkan ('') untuk memakai ilustrasi bawaan.
-  // Jika file tidak ditemukan, ilustrasi bawaan otomatis dipakai.
-  heroFoto: 'images/beranda.png',
-  heroFotoY: '9%',                           // geser foto naik/turun, mis. '5%' atau '-5%'
   // Kata kunci lokasi untuk Google Maps (titik peta mengikuti alamat ini)
   mapQuery: 'PT. Cahaya Mustika Internesia, Jl. Penjernihan II No.7, Bendungan Hilir, Tanah Abang, Jakarta Pusat'
 };
@@ -139,16 +31,6 @@ if (LANG !== 'en') LANG = 'id';
 function L(o, k) { return LANG === 'en' && o.en && o.en[k] != null ? o.en[k] : o[k]; }
 
 /* ===== DAFTAR PRODUK =====
-   fotoZoom (opsional): besar foto di kartu produk ini saja (bawaan 1.5). Naikkan bila fotonya tampak kecil, mis. 1.9.
-   fotoY (opsional): geser posisi foto ke bawah/atas supaya produk pas di tengah, mis. '8%' (turun) atau '-8%' (naik).
-   Cara menambah foto produk:
-   1. Simpan foto di folder  images/produk/
-   2. Tulis nama file di array "foto" produk yang bersangkutan.
-      Foto pertama jadi foto utama di kartu, sisanya muncul sebagai galeri di jendela detail.
-   Contoh:  foto: ['images/produk/mf-4-22-zc-1.jpg', 'images/produk/mf-4-22-zc-2.jpg']
-   Jika "foto" dikosongkan (atau file tidak ditemukan), situs memakai ilustrasi bawaan.
-   Untuk menambah produk baru, salin satu blok { ... } lalu ubah isinya (termasuk bagian en: { ... }). */
-/* ===== DAFTAR PRODUK =====
    Cara menambah foto produk:
    1. Simpan fotonya di folder  images/produk/manual/  atau  images/produk/mekanik/  (sesuai jenisnya) dengan nama file PERSIS seperti di bagian  foto: [...]  tiap produk
       (daftar nama ada di images/produk/DAFTAR-NAMA-FOTO.txt). Jika ekstensi fotomu .png/.webp, ubah ekstensi di baris foto produk itu.
@@ -157,21 +39,21 @@ function L(o, k) { return LANG === 'en' && o.en && o.en[k] != null ? o.en[k] : o
    fotoZoom (opsional): besar foto di kartu, mis. 1.1 - 1.9.   fotoY (opsional): geser foto naik/turun, mis. '8%' atau '-8%'.
    Kapasitas (kap) untuk model tanpa data diisi "Sesuai konfigurasi"; ganti bila sudah ada angka kompartemen resmi. */
 var PRODUCTS = [
-  { id: 'zeco-mf-4-22-zc', brand: 'Zeco', tag: 'Sudah TKDN', name: 'Zeco Mobile File MF 4-22-ZC', tipe: 'Manual', kap: '20 kompartemen', komp: 20,
+  { id: 'zeco-mf-4-22-zc', brand: 'Zeco', tag: 'Sudah TKDN', name: 'Zeco Mobile File MF-4-22-ZC', tipe: 'Manual', kap: '20 kompartemen', komp: 20,
     foto: ["images/mobile file mf 4-22-ZC.png"], fotoZoom: 1.1,
     short: 'Mobile file 20 kompartemen, sudah bersertifikat TKDN dan tayang di e-Katalog LKPP.',
     cocok: 'Kantor dan instansi yang membutuhkan lemari arsip ber-TKDN untuk pengadaan pemerintah',
     spek: [['Ukuran', 'T 2200 x L 1000 x D 2500 mm'], ['Tebal plat', '0,8 mm - 2 mm'],
            ['Susunan', '1 Single Statis (5 kpt), 1 Single Dinamis (5 kpt), 2 Double Dinamis (total 10 kpt)'],
            ['Finishing', 'Degreasing, phosphating, anti karat, powder coating'], ['Warna', 'Abu-abu muda (light grey)']],
-    art: [["Ringkasan model", "MF 4-22-ZC punya 20 kompartemen yang tersusun dari satu unit single statis, satu unit single dinamis, dan dua unit double dinamis. Unit dinamis digeser dengan handle, sehingga lorong hanya dibuka di barisan yang arsipnya sedang diambil."], ["Untuk pengadaan pemerintah", "Model ini sudah ber-TKDN dan tayang di e-Katalog LKPP, jadi instansi bisa memesannya lewat jalur pengadaan resmi."]],
+    art: [["Ringkasan model", "MF-4-22-ZC punya 20 kompartemen yang tersusun dari satu unit single statis, satu unit single dinamis, dan dua unit double dinamis. Unit dinamis digeser dengan handle, sehingga lorong hanya dibuka di barisan yang arsipnya sedang diambil."], ["Untuk pengadaan pemerintah", "Model ini sudah ber-TKDN dan tayang di e-Katalog LKPP, jadi instansi bisa memesannya lewat jalur pengadaan resmi."]],
     en: { tag: 'TKDN certified', tipe: 'Manual', kap: '20 compartments',
       short: 'Mobile file with 20 compartments, TKDN certified and listed in the LKPP e-Catalogue.',
       cocok: 'Offices and agencies that need TKDN-certified archive cabinets for government procurement',
       spek: [['Dimensions', 'H 2200 x W 1000 x D 2500 mm'], ['Plate thickness', '0.8 mm - 2 mm'],
              ['Configuration', '1 Static Single (5 comp.), 1 Dynamic Single (5 comp.), 2 Dynamic Doubles (10 comp. total)'],
              ['Finishing', 'Degreasing, phosphating, anti-rust, powder coating'], ['Colour', 'Light grey']],
-      art: [["Model summary", "The MF 4-22-ZC has 20 compartments made up of one static single unit, one dynamic single unit, and two dynamic double units. The dynamic units are moved by handle, so an aisle only opens in the row you are pulling files from."], ["For government procurement", "This model is TKDN certified and listed in the LKPP e-Catalogue, so agencies can order it through the official procurement channel."]] } },
+      art: [["Model summary", "The MF-4-22-ZC has 20 compartments made up of one static single unit, one dynamic single unit, and two dynamic double units. The dynamic units are moved by handle, so an aisle only opens in the row you are pulling files from."], ["For government procurement", "This model is TKDN certified and listed in the LKPP e-Catalogue, so agencies can order it through the official procurement channel."]] } },
   { id: "zeco-mf-4-22-w2000-zc", brand: "Zeco", tag: "Lebar 2000", name: "Zeco Mobile File MF-4-22-W2000-ZC", tipe: "Manual", kap: "Sesuai konfigurasi", komp: 20, foto: ["images/mobile file mf 4-22-w2000-zc.png"], short: "Mobile file manual MF-4-22 versi lebar 2000 mm, kedalaman 2500 mm, plat SPCC warna abu-abu muda.", cocok: "Kantor kecil, klinik, ruang arsip departemen", spek: [["Ukuran", "T 2200 x L 2000 x D 2500 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], art: [["Apa bedanya dengan versi standar?", "MF-4-22-W2000-ZC memakai lebar kabinet 2000 mm, dua kali lipat versi standar yang 1000 mm. Kedalaman totalnya tetap 2500 mm, jadi yang berubah hanya lebarnya. Cara pakainya sama: digeser dengan handle."], ["Cocok untuk ruang seperti apa?", "Pilih versi ini kalau ruang arsip Anda cukup lega untuk kabinet yang lebih lebar. Bila ruangannya terbatas, versi standar biasanya lebih mudah ditempatkan."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], en: {"tag": "2000 wide", "tipe": "Manual", "kap": "Per configuration", "short": "Manual mobile file MF-4-22 in the 2000 mm wide version, 2500 mm deep, SPCC plate in light grey.", "cocok": "Small offices, clinics, departmental archive rooms", "spek": [["Dimensions", "H 2200 x W 2000 x D 2500 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the standard version?", "The MF-4-22-W2000-ZC has a 2000 mm cabinet width, twice the 1000 mm of the standard version. The total depth stays at 2500 mm, so only the width changes. It works the same way: moved by handle."], ["What kind of room suits it?", "Choose this version if your archive room is spacious enough for a wider cabinet. If space is tight, the standard version is usually easier to fit."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]} },
   { id: "zeco-mf-6-22-zc", brand: "Zeco", tag: "Standar", name: "Zeco Mobile File MF-6-22-ZC", tipe: "Manual", kap: "Sesuai konfigurasi", komp: 30, foto: ["images/mobile file 6-22-zc.png"], short: "Mobile file manual MF-6-22 dengan kedalaman 3300 mm, plat SPCC warna abu-abu muda.", cocok: "Kantor menengah, notaris, sekolah, perusahaan", spek: [["Ukuran", "T 2200 x L 1000 x D 3300 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], art: [["Gambaran model", "MF-6-22-ZC adalah mobile file manual setinggi 2200 mm, lebar kabinet 1000 mm, dan kedalaman total 3300 mm. Unit digeser dengan tangan lewat handle, jadi lorong hanya terbuka di barisan yang sedang Anda butuhkan."], ["Memilih panjang yang tepat", "Seri MF-x-22-ZC tersedia dalam panjang MF-4, MF-6, MF-8, dan MF-10, serta versi lebar 2000 mm. Semakin besar angkanya, semakin panjang barisannya dan semakin banyak arsip yang tertampung. Sesuaikan dengan jumlah arsip dan ukuran ruangan Anda."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], en: {"tag": "Standard", "tipe": "Manual", "kap": "Per configuration", "short": "Manual mobile file MF-6-22, 3300 mm deep, SPCC plate in light grey.", "cocok": "Mid-sized offices, notaries, schools, companies", "spek": [["Dimensions", "H 2200 x W 1000 x D 3300 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["Model at a glance", "The MF-6-22-ZC is a manual mobile file 2200 mm high, with a 1000 mm cabinet width and a total depth of 3300 mm. Units are moved by hand with a handle, so an aisle only opens in the row you need."], ["Choosing the right length", "The MF-x-22-ZC series comes in MF-4, MF-6, MF-8, and MF-10 lengths, plus a 2000 mm wide version. The bigger the number, the longer the row and the more archives it holds. Match it to your archive volume and room size."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]} },
   { id: "zeco-mf-6-22-w2000-zc", brand: "Zeco", tag: "Lebar 2000", name: "Zeco Mobile File MF-6-22-W2000-ZC", tipe: "Manual", kap: "Sesuai konfigurasi", komp: 30, foto: ["images/mobile file 6-22-w2000-ZC.png"], short: "Mobile file manual MF-6-22 versi lebar 2000 mm, kedalaman 3300 mm, plat SPCC warna abu-abu muda.", cocok: "Kantor menengah, notaris, sekolah, perusahaan", spek: [["Ukuran", "T 2200 x L 2000 x D 3300 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], art: [["Apa bedanya dengan versi standar?", "MF-6-22-W2000-ZC memakai lebar kabinet 2000 mm, dua kali lipat versi standar yang 1000 mm. Kedalaman totalnya tetap 3300 mm, jadi yang berubah hanya lebarnya. Cara pakainya sama: digeser dengan handle."], ["Cocok untuk ruang seperti apa?", "Pilih versi ini kalau ruang arsip Anda cukup lega untuk kabinet yang lebih lebar. Bila ruangannya terbatas, versi standar biasanya lebih mudah ditempatkan."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], en: {"tag": "2000 wide", "tipe": "Manual", "kap": "Per configuration", "short": "Manual mobile file MF-6-22 in the 2000 mm wide version, 3300 mm deep, SPCC plate in light grey.", "cocok": "Mid-sized offices, notaries, schools, companies", "spek": [["Dimensions", "H 2200 x W 2000 x D 3300 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the standard version?", "The MF-6-22-W2000-ZC has a 2000 mm cabinet width, twice the 1000 mm of the standard version. The total depth stays at 3300 mm, so only the width changes. It works the same way: moved by handle."], ["What kind of room suits it?", "Choose this version if your archive room is spacious enough for a wider cabinet. If space is tight, the standard version is usually easier to fit."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]} },
@@ -180,19 +62,19 @@ var PRODUCTS = [
   { id: "zeco-mf-10-22-zc", brand: "Zeco", tag: "Standar", name: "Zeco Mobile File MF-10-22-ZC", tipe: "Manual", kap: "Sesuai konfigurasi", komp: 50, foto: ["images/mobile file 10-22-zc.png"], short: "Mobile file manual MF-10-22 dengan kedalaman 4900 mm, plat SPCC warna abu-abu muda.", cocok: "Pusat arsip, instansi, dan rumah sakit dengan volume dokumen besar", spek: [["Ukuran", "T 2200 x L 1000 x D 4900 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], art: [["Gambaran model", "MF-10-22-ZC adalah mobile file manual setinggi 2200 mm, lebar kabinet 1000 mm, dan kedalaman total 4900 mm. Unit digeser dengan tangan lewat handle, jadi lorong hanya terbuka di barisan yang sedang Anda butuhkan."], ["Memilih panjang yang tepat", "Seri MF-x-22-ZC tersedia dalam panjang MF-4, MF-6, MF-8, dan MF-10, serta versi lebar 2000 mm. Semakin besar angkanya, semakin panjang barisannya dan semakin banyak arsip yang tertampung. Sesuaikan dengan jumlah arsip dan ukuran ruangan Anda."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], en: {"tag": "Standard", "tipe": "Manual", "kap": "Per configuration", "short": "Manual mobile file MF-10-22, 4900 mm deep, SPCC plate in light grey.", "cocok": "Archive centers, agencies, and hospitals with large document volumes", "spek": [["Dimensions", "H 2200 x W 1000 x D 4900 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["Model at a glance", "The MF-10-22-ZC is a manual mobile file 2200 mm high, with a 1000 mm cabinet width and a total depth of 4900 mm. Units are moved by hand with a handle, so an aisle only opens in the row you need."], ["Choosing the right length", "The MF-x-22-ZC series comes in MF-4, MF-6, MF-8, and MF-10 lengths, plus a 2000 mm wide version. The bigger the number, the longer the row and the more archives it holds. Match it to your archive volume and room size."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]} },
   { id: "zeco-mf-10-22-w2000-zc", brand: "Zeco", tag: "Lebar 2000", name: "Zeco Mobile File MF-10-22-W2000-ZC", tipe: "Manual", kap: "Sesuai konfigurasi", komp: 50, foto: ["images/mobile file 10-22-w2000-ZC.png"], short: "Mobile file manual MF-10-22 versi lebar 2000 mm, kedalaman 4900 mm, plat SPCC warna abu-abu muda.", cocok: "Pusat arsip, instansi, dan rumah sakit dengan volume dokumen besar", spek: [["Ukuran", "T 2200 x L 2000 x D 4900 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], art: [["Apa bedanya dengan versi standar?", "MF-10-22-W2000-ZC memakai lebar kabinet 2000 mm, dua kali lipat versi standar yang 1000 mm. Kedalaman totalnya tetap 4900 mm, jadi yang berubah hanya lebarnya. Cara pakainya sama: digeser dengan handle."], ["Cocok untuk ruang seperti apa?", "Pilih versi ini kalau ruang arsip Anda cukup lega untuk kabinet yang lebih lebar. Bila ruangannya terbatas, versi standar biasanya lebih mudah ditempatkan."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], en: {"tag": "2000 wide", "tipe": "Manual", "kap": "Per configuration", "short": "Manual mobile file MF-10-22 in the 2000 mm wide version, 4900 mm deep, SPCC plate in light grey.", "cocok": "Archive centers, agencies, and hospitals with large document volumes", "spek": [["Dimensions", "H 2200 x W 2000 x D 4900 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the standard version?", "The MF-10-22-W2000-ZC has a 2000 mm cabinet width, twice the 1000 mm of the standard version. The total depth stays at 4900 mm, so only the width changes. It works the same way: moved by handle."], ["What kind of room suits it?", "Choose this version if your archive room is spacious enough for a wider cabinet. If space is tight, the standard version is usually easier to fit."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]} },
   { id: "zeco-mf-101-zc", brand: "Zeco", tag: "Roda kemudi", name: "Zeco Mobile File MF-101-ZC", tipe: "Mekanik", kap: "Sesuai konfigurasi", komp: 20, foto: ["images/mobile file 101.png"], short: "Mobile file mekanik dengan roda kemudi putar, kedalaman 2800 mm, plat SPCC warna abu-abu muda.", cocok: "Instansi, notaris, dan ruang arsip yang menginginkan penggerak ringan", spek: [["Ukuran", "T 2200 x L 1000 x D 2800 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], art: [["Cara kerjanya", "MF-101-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], en: {"tag": "Hand wheel", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file with a rotary hand wheel, 2800 mm deep, SPCC plate in light grey.", "cocok": "Agencies, notaries, and archive rooms that want an easy-moving drive", "spek": [["Dimensions", "H 2200 x W 1000 x D 2800 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How it works", "The MF-101-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]} },
-  { id: 'zeco-mf-102-zc', brand: 'Zeco', tag: 'Kapasitas besar', name: 'Zeco Mobile File 102 ZC', tipe: 'Mekanik', kap: '30 kompartemen', komp: 30,
+  { id: 'zeco-mf-102-zc', brand: 'Zeco', tag: 'Kapasitas besar', name: 'Zeco Mobile File MF-102-ZC', tipe: 'Mekanik', kap: '30 kompartemen', komp: 30,
     foto: ["images/mobile file 102.png"],
     short: 'Mobile file 30 kompartemen dengan roda kemudi putar, sudah bersertifikat TKDN.',
     cocok: 'Instansi, rumah sakit, dan pusat arsip dengan volume dokumen besar',
     spek: [['Ukuran', 'T 2200 x L 1000 x D 3600 mm'], ['Tebal plat', '0,8 mm - 2 mm (plat body 1 mm)'],
            ['Finishing', 'Degreasing, phosphating, anti karat, powder coating'], ['Warna', 'Abu-abu muda (light grey)']],
-    art: [["Kapasitas dan penggerak", "102 ZC memiliki 30 kompartemen dan digerakkan dengan roda kemudi putar, jadi barisan yang penuh arsip tetap ringan digeser."], ["Sudah TKDN", "Seperti MF 4-22-ZC, model ini ber-TKDN dan tersedia di e-Katalog LKPP, sehingga lebih mudah untuk pengadaan instansi."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]],
+    art: [["Kapasitas dan penggerak", "MF-102-ZC memiliki 30 kompartemen dan digerakkan dengan roda kemudi putar, jadi barisan yang penuh arsip tetap ringan digeser."], ["Sudah TKDN", "Seperti MF-4-22-ZC, model ini ber-TKDN dan tersedia di e-Katalog LKPP, sehingga lebih mudah untuk pengadaan instansi."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]],
     en: { tag: 'Large capacity', tipe: 'Mechanical', kap: '30 compartments',
       short: 'Mobile file with 30 compartments and a rotary hand wheel, TKDN certified.',
       cocok: 'Government agencies, hospitals, and archive centers with large document volumes',
       spek: [['Dimensions', 'H 2200 x W 1000 x D 3600 mm'], ['Plate thickness', '0.8 mm - 2 mm (1 mm body plate)'],
              ['Finishing', 'Degreasing, phosphating, anti-rust, powder coating'], ['Colour', 'Light grey']],
-      art: [["Capacity and drive", "The 102 ZC has 30 compartments and is driven by a rotary hand wheel, so rows full of files stay easy to move."], ["TKDN certified", "Like the MF 4-22-ZC, this model is TKDN certified and available in the LKPP e-Catalogue, which makes agency procurement easier."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]] } },
+      art: [["Capacity and drive", "The MF-102-ZC has 30 compartments and is driven by a rotary hand wheel, so rows full of files stay easy to move."], ["TKDN certified", "Like the MF-4-22-ZC, this model is TKDN certified and available in the LKPP e-Catalogue, which makes agency procurement easier."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]] } },
   {"id": "zeco-mf-103-zc", "brand": "Zeco", "tag": "Roda kemudi", "name": "Zeco Mobile File MF-103-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 40, "foto": ["images/produk/MOBILE_FILE_MF-103-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-103 dengan roda kemudi putar, kedalaman 4400 mm, plat SPCC warna abu-abu muda.", "cocok": "Instansi, rumah sakit, dan pusat arsip dengan volume dokumen besar", "spek": [["Ukuran", "T 2200 x L 1000 x D 4400 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Cara kerjanya", "MF-103-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Memilih kedalaman yang tepat", "Semakin dalam modelnya, semakin panjang barisannya dan semakin banyak arsip yang tertampung. Sesuaikan dengan jumlah arsip dan ukuran ruangan Anda."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "Hand wheel", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-103 with a rotary hand wheel, 4400 mm deep, SPCC plate in light grey.", "cocok": "Government agencies, hospitals, and archive centers with large document volumes", "spek": [["Dimensions", "H 2200 x W 1000 x D 4400 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How it works", "The MF-103-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Choosing the right depth", "The deeper the model, the longer the row and the more archives it holds. Match it to your archive volume and room size."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
   {"id": "zeco-mf-104-zc", "brand": "Zeco", "tag": "Roda kemudi", "name": "Zeco Mobile File MF-104-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 50, "foto": ["images/produk/MOBILE_FILE_MF-104-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-104 dengan roda kemudi putar, kedalaman 5200 mm, plat SPCC warna abu-abu muda.", "cocok": "Pusat arsip, instansi, dan rumah sakit dengan volume dokumen besar", "spek": [["Ukuran", "T 2200 x L 1000 x D 5200 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Cara kerjanya", "MF-104-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Memilih kedalaman yang tepat", "Semakin dalam modelnya, semakin panjang barisannya dan semakin banyak arsip yang tertampung. Sesuaikan dengan jumlah arsip dan ukuran ruangan Anda."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "Hand wheel", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-104 with a rotary hand wheel, 5200 mm deep, SPCC plate in light grey.", "cocok": "Archive centers, agencies, and hospitals with large document volumes", "spek": [["Dimensions", "H 2200 x W 1000 x D 5200 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How it works", "The MF-104-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Choosing the right depth", "The deeper the model, the longer the row and the more archives it holds. Match it to your archive volume and room size."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
   {"id": "zeco-mf-201-zc", "brand": "Zeco", "tag": "Lebar 2000", "name": "Zeco Mobile File MF-201-ZC", "tipe": "Mekanik", "kap": "Sesuai konfigurasi", "komp": 20, "foto": ["images/produk/MOBILE_FILE_MF-201-ZC.jpg"], "fotoZoom": 1, "short": "Mobile file mekanik MF-201 versi lebar 2000 mm dengan roda kemudi putar, kedalaman 2800 mm, plat SPCC warna abu-abu muda.", "cocok": "Instansi, notaris, dan ruang arsip yang menginginkan penggerak ringan", "spek": [["Ukuran", "T 2200 x L 2000 x D 2800 mm"], ["Bahan", "Plat metal SPCC"], ["Tebal plat", "0,8 mm - 2 mm"], ["Warna", "Abu-abu muda (light grey)"]], "art": [["Apa bedanya dengan seri lebar 1000?", "MF-201-ZC memakai lebar kabinet 2000 mm, dua kali lipat seri MF-1xx-ZC yang 1000 mm. Kedalaman total 2800 mm sama dengan model seri MF-1xx pada kedalaman itu, jadi yang berubah hanya lebarnya. Penggeraknya tetap roda kemudi putar."], ["Cara kerjanya", "MF-201-ZC digerakkan dengan roda kemudi putar. Cukup putar rodanya, dan barisan yang penuh arsip bergeser tanpa perlu tenaga besar. Tidak membutuhkan listrik."], ["Sebelum memesan", "Arsip yang penuh sangat berat. Cek dulu daya dukung lantainya, terutama kalau ruang arsip ada di gedung bertingkat."]], "en": {"tag": "2000 wide", "tipe": "Mechanical", "kap": "Per configuration", "short": "Mechanical mobile file MF-201 in the 2000 mm wide version with a rotary hand wheel, 2800 mm deep, SPCC plate in light grey.", "cocok": "Agencies, notaries, and archive rooms that want an easy-moving drive", "spek": [["Dimensions", "H 2200 x W 2000 x D 2800 mm"], ["Material", "SPCC metal plate"], ["Plate thickness", "0.8 mm - 2 mm"], ["Colour", "Light grey"]], "art": [["How is it different from the 1000 wide series?", "The MF-201-ZC has a 2000 mm cabinet width, twice the 1000 mm of the MF-1xx-ZC series. The total depth of 2800 mm matches the MF-1xx model at that depth, so only the width changes. The drive is still a rotary hand wheel."], ["How it works", "The MF-201-ZC is driven by a rotary hand wheel. Just turn the wheel and a row full of files slides over without much effort. No electricity needed."], ["Before you order", "A fully loaded archive is very heavy. Check the floor load capacity first, especially if the archive room is in a multi-storey building."]]}},
@@ -281,8 +163,8 @@ var FAQS = [
     en: { q: 'What is a mobile file?', a: 'A mobile file is archive shelving mounted on floor rails so it can slide left or right. An aisle is opened only in the row you need, so space that used to be wasted becomes storage.' } },
   { q: 'Apa bedanya model manual dan mekanik?', a: 'Model manual didorong langsung dengan tangan di atas rel, perawatannya sederhana dan cocok untuk beban ringan hingga menengah. Model mekanik memakai roda kemudi putar sehingga barisan besar dan padat arsip terasa ringan digeser, tanpa bergantung pada listrik.',
     en: { q: 'What is the difference between manual and mechanical models?', a: 'Manual models are pushed by hand along the rails, are simple to maintain, and suit light to medium loads. Mechanical models use a rotary hand wheel, so large rows packed with files move easily, without relying on electricity.' } },
-  { q: 'Apakah ada model yang sudah TKDN?', a: 'Ada. Zeco Mobile File MF 4-22-ZC dan 102 ZC sudah bersertifikat TKDN dan tersedia di e-Katalog LKPP, sehingga memudahkan pengadaan untuk instansi.',
-    en: { q: 'Is there a TKDN-certified model?', a: 'Yes. The Zeco Mobile File MF 4-22-ZC and 102 ZC are TKDN certified and available in the LKPP e-Catalogue, which makes procurement easier for agencies.' } },
+  { q: 'Apakah ada model yang sudah TKDN?', a: 'Ada. Zeco Mobile File MF-4-22-ZC dan MF-102-ZC sudah bersertifikat TKDN dan tersedia di e-Katalog LKPP, sehingga memudahkan pengadaan untuk instansi.',
+    en: { q: 'Is there a TKDN-certified model?', a: 'Yes. The Zeco Mobile File MF-4-22-ZC and MF-102-ZC are TKDN certified and available in the LKPP e-Catalogue, which makes procurement easier for agencies.' } },
   { q: 'Apakah lantai perlu diperiksa sebelum pemasangan?', a: 'Ya. Arsip yang padat sangat berat, terutama di gedung bertingkat. Konsultasikan daya dukung lantai dengan pengelola gedung atau insinyur struktur, dan pastikan permukaan rel rata.',
     en: { q: 'Does the floor need to be checked before installation?', a: 'Yes. Dense archives are very heavy, especially in multi-storey buildings. Consult the building manager or a structural engineer about floor load capacity, and make sure the rail surface is level.' } },
   { q: 'Bagaimana alur dari konsultasi sampai terpasang?', a: 'Anda menceritakan ruangan dan jumlah arsip, kami mengukur ruangan dan menyusun rekomendasi model, unit disiapkan dan dikirim ke lokasi, lalu tim kami memasang rel dan unit hingga siap dipakai.',
@@ -367,7 +249,7 @@ var UI_EN = {
   'barlink': 'Contact us →',
   'logo-aria': 'PT Cahaya Mustika Internesia, back to top',
   'burger': 'Open menu', 'menu-aria': 'Main menu',
-  'nav-beranda': 'Home', 'nav-produk': 'Zeco Products', 'nav-portofolio': 'Portfolio', 'nav-artikel': 'Articles', 'nav-kontak': 'Contact Us',
+  'nav-beranda': 'Home', 'nav-produk': 'Products', 'nav-portofolio': 'Portfolio', 'nav-artikel': 'Articles', 'nav-kontak': 'Contact Us',
   'consult': 'Consult Now',
   'hero-kick': 'Zeco product distributor',
   'h1': 'Organized archives, a roomier space.',
@@ -400,7 +282,7 @@ var UI_EN = {
   'typ-k': 'Product choices', 'typ-h': 'Zeco mobile file options', 'typ-p': 'Two types for your storage needs: manual and mechanical mobile files.',
   'adv-k': 'Advantages', 'adv-h': 'Why choose Zeco mobile files?', 'adv-p': 'We do more than supply mobile files. We guide you from consultation through installation.', 'adv-b': 'Discuss Your Needs',
   'art-more': 'View all articles →', 'faq-p': 'Short answers about Zeco mobile files.',
-  'b3h': 'TKDN certified', 'b3p': 'Models MF 4-22-ZC and 102 ZC are listed in the LKPP e-Catalogue.',
+  'b3h': 'TKDN certified', 'b3p': 'Models MF-4-22-ZC and MF-102-ZC are listed in the LKPP e-Catalogue.',
   'c1-k': 'Category 01 · Manual system', 'c1-h': 'Manual Mobile File', 'c1-p': 'Moved directly by hand. Simple, reliable, and economical for small archive rooms.',
   'c2-k': 'Category 02 · Mechanical system', 'c2-h': 'Mechanical Mobile File', 'c2-p': 'A rotary hand wheel makes large, dense rows easy to move.',
   'gp-k': 'Selection guide', 'gp-h': 'Manual vs mechanical mobile file', 'gp-p': 'Choose the type that fits your archive volume, room size, and how often it is used.',
@@ -512,13 +394,12 @@ var WA_ICON = '<svg viewBox="0 0 24 24" width="24" height="24" fill="#fff" aria-
 var EYE_ICON = '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 12S5.5 4.5 12 4.5 22.5 12 22.5 12 18.5 19.5 12 19.5 1.5 12 1.5 12z"/><circle cx="12" cy="12" r="3.2"/></svg>';
 function productCard(p, i) {
   var S = STR[LANG], name = L(p, 'name'), kap = L(p, 'kap'), f = p.foto && p.foto[0], en = LANG === 'en';
-  var code = name.replace(/^Zeco Mobile File\s*/, '') || name;
   var pill = /^\d/.test(kap) ? kap : L(p, 'tag');
   var sp = L(p, 'spek') || [], ukr = sp.filter(function (x) { return /^(Ukuran|Dimensions)$/.test(x[0]); })[0] || sp[0];
   var spec = '<dl class="pc-spec">' + (ukr ? '<div><dt>' + esc(ukr[0]) + '</dt><dd>' + esc(ukr[1]) + '</dd></div>' : '') +
     '<div><dt>' + (en ? 'Capacity' : 'Kapasitas') + '</dt><dd>' + esc(kap) + '</dd></div></dl>';
   return '<article class="card pcard pc2" data-open="produk:' + p.id + '"><div class="pic' + (f ? ' has-foto' : '') + '"><span class="tag">' + esc(pill) + '</span>' + picHtml(p) + '</div>' +
-    '<div class="bd"><div class="pc-top"><span class="pc-type">' + esc(L(p, 'tipe')) + '</span><span class="pc-code">' + esc(code) + '</span></div>' +
+    '<div class="bd"><div class="pc-top"><span class="pc-type">' + esc(L(p, 'tipe')) + '</span></div>' +
     '<h3>' + esc(name) + '</h3><p class="ex">' + esc(L(p, 'short')) + '</p>' + spec +
     '<div class="pact"><button type="button" class="bd-btn">' + (en ? 'View Details' : 'Lihat Detail') + ' <span aria-hidden="true">&rarr;</span></button>' +
     '<a class="wa-btn" target="_blank" rel="noopener" aria-label="WhatsApp" href="' + wa(S.waProd(name)) + '">' + WA_ICON + '</a></div></div></article>';
@@ -548,9 +429,6 @@ var NONE = document.createElement('div');   // pengganti untuk elemen yang tidak
 var $ = function (id) { return document.getElementById(id) || NONE; };
 [].slice.call(document.querySelectorAll('.logo-img')).forEach(function (i) { i.src = encodeURI(CFG.logo); });
 
-$('hero-art').insertAdjacentHTML('afterbegin', CFG.heroFoto
-  ? '<img class="hero-foto" fetchpriority="high" decoding="async" src="' + esc(CFG.heroFoto) + '" alt="Mobile file Zeco" style="--y:' + esc(CFG.heroFotoY || '0%') + '">'
-  : drawUnit(20));
 
 var UI_ID = { 'nav-beranda': 'Beranda' };   // cadangan bila teks Indonesia di HTML kosong
 /* Teks statis: simpan teks Indonesia dari HTML, lalu tukar sesuai bahasa */
@@ -685,7 +563,7 @@ function produkPageHtml() {
   id = document.body.getAttribute('data-product') || '';
   if (!id) { try { id = new URLSearchParams(location.search).get('id') || ''; } catch (e) {} }   // cadangan untuk tautan lama detailproduk.html?id=...
   var p = find(PRODUCTS, id);
-  var listName = (en && S['nav-produk']) || 'Produk Zeco';
+  var listName = (en && S['nav-produk']) || 'Produk';
   var back = '<div class="btns pd-back"><a class="btn line" href="produk.html">' + (en ? '\u2190 All products' : '\u2190 Semua produk') + '</a></div>';
   if (!p) return '<div class="pd-crumb"><a href="produk.html">' + esc(listName) + '</a></div><h1 id="pd-title">' + (en ? 'Product not found' : 'Produk tidak ditemukan') + '</h1>' + back;
   document.title = L(p, 'name') + ' | PT Cahaya Mustika Internesia';
