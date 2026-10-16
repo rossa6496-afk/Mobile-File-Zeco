@@ -10,11 +10,65 @@
 <meta property="og:locale" id="og-locale" content="id_ID">
 <meta property="og:title" data-i18n="title-produk" data-i18n-attr="content" content="Produk Zeco | PT Cahaya Mustika Internesia">
 <meta property="og:description" data-i18n="desc-produk" data-i18n-attr="content" content="Daftar mobile file Zeco beserta perbandingan model, kapasitas, dan penggerak.">
-<link rel="icon" href="images/logo%20CMI.JPG.png">
+<link rel="icon" href="images/logo%20CMI.JPG.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=40">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap"></noscript>
+<link rel="preload" as="image" href="images/background.webp" fetchpriority="high">
+<link rel="stylesheet" href="style.css?v=191">
+<style>
+/* Tanpa tulisan kuning: judul halaman putih, label kategori biru */
+.phd .gold,.phd h1 .gold{color:#fff!important}
+.phd .crumb::before{background:#fff!important}
+.sec .kick{color:#1d4fd8!important}
+.sec .kick::before{background:#1d4fd8!important}
+
+/* ===== Hero Produk: desain disamakan dengan hero Beranda (foto, lapisan biru, huruf, tombol) ===== */
+body[data-page="produk"] .phd{
+  min-height:calc(100vh - 63px);min-height:calc(100svh - 63px);
+  padding:72px 0;
+  display:flex;align-items:center;text-align:left;
+}
+body[data-page="produk"] .phd>.w{width:100%}
+body[data-page="produk"] .phd h1{font-size:clamp(26px,3vw,38px);line-height:1.2;max-width:24ch;letter-spacing:-.025em;margin:0;color:#fff}
+body[data-page="produk"] .phd p{max-width:54ch;font-size:15px;line-height:1.7;color:#e3ecff;margin-top:14px}
+body[data-page="produk"] .phd h1,body[data-page="produk"] .phd p{text-shadow:0 2px 16px rgba(8,20,52,.55)}
+body[data-page="produk"] .phd .btns{margin-top:24px;gap:12px}
+body[data-page="produk"] .phd .btn{padding:12px 24px;font-size:14px;font-weight:600}
+body[data-page="produk"] .phd .btns .btn.gold:after{content:"\2192";margin-left:10px;transition:transform .2s}
+body[data-page="produk"] .phd .btns .btn.gold:hover:after{transform:translateX(4px)}
+body[data-page="produk"] .phd .btn.line{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5);color:#fff}
+body[data-page="produk"] .phd .btn.line:hover{background:rgba(255,255,255,.18);border-color:#fff;color:#fff}
+/* foto & lapisan biru = hero Beranda (versi akhir): biru pekat di belakang teks, memudar mulus ke kanan */
+@media (min-width:901px){
+  body[data-page="produk"] .phd{background:linear-gradient(100deg,#0c2160 0%,#1639a8 50%,#2f68e0 100%)}
+  body[data-page="produk"] .phd:before,
+  body[data-page="produk"] .phd .bgslide{
+    inset:0 -14% 0 0;
+    background-size:cover;
+    background-position:right 40%;
+    filter:brightness(.95) saturate(1.1);
+    mix-blend-mode:normal;
+    -webkit-mask-image:none;
+            mask-image:none;
+  }
+  body[data-page="produk"] .phd:after{
+    background:
+      linear-gradient(180deg,rgba(10,28,80,0) 55%,rgba(10,28,80,.58) 100%),
+      linear-gradient(90deg,
+        rgba(10,30,86,.90) 0%,
+        rgba(12,36,100,.86) 40%,
+        rgba(14,42,118,.64) 56%,
+        rgba(14,42,118,.22) 70%,
+        rgba(14,42,118,0) 86%);
+  }
+}
+body[data-page="produk"] .phd+.sec{padding-top:48px}
+@media (max-width:900px){
+  body[data-page="produk"] .phd{min-height:0;padding:44px 0 52px}
+}
+</style>
 </head>
 <body data-page="produk">
 <a class="skip" href="#main" data-i18n="skip">Langsung ke konten</a>
@@ -40,20 +94,11 @@
 
   <section class="phd">
     <div class="w">
-      <h1 data-i18n="produk-h">Produk Zeco</h1>
-      <p data-i18n="produk-p">Pilih model sesuai volume arsip Anda. Klik produk untuk membaca artikelnya.</p>
-      <p class="phd-note" data-i18n="phd-produk">Hemat ruang hingga 50% · Rangka baja kokoh · Model ber-TKDN tersedia di e-Katalog LKPP</p>
+      <h1 data-id="Arsip Tertata, Ruangan Jadi Lebih Lega" data-en="Organized Archives, a More Spacious Room">Arsip Tertata, Ruangan Jadi Lebih Lega</h1>
+      <p data-id="Lemari arsip dorong Zeco membantu satu ruangan menyimpan lebih banyak dokumen dan menghemat ruang hingga 50%. Tersedia tipe manual dan mekanik dengan rangka baja yang kokoh. Beberapa model sudah memiliki TKDN dan tersedia di e-Katalog LKPP." data-en="Zeco movable archive cabinets help a single room store more documents and save up to 50% of space. Available in manual and mechanical types with a sturdy steel frame. Selected models are TKDN-certified and listed in the LKPP e-Catalogue.">Lemari arsip dorong Zeco membantu satu ruangan menyimpan lebih banyak dokumen dan menghemat ruang hingga 50%. Tersedia tipe manual dan mekanik dengan rangka baja yang kokoh. Beberapa model sudah memiliki TKDN dan tersedia di e-Katalog LKPP.</p>
     </div>
   </section>
 
-  <section class="sec feat-sec">
-    <div class="w feat">
-      <div><h3 data-i18n="f1h">Hemat ruang hingga 50%</h3><p data-i18n="f1p">Kapasitas simpan naik pada luas lantai yang sama karena lorong digabung menjadi satu. Besar penghematan bergantung pada tata ruang.</p></div>
-      <div><h3 data-i18n="f2h">Kokoh dan tahan lama</h3><p data-i18n="f2p">Rangka baja dirancang untuk beban arsip padat dan pemakaian harian.</p></div>
-      <div><h3 data-i18n="b3h">Sudah TKDN</h3><p data-i18n="b3p">Model MF-4-22-ZC dan MF-102-ZC tersedia di e-Katalog LKPP.</p></div>
-      <div><h3 data-i18n="f3h">Pendampingan penuh</h3><p data-i18n="f3p">Dari survei ruangan hingga unit terpasang, tim kami mendampingi Anda.</p></div>
-    </div>
-  </section>
 
   <section class="sec sec-tight">
     <div class="w">
@@ -61,7 +106,6 @@
 
       <div class="cat" data-cat="manual" id="manual">
         <div class="sec-h"><div>
-          <div class="kick" data-i18n="c1-k">Kategori 01 · Sistem manual</div>
           <h2 data-i18n="c1-h">Mobile File Manual</h2>
           <p data-i18n="c1-p">Digeser langsung dengan tangan. Sederhana, andal, dan hemat biaya untuk ruang arsip kecil.</p>
         </div></div>
@@ -70,7 +114,6 @@
 
       <div class="cat" data-cat="mekanik" id="mekanik">
         <div class="sec-h"><div>
-          <div class="kick" data-i18n="c2-k">Kategori 02 · Sistem mekanik</div>
           <h2 data-i18n="c2-h">Mobile File Mekanik</h2>
           <p data-i18n="c2-p">Roda kemudi putar membuat barisan besar dan padat arsip terasa ringan digeser.</p>
         </div></div>
@@ -110,6 +153,18 @@
   <div class="dl" id="dlg-body"></div>
 </dialog>
 
-<script src="script.js?v=37"></script>
+<script src="script.js?v=wa2"></script>
+<script>
+/* Teks hero Produk mengikuti tombol bahasa ID/EN */
+(function(){
+  function cur(){var on=document.querySelector('.lang [aria-pressed="true"]');return on?on.getAttribute('data-lang'):'id';}
+  function t(){var l=cur();document.querySelectorAll('.phd [data-id][data-en]').forEach(function(el){el.textContent=el.getAttribute(l==='en'?'data-en':'data-id');});}
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click',function(){setTimeout(t,0);});
+    new MutationObserver(t).observe(b,{attributes:true,attributeFilter:['aria-pressed']});
+  });
+  t();
+})();
+</script>
 </body>
 </html>

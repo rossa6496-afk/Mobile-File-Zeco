@@ -13,11 +13,53 @@
 <meta property="og:title" data-i18n="title" data-i18n-attr="content" content="Mobile File Zeco, Lemari Arsip Dorong | PT Cahaya Mustika Internesia">
 <meta property="og:description" data-i18n="desc" data-i18n-attr="content" content="PT Cahaya Mustika Internesia, distributor mobile file (lemari arsip dorong) merek Zeco untuk kantor, instansi, dan perusahaan.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"PT Cahaya Mustika Internesia","description":"Distributor mobile file (lemari arsip dorong) merek Zeco","telephone":"+62 811-330-1819","email":"contact@cahayamustikainternesia.com","address":{"@type":"PostalAddress","streetAddress":"Jl. Penjernihan II No.7, RT.11/RW.6, Bend. Hilir","addressLocality":"Jakarta Pusat","addressRegion":"DKI Jakarta","postalCode":"10210","addressCountry":"ID"},"openingHours":"Mo-Fr 08:00-16:00"}</script>
-<link rel="icon" href="images/logo%20CMI.JPG.png">
+<link rel="icon" href="images/logo%20CMI.JPG.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=40">
+<link rel="stylesheet" href="style.css?v=68">
+<style>
+/* Hero: judul semua putih (tanpa kuning) dan lapisan biru lebih pekat, makin pekat ke kiri tempat teks berada */
+.hero .gold,.hero h1 .gold{color:#fff!important}
+.hero .crumb::before{background:#fff!important}
+.hero{position:relative}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(13,34,84,.94) 0%,rgba(18,48,107,.86) 38%,rgba(29,79,216,.55) 72%,rgba(29,79,216,.38) 100%)}
+.hero .hero-in{position:relative;z-index:2}
+</style>
+<style>
+/* Bagian Permasalahan: tulisan di kiri, empat poin bernomor menurun di kanan, masing-masing dalam kotak (isi kotak dibuat oleh script.js dari PROBLEMS) */
+.pm{--pm-navy:#12306b;--pm-blue:#1d4fd8;--pm-gold:#d9a441;--pm-mute:#5b6577;--pm-line:#dfe8f7;padding:80px 0;background:#fff}
+.pm-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:64px;align-items:start}
+.pm-side{display:block}
+.pm-eb{display:flex;align-items:center;gap:12px;margin:0 0 16px;font:600 .78rem/1 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--pm-gold)}
+.pm-eb::before{content:"";width:40px;height:2px;background:var(--pm-gold)}
+.pm .pm-title{margin:0 0 20px;font:800 clamp(2rem,3.4vw,2.8rem)/1.15 Manrope,sans-serif;color:var(--pm-navy)}
+.pm .pm-lead{margin:0;max-width:44ch;font:400 1.02rem/1.75 Poppins,sans-serif;color:var(--pm-mute)}
+
+/* Kotak-kotak: satu kolom, lebar sama, jarak sama; kolom nomor berukuran tetap supaya judul dan penjelasan lurus */
+.pm .pm-list#prob{display:grid;grid-template-columns:minmax(0,1fr);gap:16px;width:100%;min-width:0}
+.pm .pm-item{display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;align-items:start;margin:0;padding:22px 26px;background:#fff;border:1px solid var(--pm-line);border-radius:16px;transition:border-color .2s,box-shadow .2s}
+.pm .pm-item:hover{border-color:var(--pm-blue);box-shadow:0 18px 36px -28px rgba(18,48,107,.55)}
+.js .pm .pm-item.rv{transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1),border-color .2s,box-shadow .2s}
+.pm .pm-no{display:block;width:auto;height:auto;background:none;font:800 1.6rem/1.15 Manrope,sans-serif;color:var(--pm-blue)}
+.pm .pm-no::after{content:"."}
+.pm .pm-item h3{margin:2px 0 6px;font:700 1.08rem/1.4 Manrope,sans-serif;color:var(--pm-navy)}
+.pm .pm-item p{display:block;margin:0;font:400 .95rem/1.7 Poppins,sans-serif;color:var(--pm-mute)}
+
+@media (max-width:900px){.pm{padding:56px 0}.pm-in{grid-template-columns:minmax(0,1fr);gap:32px}}
+@media (max-width:520px){.pm .pm-item{grid-template-columns:44px minmax(0,1fr);gap:12px;padding:18px}.pm .pm-no{font-size:1.3rem}}
+
+/* Pilihan mobile file: dua kartu (Manual dan Mekanik) berdampingan, foto di atas, teks di bawah */
+.sec-lead .grid#types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:none;margin:0;align-items:stretch}
+.sec-lead #types .card{display:flex;flex-direction:column;width:100%;max-width:none;margin:0;min-width:0}
+.sec-lead #types .card .pic{position:relative!important;flex:0 0 auto!important;flex-basis:auto!important;width:100%!important;min-width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;aspect-ratio:4/3!important;overflow:hidden;float:none!important;margin:0!important;grid-column:auto!important}
+.sec-lead #types .card .pic img.foto{position:absolute!important;inset:0!important;display:block;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:cover;object-position:center var(--y,center);transform:scale(var(--zoom,1));transform-origin:center}
+.sec-lead #types .card .bd{flex:1;display:flex;flex-direction:column;padding:24px 26px 28px}
+.sec-lead #types .card .bd h2{font-size:1.35rem}
+.sec-lead #types .card .bd .go{margin-top:auto;align-self:flex-start}
+.sec-lead #types .card .bd .ex{margin-bottom:20px}
+@media (max-width:760px){.sec-lead .grid#types{grid-template-columns:minmax(0,1fr)}}
+</style>
 </head>
 <body data-page="beranda">
 <a class="skip" href="#main" data-i18n="skip">Langsung ke konten</a>
@@ -44,8 +86,8 @@
   <section id="beranda" class="hero">
     <div class="w hero-in">
       <div>
-        <div class="crumb">MOBILE FILE ZECO</div>
-        <h1 data-i18n="h1">Arsip tertata, ruangan lebih lega.</h1>
+        <div class="crumb" data-i18n="hero-eyebrow">Solusi penyimpanan dokumen modern</div>
+        <h1><span data-i18n="h1a">Jual Mobile File Zeco, Lemari Arsip Dorong untuk</span> <span class="gold" data-i18n="h1b">Kantor, Instansi, dan Perusahaan</span></h1>
         <p class="lead" id="hero-lead">PT Cahaya Mustika Internesia menyediakan mobile file Zeco, lemari arsip dorong dengan penggerak manual dan mekanik, untuk kantor, instansi, dan perusahaan.</p>
         <div class="btns">
           <a class="btn" href="produk.html" data-i18n="hero-b1">Lihat Produk Zeco</a>
@@ -56,10 +98,13 @@
   </section>
 
 
-  <section class="sec">
-    <div class="w">
-      <div class="sec-h"><div><div class="kick" data-i18n="prob-k">Permasalahan</div><h2 data-i18n="prob-h">Mengapa mobile file dibutuhkan untuk penyimpanan arsip?</h2><p data-i18n="prob-p">Pengelolaan arsip yang kurang tepat membuat ruang kerja terasa penuh dan pencarian dokumen menjadi lambat.</p></div></div>
-      <div class="proc" id="prob"></div>
+  <section class="pm" aria-labelledby="pm-title">
+    <div class="w pm-in">
+      <div class="pm-side">
+          <h2 class="pm-title" id="pm-title" data-i18n="prob-h">Arsip Menumpuk, Ruangan Jadi Penuh?</h2>
+        <p class="pm-lead" data-i18n="prob-p">Jumlah arsip terus bertambah, sementara ruangan tidak ikut membesar. Mobile file menyimpan lebih banyak arsip di ruang yang sama, dan dokumen tetap rapi serta mudah dicari.</p>
+      </div>
+      <div class="pm-list" id="prob"></div>
     </div>
   </section>
 
@@ -70,24 +115,23 @@
     </div>
   </section>
 
-  <section class="sec">
+  <section class="sec sec-lead">
     <div class="w">
-      <div class="sec-h"><div><div class="kick" data-i18n="typ-k">Pilihan produk</div><h2 data-i18n="typ-h">Pilihan mobile file Zeco</h2><p data-i18n="typ-p">Dua tipe untuk kebutuhan penyimpanan Anda: mobile file manual dan mobile file mekanik.</p></div></div>
+      <div class="sec-h"><div><h2 data-i18n="typ-h">Pilihan mobile file Zeco</h2><p data-i18n="typ-p">Dua tipe untuk kebutuhan penyimpanan Anda: mobile file manual dan mobile file mekanik.</p></div></div>
       <div class="grid" id="types"></div>
     </div>
   </section>
 
-  <section class="sec alt">
+  <section class="sec sec-dark">
     <div class="w">
-      <div class="sec-h"><div><div class="kick" data-i18n="adv-k">Keunggulan</div><h2 data-i18n="adv-h">Mengapa memilih mobile file Zeco?</h2><p data-i18n="adv-p">Kami tidak hanya menyediakan mobile file, tetapi juga mendampingi Anda dari konsultasi hingga pemasangan.</p></div></div>
+      <div class="sec-h"><div><h2 data-i18n="adv-h">Mengapa memilih mobile file Zeco?</h2><p data-i18n="adv-p">Kami tidak hanya menyediakan mobile file, tetapi juga mendampingi Anda dari konsultasi hingga pemasangan.</p></div></div>
       <div class="proc" id="adv"></div>
-      <div class="btns"><a class="btn gold" href="kontak.html" data-i18n="adv-b">Konsultasikan Kebutuhan</a></div>
     </div>
   </section>
 
-  <section id="faq" class="sec">
+  <section id="faq" class="sec alt sec-split">
     <div class="w">
-      <div class="sec-h"><div><div class="kick" data-i18n="faq-k">Tanya jawab</div><h2 data-i18n="faq-h">Pertanyaan yang sering diajukan</h2><p data-i18n="faq-p">Jawaban singkat seputar mobile file Zeco.</p></div></div>
+      <div class="sec-h"><div><h2 data-i18n="faq-h">Pertanyaan yang sering diajukan</h2><p data-i18n="faq-p">Jawaban singkat seputar mobile file Zeco.</p></div></div>
       <div class="faq" id="faq-list"></div>
     </div>
   </section>
@@ -109,7 +153,7 @@
       <p data-i18n="ft-about">PT Cahaya Mustika Internesia, distributor mobile file merek Zeco untuk kantor, instansi, dan perusahaan.</p>
     </div>
     <div>
-      <h4 data-i18n="ft-pages">Informasi Halaman</h4>
+      <h2 data-i18n="ft-pages">Informasi Perusahaan</h2>
       <a href="index.html" data-i18n="nav-beranda">Beranda</a><a href="produk.html" data-i18n="nav-produk">Produk</a><a href="portofolio.html" data-i18n="nav-portofolio">Portofolio</a><a href="artikel.html" data-i18n="nav-artikel">Artikel</a><a href="kontak.html" data-i18n="nav-kontak">Kontak Kami</a>
     </div>
     <div id="ft-kontak"></div>
@@ -123,6 +167,6 @@
   <div class="dl" id="dlg-body"></div>
 </dialog>
 
-<script src="script.js?v=37"></script>
+<script src="script.js?v=wa1"></script>
 </body>
 </html>

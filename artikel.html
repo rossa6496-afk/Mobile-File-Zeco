@@ -10,11 +10,98 @@
 <meta property="og:locale" id="og-locale" content="id_ID">
 <meta property="og:title" data-i18n="title-art" data-i18n-attr="content" content="Artikel | PT Cahaya Mustika Internesia">
 <meta property="og:description" data-i18n="desc-art" data-i18n-attr="content" content="Panduan singkat memilih, memasang, dan merawat lemari arsip dorong (mobile file).">
-<link rel="icon" href="images/logo%20CMI.JPG.png">
+<link rel="icon" href="images/logo%20CMI.JPG.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=40">
+<link rel="stylesheet" href="style.css?v=92">
+
+<style>
+/* ===== Gaya bagian Portofolio & Artikel mengikuti halaman Kontak (kelas berawalan kc-) ===== */
+/* Hero setengah layar seperti halaman Kontak, supaya isi di bawahnya langsung terlihat */
+body[data-page="artikel"] .phd{min-height:50vh;min-height:50svh;padding:48px 0;display:flex;align-items:center}
+body[data-page="artikel"] .phd>.w{width:100%}
+.kc{--kc-navy:#12306b;--kc-blue:#1d4fd8;--kc-gold:#d9a441;--kc-ink:#1b2438;--kc-mute:#5b6577;--kc-line:#dfe8f7;--kc-soft:#eef4ff}
+.kc svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kc-sec{padding:28px 0 72px}
+.kc-sec.alt{background:var(--kc-soft)}
+.kc-eb{display:flex;align-items:center;gap:12px;margin:0 0 14px;font:600 .78rem/1 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--kc-gold)}
+.kc-eb::before{content:"";width:40px;height:2px;background:var(--kc-gold)}
+.kc-sec h1{margin:0 0 12px;font:800 clamp(1.8rem,3vw,2.3rem)/1.2 Manrope,sans-serif;color:var(--kc-navy)}
+.kc-lead{margin:0 0 28px;max-width:46ch;font:400 1rem/1.7 Poppins,sans-serif;color:var(--kc-mute)}
+.kc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
+.kc-head .kc-lead{margin:0}
+
+/* Portofolio: teks kiri, proyek kanan */
+.kc-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;align-items:start}
+.kc-side{position:sticky;top:110px}
+.kc-cards{display:grid;grid-template-columns:1fr;gap:16px}
+.kc-card{display:block;padding:22px;border-radius:18px;background:#fff;border:1px solid var(--kc-line);text-decoration:none;color:var(--kc-ink);transition:border-color .15s,box-shadow .15s}
+a.kc-card:hover{border-color:var(--kc-blue);box-shadow:0 14px 30px -20px rgba(18,48,107,.55)}
+a.kc-card:focus-visible,.kc-pcard:focus-visible,.kc-chip:focus-visible{outline:3px solid var(--kc-gold);outline-offset:3px}
+.kc-card i{display:grid;place-items:center;width:46px;height:46px;margin-bottom:16px;border-radius:50%;background:var(--kc-soft);color:var(--kc-blue)}
+.kc-card i svg{width:22px;height:22px}
+.kc-card small{display:block;margin-bottom:4px;font:500 .84rem/1.4 Poppins,sans-serif;color:var(--kc-mute)}
+.kc-card b{display:block;font:700 .98rem/1.45 Manrope,sans-serif;color:var(--kc-navy);overflow-wrap:anywhere}
+.kc-card.wa{background:var(--kc-navy);border-color:var(--kc-navy)}
+.kc-card.wa i{background:var(--kc-gold);color:var(--kc-navy)}
+.kc-card.wa small{color:#b9c6e6}
+.kc-card.wa b{color:#fff}
+
+/* Kartu proyek / sektor / artikel */
+.kc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.kc-list.three{grid-template-columns:repeat(3,1fr)}
+.kc-pcard{display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:#fff;border:1px solid var(--kc-line);text-decoration:none;color:var(--kc-ink);transition:border-color .15s,box-shadow .15s}
+a.kc-pcard:hover{border-color:var(--kc-blue);box-shadow:0 22px 44px -30px rgba(18,48,107,.5)}
+.kc-pimg{position:relative;aspect-ratio:16/10;background:linear-gradient(160deg,var(--kc-blue),var(--kc-navy));display:grid;place-items:center;color:#fff;font:800 2rem Manrope,sans-serif;overflow:hidden}
+.kc-pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.kc-pbd{display:flex;flex-direction:column;gap:6px;padding:20px 22px 24px;flex:1}
+.kc-tag{display:inline-block;width:max-content;font:600 .74rem/1 Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--kc-gold)}
+.kc-pbd h2{margin:0;font:700 1.12rem/1.35 Manrope,sans-serif;color:var(--kc-navy)}
+.kc-pbd p{margin:0;font:400 .92rem/1.65 Poppins,sans-serif;color:var(--kc-mute)}
+.kc-meta{display:flex;align-items:center;gap:6px;font:500 .82rem/1.4 Poppins,sans-serif;color:var(--kc-mute)}
+.kc-meta svg{width:14px;height:14px}
+.kc-read{margin-top:auto;padding-top:10px;font:700 .92rem Manrope,sans-serif;color:var(--kc-blue)}
+.kc-pcard.hide{display:none}
+
+/* Filter kategori artikel */
+.kc-filters{display:flex;gap:10px;flex-wrap:wrap}
+.kc-chip{border:1px solid var(--kc-line);background:#fff;color:var(--kc-mute);font:500 .92rem Poppins,sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .15s}
+.kc-chip:hover{border-color:var(--kc-blue);color:var(--kc-navy)}
+.kc-chip[aria-pressed="true"]{background:var(--kc-navy);border-color:var(--kc-navy);color:#fff}
+
+/* Header rata tengah */
+.kc-head.center{justify-content:center;text-align:center}
+.kc-head.center .kc-eb{justify-content:center}
+.kc-head.center .kc-eb::after{content:"";width:40px;height:2px;background:var(--kc-gold)}
+.kc-head.center .kc-lead{margin:0 auto;max-width:56ch}
+
+/* Artikel: satu artikel pilihan besar di kiri, lima artikel lain berupa baris ringkas di kanan */
+.kc-mag{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px;align-items:start}
+.kc-feat{display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:#fff;border:1px solid var(--kc-line);text-decoration:none;color:var(--kc-ink);transition:border-color .2s}
+.kc-feat:hover{border-color:var(--kc-blue)}
+.kc-feat .kc-pimg{aspect-ratio:16/10}
+.kc-fbd{display:flex;flex-direction:column;gap:8px;padding:24px 28px 28px}
+.kc-fbd h2{margin:0;font:800 1.5rem/1.3 Manrope,sans-serif;color:var(--kc-navy)}
+.kc-fbd p{margin:0;font:400 .95rem/1.7 Poppins,sans-serif;color:var(--kc-mute)}
+.kc-feat .kc-read{margin-top:6px;padding-top:0}
+.kc-feat:hover .kc-read{text-decoration:underline;text-underline-offset:4px}
+.kc-rows{display:grid;gap:14px}
+.kc-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center;padding:12px;border-radius:16px;background:#fff;border:1px solid var(--kc-line);text-decoration:none;color:var(--kc-ink);transition:border-color .2s}
+.kc-row:hover{border-color:var(--kc-blue)}
+.kc-row .kc-pimg{aspect-ratio:4/3;border-radius:10px;font-size:1.1rem}
+.kc-row h3{margin:6px 0 0;font:700 1rem/1.4 Manrope,sans-serif;color:var(--kc-navy)}
+@media (max-width:900px){.kc-mag{grid-template-columns:1fr;gap:24px}}
+@media (max-width:520px){.kc-row{grid-template-columns:96px minmax(0,1fr);gap:14px}.kc-fbd{padding:20px 22px 24px}.kc-fbd h2{font-size:1.25rem}}
+
+@media (max-width:1000px){.kc-list.three{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){
+  .kc-sec{padding:20px 0 56px}
+  .kc-grid{grid-template-columns:1fr;gap:32px}
+  .kc-side{position:static}
+}
+@media (max-width:600px){.kc-list,.kc-list.three{grid-template-columns:1fr}}
+</style>
 </head>
 <body data-page="artikel">
 <a class="skip" href="#main" data-i18n="skip">Langsung ke konten</a>
@@ -35,26 +122,17 @@
   </div>
 </header>
 
-<main id="main">
+<main id="main" class="kc">
   <noscript><p class="nojs">Aktifkan JavaScript untuk melihat katalog. Hubungi kami di WhatsApp +62 811-330-1819.<br>Please enable JavaScript to view the catalog. Contact us on WhatsApp +62 811-330-1819.</p></noscript>
-
-  <section class="phd">
+  <section class="kc-sec">
     <div class="w">
-      <h1 data-i18n="art-h">Wawasan Seputar Mobile File</h1>
-      <p data-i18n="art-p">Panduan singkat sebelum Anda memilih dan memasang lemari arsip dorong.</p>
-      <p class="phd-note" data-i18n="phd-art">Memilih, memasang, dan merawat mobile file, dibahas singkat dan mudah dipahami.</p>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="w"><div class="grid" id="grid-artikel"></div></div>
-  </section>
-
-  <section class="cta">
-    <div class="w">
-      <h2 data-i18n="cta-h">Siap merapikan arsip dan menghemat ruangan Anda?</h2>
-      <p data-i18n="cta-p">Konsultasikan kebutuhan Anda. Kami bantu memilih model Zeco yang paling sesuai.</p>
-      <a class="btn gold" id="cta-wa" href="#" target="_blank" rel="noopener" data-i18n="consult">Konsultasi Sekarang</a>
+      <div class="kc-head center">
+        <div>
+          <h1 data-id="Bacaan untuk kebutuhan arsip Anda" data-en="Reading for your archive needs">Bacaan untuk kebutuhan arsip Anda</h1>
+          <p class="kc-lead" data-id="Panduan singkat memilih, memasang, dan merawat lemari arsip dorong." data-en="Short guides to choosing, installing, and maintaining movable archive cabinets.">Panduan singkat memilih, memasang, dan merawat lemari arsip dorong.</p>
+        </div>
+      </div>
+      <div class="kc-mag" id="kc-art"></div>
     </div>
   </section>
 
@@ -67,12 +145,12 @@
       <p data-i18n="ft-about">PT Cahaya Mustika Internesia, distributor mobile file merek Zeco untuk kantor, instansi, dan perusahaan.</p>
     </div>
     <div>
-      <h4 data-i18n="ft-pages">Informasi Halaman</h4>
+      <h2 data-i18n="ft-pages">Informasi Perusahaan</h2>
       <a href="index.html" data-i18n="nav-beranda">Beranda</a><a href="produk.html" data-i18n="nav-produk">Produk</a><a href="portofolio.html" data-i18n="nav-portofolio">Portofolio</a><a href="artikel.html" data-i18n="nav-artikel">Artikel</a><a href="kontak.html" data-i18n="nav-kontak">Kontak Kami</a>
     </div>
     <div id="ft-kontak"></div>
   </div>
-  <div class="w ft-bot"><span data-i18n="ft-bot">© 2026 PT Cahaya Mustika Internesia. Spesifikasi dan ketersediaan dapat berubah.</span><a class="top" href="#main" data-i18n="top">Kembali ke atas ↑</a></div>
+  <div class="w ft-bot"><span data-i18n="ft-bot">© 2026 PT Cahaya Mustika Internesia.</span><a class="top" href="#main" data-i18n="top">Kembali ke atas ↑</a></div>
 </footer>
 
 <!-- Jendela detail produk / artikel -->
@@ -81,6 +159,42 @@
   <div class="dl" id="dlg-body"></div>
 </dialog>
 
-<script src="script.js?v=37"></script>
+<script src="script.js?v=69"></script>
+<script>
+/* Isi kartu dari data di script.js (PROJECTS, SECTORS, ARTICLES) dan ikut tombol bahasa ID/EN */
+(function(){
+  function pimg(foto, pos, letter, alt){
+    return '<div class="kc-pimg"><span aria-hidden="true">'+esc(letter)+'</span>'+
+      (foto ? '<img src="'+esc(encodeURI(foto))+'" alt="'+esc(alt)+'" loading="lazy" style="object-position:'+esc(pos||'50% 50%')+'" onerror="this.remove()">' : '')+'</div>';
+  }
+  function cur(){ var on=document.querySelector('.lang [aria-pressed="true"]'); return on?on.getAttribute('data-lang'):'id'; }
+  function texts(lang){
+    document.querySelectorAll('[data-id][data-en]').forEach(function(el){ el.textContent = el.getAttribute(lang==='en'?'data-en':'data-id'); });
+  }
+  
+  function draw(){
+    var S = STR[LANG];
+    var rd = esc(S.read.replace(/\s*\u2192\s*$/, '')) + ' \u2192';
+    function link(a, cls, inner){ return '<a class="'+cls+'" href="'+artikelUrl(a.id)+'" data-open="artikel:'+a.id+'">'+inner+'</a>'; }
+    function pic(a){ return pimg(ART_PIC[a.id],'50% 50%',L(a,'kat').charAt(0),L(a,'judul')); }
+    var f = ARTICLES[0];
+    var feat = link(f, 'kc-feat', pic(f) +
+      '<div class="kc-fbd"><span class="kc-tag">'+esc(L(f,'kat'))+'</span><h2>'+esc(L(f,'judul'))+'</h2>'+
+      '<p>'+esc(L(f,'ex'))+'</p><span class="kc-read">'+rd+'</span></div>');
+    var rows = ARTICLES.slice(1).map(function(a){
+      return link(a, 'kc-row', pic(a) + '<div><span class="kc-tag">'+esc(L(a,'kat'))+'</span><h3>'+esc(L(a,'judul'))+'</h3></div>');
+    }).join('');
+    document.getElementById('kc-art').innerHTML = feat + '<div class="kc-rows">' + rows + '</div>';
+  }
+
+  function all(){ var l=cur(); texts(l); if (typeof draw==='function') draw(); }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setTimeout(all,0); });
+    new MutationObserver(all).observe(b,{attributes:true,attributeFilter:['aria-pressed']});
+  });
+  all();
+})();
+</script>
+
 </body>
 </html>

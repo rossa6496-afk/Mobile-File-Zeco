@@ -11,11 +11,52 @@
 <meta property="og:title" data-i18n="title-kon" data-i18n-attr="content" content="Kontak Kami | PT Cahaya Mustika Internesia">
 <meta property="og:description" data-i18n="desc-kon" data-i18n-attr="content" content="Hubungi PT Cahaya Mustika Internesia untuk konsultasi mobile file Zeco. Alamat, peta, dan formulir WhatsApp.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"PT Cahaya Mustika Internesia","description":"Distributor mobile file (lemari arsip dorong) merek Zeco","telephone":"+62 811-330-1819","email":"contact@cahayamustikainternesia.com","address":{"@type":"PostalAddress","streetAddress":"Jl. Penjernihan II No.7, RT.11/RW.6, Bend. Hilir","addressLocality":"Jakarta Pusat","addressRegion":"DKI Jakarta","postalCode":"10210","addressCountry":"ID"},"openingHours":"Mo-Fr 08:00-16:00"}</script>
-<link rel="icon" href="images/logo%20CMI.JPG.png">
+<link rel="icon" href="images/logo%20CMI.JPG.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=40">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap"></noscript>
+<link rel="stylesheet" href="style.css?v=191">
+
+<style>
+/* ===== Halaman Kontak: judul tengah, dua kartu info, peta di bawah (kelas berawalan kc-) ===== */
+.kc{--kc-navy:#12306b;--kc-blue:#1d4fd8;--kc-gold:#d9a441;--kc-ink:#1b2438;--kc-mute:#5b6577;--kc-line:#dfe8f7;--kc-soft:#eef4ff}
+.kc svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kc-sec{padding:48px 0 64px}
+.kc-in{max-width:960px;margin:0 auto}
+.kc-head{text-align:center;margin:0 auto 28px;max-width:560px}
+.kc-eb{display:inline-flex;align-items:center;gap:12px;margin:0 0 10px;font:600 .72rem/1 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--kc-gold)}
+.kc-eb::before,.kc-eb::after{content:"";width:28px;height:2px;background:var(--kc-gold)}
+.kc-head h2{margin:0 0 8px;font:800 clamp(1.5rem,2.4vw,1.9rem)/1.25 Manrope,sans-serif;color:var(--kc-navy)}
+.kc-lead{margin:0 auto;max-width:52ch;font:400 .92rem/1.65 Poppins,sans-serif;color:var(--kc-mute)}
+
+/* Dua kartu sejajar */
+.kc-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.kc-card{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;background:#fff;border:1px solid var(--kc-line);color:var(--kc-ink);text-decoration:none;transition:border-color .2s,box-shadow .2s,transform .2s}
+.kc-card:hover{border-color:var(--kc-blue);box-shadow:0 18px 36px -24px rgba(18,48,107,.6);transform:translateY(-2px)}
+.kc-card:focus-visible{outline:3px solid var(--kc-gold);outline-offset:3px}
+.kc-card .ic{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--kc-soft);color:var(--kc-blue)}
+.kc-card .ic svg{width:20px;height:20px}
+.kc-card .tx{flex:1;min-width:0}
+.kc-card small{display:block;margin-bottom:2px;font:600 .68rem/1.3 Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--kc-mute)}
+.kc-card b{display:block;font:700 .95rem/1.45 Manrope,sans-serif;color:var(--kc-navy);overflow-wrap:anywhere}
+.kc-card em{display:block;margin-top:3px;font:500 .8rem/1.4 Poppins,sans-serif;font-style:normal;color:var(--kc-blue)}
+.kc-card .ar{flex:none;width:18px;height:18px;color:var(--kc-blue);transition:transform .2s}
+.kc-card:hover .ar{transform:translateX(4px)}
+
+/* Peta */
+.kc-map{border-radius:16px;overflow:hidden;border:1px solid var(--kc-line);box-shadow:0 18px 36px -28px rgba(18,48,107,.55)}
+.kc-map iframe{display:block;width:100%;height:320px;border:0}
+
+@media (max-width:760px){
+  .kc-sec{padding:32px 0 48px}
+  .kc-head{margin-bottom:28px}
+  .kc-cards{grid-template-columns:1fr;gap:14px;margin-bottom:18px}
+  .kc-card{padding:14px 16px}
+  .kc-map iframe{height:260px}
+}
+@media (prefers-reduced-motion:reduce){.kc-card,.kc-card .ar{transition:none}.kc-card:hover,.kc-card:hover .ar{transform:none}}
+</style>
 </head>
 <body data-page="kontak">
 <a class="skip" href="#main" data-i18n="skip">Langsung ke konten</a>
@@ -36,39 +77,34 @@
   </div>
 </header>
 
-<main id="main">
+<main id="main" class="kc">
   <noscript><p class="nojs">Aktifkan JavaScript untuk melihat katalog. Hubungi kami di WhatsApp +62 811-330-1819.<br>Please enable JavaScript to view the catalog. Contact us on WhatsApp +62 811-330-1819.</p></noscript>
 
-  <section class="phd">
-    <div class="w">
-      <h1 data-i18n="kon-h">Hubungi PT Cahaya Mustika Internesia</h1>
-      <p data-i18n="kon-p">Ceritakan kebutuhan Anda. Kami balas melalui WhatsApp.</p>
-      <p class="phd-note" data-i18n="phd-kon">Senin sampai Jumat, 08.00 - 16.00 · WhatsApp +62 811-330-1819</p>
-    </div>
-  </section>
-
-  <section id="kontak" class="sec">
-    <div class="w">
-      <div class="ct">
-        <div>
-          <div id="kontak-info"></div>
-          <div class="map">
-            <iframe id="map" title="Lokasi PT Cahaya Mustika Internesia di Google Maps" data-i18n="map-title" data-i18n-attr="title" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-            <a class="btn sm" id="map-link" href="#" target="_blank" rel="noopener" data-i18n="map-link">Buka di Google Maps</a>
-          </div>
-        </div>
-        <form id="form">
-          <label for="f1" data-i18n="l1">Nama</label><input id="f1" required autocomplete="name">
-          <label for="f2" data-i18n="l2">Instansi / perusahaan</label><input id="f2" autocomplete="organization">
-          <label for="f3" data-i18n="l3">Model yang diminati</label><select id="f3"></select>
-          <label for="f4" data-i18n="l4">Pesan</label><textarea id="f4" rows="4" placeholder="Luas ruangan, jumlah arsip, atau pertanyaan lain" data-i18n="l4ph" data-i18n-attr="placeholder"></textarea>
-          <button class="btn gold" type="submit" data-i18n="send">Kirim via WhatsApp</button>
-        </form>
+  <section id="kontak" class="kc-sec">
+    <div class="w"><div class="kc-in">
+      <div class="kc-head">
+        <h1 data-id="Kami siap membantu Anda" data-en="We are ready to help you">Kami siap membantu Anda</h1>
+        <p class="kc-lead" data-id="Hubungi kami lewat WhatsApp atau kunjungi kantor kami. Lokasinya ada di peta di bawah ini." data-en="Reach us on WhatsApp or visit our office. Our location is on the map below.">Hubungi kami lewat WhatsApp atau kunjungi kantor kami. Lokasinya ada di peta di bawah ini.</p>
       </div>
-    </div>
+
+      <div class="kc-cards">
+        <a class="kc-card" id="phd-wa" href="#" target="_blank" rel="noopener">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.7-5.2A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 8.5c.2 2.6 3.9 6.3 6.5 6.5l1.3-1.4-2.3-1.2-1 .9c-1-.4-2-1.4-2.4-2.4l.9-1-1.2-2.3L9 8.5Z"/></svg></span>
+          <span class="tx"><small data-id="WhatsApp" data-en="WhatsApp">WhatsApp</small><b>+62 811-330-1819</b><em data-id="Chat via WhatsApp" data-en="Chat on WhatsApp">Chat via WhatsApp</em></span>
+          <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="kc-card" id="map-link" href="#" target="_blank" rel="noopener">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <span class="tx"><small data-id="Alamat" data-en="Address">Alamat</small><b>Jl. Penjernihan II No.7, RT.11/RW.6, Bend. Hilir, Jakarta Pusat 10210</b><em data-id="Buka di Google Maps" data-en="Open in Google Maps">Buka di Google Maps</em></span>
+          <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div class="kc-map">
+        <iframe id="map" title="Lokasi PT Cahaya Mustika Internesia di Google Maps" data-i18n="map-title" data-i18n-attr="title" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div></div>
   </section>
-
-
 </main>
 
 <footer class="ft">
@@ -78,12 +114,12 @@
       <p data-i18n="ft-about">PT Cahaya Mustika Internesia, distributor mobile file merek Zeco untuk kantor, instansi, dan perusahaan.</p>
     </div>
     <div>
-      <h4 data-i18n="ft-pages">Informasi Halaman</h4>
+      <h2 data-i18n="ft-pages">Informasi Perusahaan</h2>
       <a href="index.html" data-i18n="nav-beranda">Beranda</a><a href="produk.html" data-i18n="nav-produk">Produk</a><a href="portofolio.html" data-i18n="nav-portofolio">Portofolio</a><a href="artikel.html" data-i18n="nav-artikel">Artikel</a><a href="kontak.html" data-i18n="nav-kontak">Kontak Kami</a>
     </div>
     <div id="ft-kontak"></div>
   </div>
-  <div class="w ft-bot"><span data-i18n="ft-bot">© 2026 PT Cahaya Mustika Internesia. Spesifikasi dan ketersediaan dapat berubah.</span><a class="top" href="#main" data-i18n="top">Kembali ke atas ↑</a></div>
+  <div class="w ft-bot"><span data-i18n="ft-bot">© 2026 PT Cahaya Mustika Internesia. Spesifikasi dan ketersediaan dapat berubah.</span></div>
 </footer>
 
 <!-- Jendela detail produk / artikel -->
@@ -92,6 +128,25 @@
   <div class="dl" id="dlg-body"></div>
 </dialog>
 
-<script src="script.js?v=37"></script>
+<script src="script.js?v=wa2"></script>
+<script>
+/* Terjemahan teks baru di halaman ini (ID/EN), mengikuti tombol bahasa */
+(function(){
+  function apply(lang){
+    document.querySelectorAll('[data-id][data-en]').forEach(function(el){
+      el.textContent = el.getAttribute(lang === 'en' ? 'data-en' : 'data-id');
+    });
+  }
+  function current(){
+    var on = document.querySelector('.lang [aria-pressed="true"]');
+    return on ? on.getAttribute('data-lang') : 'id';
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ setTimeout(function(){ apply(current()); }, 0); });
+    new MutationObserver(function(){ apply(current()); }).observe(b, {attributes:true, attributeFilter:['aria-pressed']});
+  });
+  apply(current());
+})();
+</script>
 </body>
 </html>
