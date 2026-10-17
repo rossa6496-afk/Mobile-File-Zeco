@@ -13,103 +13,57 @@
 <link rel="icon" href="images/logo%20CMI.JPG.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap"></noscript>
-<link rel="stylesheet" href="style.css?v=191">
-
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Poppins:wght@400;500;600&display=swap"></noscript>
+<script src="script.js?v=wa4" defer></script>
+<link rel="stylesheet" href="style.css?v=193">
 <style>
-/* ===== Gaya bagian Portofolio & Artikel mengikuti halaman Kontak (kelas berawalan kc-) ===== */
-/* Hero setengah layar seperti halaman Kontak, supaya isi di bawahnya langsung terlihat */
-body[data-page="portofolio"] .phd{min-height:50vh;min-height:50svh;padding:48px 0;display:flex;align-items:center}
-body[data-page="portofolio"] .phd>.w{width:100%}
-.kc{--kc-navy:#12306b;--kc-blue:#1d4fd8;--kc-gold:#d9a441;--kc-ink:#1b2438;--kc-mute:#5b6577;--kc-line:#dfe8f7;--kc-soft:#eef4ff}
-.kc svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.kc-sec{padding:56px 0 72px}
-.kc-sec.alt{background:var(--kc-soft)}
-.kc-eb{display:flex;align-items:center;gap:12px;margin:0 0 14px;font:600 .78rem/1 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--kc-gold)}
-.kc-eb::before{content:"";width:40px;height:2px;background:var(--kc-gold)}
-.kc-sec h2{margin:0 0 12px;font:800 clamp(1.8rem,3vw,2.3rem)/1.2 Manrope,sans-serif;color:var(--kc-navy)}
-.kc-lead{margin:0 0 28px;max-width:46ch;font:400 1rem/1.7 Poppins,sans-serif;color:var(--kc-mute)}
-.kc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:24px}
-.kc-head .kc-lead{margin:0}
+/* ===== Halaman Portofolio (ringkas, minim scroll) ===== */
+.kc{--kc-navy:#12306b;--kc-blue:#1d4fd8;--kc-gold:#d9a441;--kc-mute:#5b6577;--kc-line:#dfe8f7;--kc-soft:#eef4ff}
+.pr-sec{padding:32px 0 36px}
+.pr-sec.alt{background:var(--kc-soft)}
+.pr-head{margin:0 auto 22px;max-width:60ch;text-align:center}
+main.kc .pr-head h1{margin:0 0 8px;font:800 clamp(1.7rem,3vw,2.3rem)/1.15 Manrope,sans-serif;color:var(--kc-navy)}
+.pr-lead{margin:0 auto;max-width:52ch;font:400 .96rem/1.65 Poppins,sans-serif;color:var(--kc-mute)}
 
-/* Portofolio: teks kiri, proyek kanan */
-.kc-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;align-items:start}
-.kc-side{position:sticky;top:110px}
-.kc-cards{display:grid;grid-template-columns:1fr;gap:16px}
-.kc-card{display:block;padding:22px;border-radius:18px;background:#fff;border:1px solid var(--kc-line);text-decoration:none;color:var(--kc-ink);transition:border-color .15s,box-shadow .15s}
-a.kc-card:hover{border-color:var(--kc-blue);box-shadow:0 14px 30px -20px rgba(18,48,107,.55)}
-a.kc-card:focus-visible,.kc-pcard:focus-visible,.kc-chip:focus-visible{outline:3px solid var(--kc-gold);outline-offset:3px}
-.kc-card i{display:grid;place-items:center;width:46px;height:46px;margin-bottom:16px;border-radius:50%;background:var(--kc-soft);color:var(--kc-blue)}
-.kc-card i svg{width:22px;height:22px}
-.kc-card small{display:block;margin-bottom:4px;font:500 .84rem/1.4 Poppins,sans-serif;color:var(--kc-mute)}
-.kc-card b{display:block;font:700 .98rem/1.45 Manrope,sans-serif;color:var(--kc-navy);overflow-wrap:anywhere}
-.kc-card.wa{background:var(--kc-navy);border-color:var(--kc-navy)}
-.kc-card.wa i{background:var(--kc-gold);color:var(--kc-navy)}
-.kc-card.wa small{color:#b9c6e6}
-.kc-card.wa b{color:#fff}
+/* Empat kartu proyek dalam satu baris */
+.pr-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.pr-card{display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid var(--kc-line);border-radius:16px;}
+.pr-pic{aspect-ratio:4/3;overflow:hidden;background:#e6eefb;border-bottom:1px solid var(--kc-line)}
+.pr-pic img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.pr-card:hover .pr-pic img{transform:scale(1.05)}
+.pr-bd{display:flex;flex-direction:column;gap:6px;flex:1;padding:14px 16px 18px;text-align:left}
+.pr-bd h2{margin:0;font:800 1rem/1.3 Manrope,sans-serif;color:var(--kc-navy)}
+.pr-bd p{margin:0;font:400 .84rem/1.55 Poppins,sans-serif;color:var(--kc-mute)}
 
-/* Kartu proyek / sektor / artikel */
-.kc-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.kc-list.three{grid-template-columns:repeat(3,1fr)}
-.kc-pcard{display:flex;flex-direction:column;overflow:hidden;border-radius:20px;background:#fff;border:1px solid var(--kc-line);text-decoration:none;color:var(--kc-ink);transition:border-color .15s,box-shadow .15s}
-a.kc-pcard:hover{border-color:var(--kc-blue);box-shadow:0 22px 44px -30px rgba(18,48,107,.5)}
-.kc-pimg{position:relative;aspect-ratio:16/10;background:linear-gradient(160deg,var(--kc-blue),var(--kc-navy));display:grid;place-items:center;color:#fff;font:800 2rem Manrope,sans-serif;overflow:hidden}
-.kc-pimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.kc-pbd{display:flex;flex-direction:column;gap:6px;padding:20px 22px 24px;flex:1}
-.kc-tag{display:inline-block;width:max-content;font:600 .74rem/1 Poppins,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--kc-gold)}
-.kc-pbd h3{margin:0;font:700 1.12rem/1.35 Manrope,sans-serif;color:var(--kc-navy)}
-.kc-pbd p{margin:0;font:400 .92rem/1.65 Poppins,sans-serif;color:var(--kc-mute)}
-.kc-meta{display:flex;align-items:center;gap:6px;font:500 .82rem/1.4 Poppins,sans-serif;color:var(--kc-mute)}
-.kc-meta svg{width:14px;height:14px}
-.kc-read{margin-top:auto;padding-top:10px;font:700 .92rem Manrope,sans-serif;color:var(--kc-blue)}
-.kc-pcard.hide{display:none}
+/* Instalasi: foto kecil di kiri, tiga langkah berjajar di kanan */
+.pr-inst{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:28px;align-items:center}
+.pr-fig{margin:0;overflow:hidden;border-radius:16px;aspect-ratio:4/3;background:#e6eefb;box-shadow:0 16px 32px -24px rgba(18,48,107,.55)}
+.pr-fig img{display:block;width:100%;height:100%;object-fit:cover}
+main.kc .pr-inst h2{margin:0 0 6px;font:800 clamp(1.3rem,2.2vw,1.7rem)/1.2 Manrope,sans-serif;color:var(--kc-navy)}
+.pr-inst .pr-lead{margin:0;max-width:56ch;font-size:.92rem}
+.pr-steps{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pr-steps li{padding:14px;background:#fff;border:1px solid var(--kc-line);border-radius:14px}
+.pr-no{display:grid;place-items:center;width:30px;height:30px;margin-bottom:8px;border-radius:50%;background:var(--kc-navy);color:#fff;font:800 .85rem Manrope,sans-serif}
+.pr-steps h3{margin:0 0 3px;font:700 .95rem/1.3 Manrope,sans-serif;color:var(--kc-navy)}
+.pr-steps p{margin:0;font:400 .82rem/1.5 Poppins,sans-serif;color:var(--kc-mute)}
 
-/* Filter kategori artikel */
-.kc-filters{display:flex;gap:10px;flex-wrap:wrap}
-.kc-chip{border:1px solid var(--kc-line);background:#fff;color:var(--kc-mute);font:500 .92rem Poppins,sans-serif;padding:9px 18px;border-radius:999px;cursor:pointer;transition:all .15s}
-.kc-chip:hover{border-color:var(--kc-blue);color:var(--kc-navy)}
-.kc-chip[aria-pressed="true"]{background:var(--kc-navy);border-color:var(--kc-navy);color:#fff}
-
-/* Kartu proyek memanjang: foto kiri, teks kanan */
-.kc-list.wide .kc-pcard{flex-direction:row}
-.kc-list.wide .kc-pimg{flex:0 0 46%;aspect-ratio:auto;min-height:240px}
-.kc-list.wide .kc-pbd{justify-content:center;gap:10px;padding:26px 28px}
-.kc-list.wide .kc-pbd h3{font-size:1.25rem}
-/* Portofolio tanpa foto: semua teks rata tengah */
-.kc-head.center{justify-content:center;text-align:center;margin-bottom:36px}
-.kc-head.center .kc-eb{justify-content:center}
-.kc-head.center .kc-eb::after{content:"";width:40px;height:2px;background:var(--kc-gold)}
-.kc-head.center .kc-lead{margin:0 auto;max-width:56ch}
-/* Portofolio gaya penjualan: angka keunggulan, kartu sektor ringkas dengan tombol konsultasi, lalu ajakan di bawah */
-.pf-lead{max-width:50ch}
-.pf-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:0 0 32px;border-radius:18px;background:var(--kc-navy);overflow:hidden}
-.pf-st{padding:22px 16px;text-align:center;border-left:1px solid rgba(255,255,255,.14)}
-.pf-st:first-child{border-left:0}
-.pf-st b{display:block;font:800 1.7rem/1.1 Manrope,sans-serif;color:var(--kc-gold)}
-.pf-st span{display:block;margin-top:6px;font:400 .86rem/1.4 Poppins,sans-serif;color:#dbe5fa}
-.pf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.pf-card{display:flex;flex-direction:column;overflow:hidden;border-radius:18px;background:#fff;border:1px solid var(--kc-line);text-align:center;transition:border-color .2s}
-.pf-card:hover{border-color:var(--kc-blue)}
-.pf-img{position:relative;aspect-ratio:16/10;background:linear-gradient(160deg,var(--kc-blue),var(--kc-navy));overflow:hidden}
-.pf-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pf-bd{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 20px 20px;flex:1}
-.pf-bd h2{margin:0;font:700 1.08rem/1.35 Manrope,sans-serif;color:var(--kc-navy)}
-.pf-bd p{margin:0;font:400 .88rem/1.6 Poppins,sans-serif;color:var(--kc-mute)}
-@media (max-width:1000px){.pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.pf-st:nth-child(3){border-left:0}.pf-st:nth-child(n+3){border-top:1px solid rgba(255,255,255,.14)}}
-@media (max-width:600px){.pf-grid{grid-template-columns:1fr}}
-@media (max-width:1000px){.kc-list.wide{grid-template-columns:1fr}}
-@media (max-width:600px){
-  .kc-list.wide .kc-pcard{flex-direction:column}
-  .kc-list.wide .kc-pimg{flex:none;aspect-ratio:16/10;min-height:0}
+@media (max-width:1000px){
+  .pr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pr-inst{grid-template-columns:minmax(0,1fr);gap:20px}
+  .pr-fig{aspect-ratio:16/8;max-height:220px}
 }
-@media (max-width:1000px){.kc-list.three{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:900px){
-  .kc-sec{padding:20px 0 56px}
-  .kc-grid{grid-template-columns:1fr;gap:32px}
-  .kc-side{position:static}
+@media (max-width:640px){
+  .pr-sec{padding:24px 0 28px}
+  /* HP: kartu digeser ke samping, bukan ditumpuk ke bawah */
+  .pr-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 16px;margin:0 -16px;padding:0 16px 8px;scrollbar-width:none}
+  .pr-grid::-webkit-scrollbar{display:none}
+  .pr-card{flex:0 0 76%;scroll-snap-align:start}
+  .pr-steps{grid-template-columns:minmax(0,1fr)}
+  .pr-steps li{display:grid;grid-template-columns:30px minmax(0,1fr);gap:12px;align-items:start}
+  .pr-no{margin:0}
 }
-@media (max-width:600px){.kc-list,.kc-list.three{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.pr-pic img{transition:none}.pr-card:hover .pr-pic img{transform:none}}
 </style>
 </head>
 <body data-page="portofolio">
@@ -133,15 +87,68 @@ a.kc-pcard:hover{border-color:var(--kc-blue);box-shadow:0 22px 44px -30px rgba(1
 
 <main id="main" class="kc">
   <noscript><p class="nojs">Aktifkan JavaScript untuk melihat katalog. Hubungi kami di WhatsApp +62 811-330-1819.<br>Please enable JavaScript to view the catalog. Contact us on WhatsApp +62 811-330-1819.</p></noscript>
-  <section class="kc-sec">
+
+  <section class="pr-sec">
     <div class="w">
-      <div class="kc-head center">
-        <div>
-          <h1 data-id="Portofolio Proyek Kami" data-en="Our Project Portfolio">Portofolio Proyek Kami</h1>
-          <p class="kc-lead pf-lead" data-id="Dipercaya rumah sakit, kantor notaris, instansi, dan perusahaan swasta untuk menata arsip dengan mobile file Zeco." data-en="Trusted by hospitals, notary offices, government agencies, and private companies to organize their archives with Zeco mobile file.">Dipercaya rumah sakit, kantor notaris, instansi, dan perusahaan swasta untuk menata arsip dengan mobile file Zeco.</p>
-        </div>
+      <div class="pr-head">
+        <h1 data-id="Portofolio Proyek Kami" data-en="Our Project Portfolio">Portofolio Proyek Kami</h1>
+        <p class="pr-lead" data-id="Dipercaya rumah sakit, kantor notaris, instansi, dan perusahaan swasta untuk menata arsip dengan mobile file Zeco." data-en="Trusted by hospitals, notary offices, government agencies, and private companies to organize their archives with Zeco mobile file.">Dipercaya rumah sakit, kantor notaris, instansi, dan perusahaan swasta untuk menata arsip dengan mobile file Zeco.</p>
       </div>
-      <div class="pf-grid" id="kc-sect"></div>
+      <div class="pr-grid">
+        <article class="pr-card">
+          <div class="pr-pic">
+            <img src="images/proyek-perkantoran.webp" width="900" height="675" alt="Mobile file bernomor di ruang kantor dengan rel dan alas lantai" data-alt-id="Mobile file bernomor di ruang kantor dengan rel dan alas lantai" data-alt-en="Numbered mobile file in an office room with rails and a floor panel" fetchpriority="high" decoding="async">
+          </div>
+          <div class="pr-bd">
+            <h2 data-id="Arsip Perkantoran" data-en="Office Archives">Arsip Perkantoran</h2>
+            <p data-id="Mobile file bernomor dengan rel dan alas lantai untuk dokumen administrasi kantor." data-en="Numbered mobile file with rails and a floor panel for office administrative documents.">Mobile file bernomor dengan rel dan alas lantai untuk dokumen administrasi kantor.</p>
+          </div>
+        </article>
+        <article class="pr-card">
+          <div class="pr-pic">
+            <img src="images/proyek-pemerintahan.webp" width="780" height="585" alt="Mobile file bernomor dengan rak terbuka di ruang arsip instansi" data-alt-id="Mobile file bernomor dengan rak terbuka di ruang arsip instansi" data-alt-en="Numbered mobile file with open shelves in an agency archive room" loading="lazy" decoding="async">
+          </div>
+          <div class="pr-bd">
+            <h2 data-id="Arsip Pemerintahan" data-en="Government Archives">Arsip Pemerintahan</h2>
+            <p data-id="Rak terbuka bernomor memudahkan pencarian arsip dalam jumlah besar." data-en="Numbered open shelves make large volumes of archives easier to find.">Rak terbuka bernomor memudahkan pencarian arsip dalam jumlah besar.</p>
+          </div>
+        </article>
+        <article class="pr-card">
+          <div class="pr-pic">
+            <img src="images/proyek-sekolah.webp" width="960" height="720" alt="Mobile file di ruang arsip sekolah" data-alt-id="Mobile file di ruang arsip sekolah" data-alt-en="Mobile file in a school archive room" loading="lazy" decoding="async">
+          </div>
+          <div class="pr-bd">
+            <h2 data-id="Arsip Sekolah" data-en="School Archives">Arsip Sekolah</h2>
+            <p data-id="Menyimpan arsip administrasi, laporan, dan dokumen sekolah dalam satu ruangan." data-en="Stores a school's administrative archives, reports, and documents in one room.">Menyimpan arsip administrasi, laporan, dan dokumen sekolah dalam satu ruangan.</p>
+          </div>
+        </article>
+        <article class="pr-card">
+          <div class="pr-pic">
+            <img src="images/proyek-perusahaan-industri.webp" width="960" height="720" alt="Barisan mobile file dengan roda putar di ruang arsip perusahaan" data-alt-id="Barisan mobile file dengan roda putar di ruang arsip perusahaan" data-alt-en="A row of mobile file units with hand wheels in a company archive room" loading="lazy" decoding="async">
+          </div>
+          <div class="pr-bd">
+            <h2 data-id="Arsip Perusahaan dan Industri" data-en="Company and Industry Archives">Arsip Perusahaan dan Industri</h2>
+            <p data-id="Barisan mobile file dengan roda putar untuk arsip bervolume tinggi di ruang sempit." data-en="Rows of mobile file with hand wheels for high-volume archives in tight spaces.">Barisan mobile file dengan roda putar untuk arsip bervolume tinggi di ruang sempit.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pr-sec alt">
+    <div class="w pr-inst">
+      <figure class="pr-fig">
+        <img src="images/instalasi-pengiriman.webp" width="960" height="720" alt="Komponen mobile file terbungkus rapi di samping truk pengiriman" data-alt-id="Komponen mobile file terbungkus rapi di samping truk pengiriman" data-alt-en="Wrapped mobile file components beside a delivery truck" loading="lazy" decoding="async">
+      </figure>
+      <div>
+        <h2 data-id="Pengiriman dan Pemasangan" data-en="Delivery and Installation">Pengiriman dan Pemasangan</h2>
+        <p class="pr-lead" data-id="Dari konsultasi hingga pemasangan, kami mendampingi Anda sampai mobile file siap dipakai." data-en="From consultation to installation, we stay with you until your mobile file is ready to use.">Dari konsultasi hingga pemasangan, kami mendampingi Anda sampai mobile file siap dipakai.</p>
+        <ol class="pr-steps">
+          <li><span class="pr-no" aria-hidden="true">1</span><div><h3 data-id="Dikemas dengan aman" data-en="Packed securely">Dikemas dengan aman</h3><p data-id="Dibungkus plastik dan dus berlapis agar terlindungi di perjalanan." data-en="Wrapped in plastic and layered cartons to stay protected in transit.">Dibungkus plastik dan dus berlapis agar terlindungi di perjalanan.</p></div></li>
+          <li><span class="pr-no" aria-hidden="true">2</span><div><h3 data-id="Diantar ke lokasi" data-en="Delivered to your site">Diantar ke lokasi</h3><p data-id="Seluruh komponen diantar langsung ke gedung Anda." data-en="All components are delivered straight to your building.">Seluruh komponen diantar langsung ke gedung Anda.</p></div></li>
+          <li><span class="pr-no" aria-hidden="true">3</span><div><h3 data-id="Dipasang di ruangan Anda" data-en="Installed in your room">Dipasang di ruangan Anda</h3><p data-id="Rel dan unit mobile file dirakit sesuai ukuran ruang arsip Anda." data-en="Rails and mobile file units are assembled to fit your archive room.">Rel dan unit mobile file dirakit sesuai ukuran ruang arsip Anda.</p></div></li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -168,36 +175,22 @@ a.kc-pcard:hover{border-color:var(--kc-blue);box-shadow:0 22px 44px -30px rgba(1
   <div class="dl" id="dlg-body"></div>
 </dialog>
 
-<script src="script.js?v=wa2"></script>
 <script>
-/* Isi kartu dari data di script.js (PROJECTS, SECTORS, ARTICLES) dan ikut tombol bahasa ID/EN */
-(function(){
-  function pimg(foto, pos, letter, alt){
-    return '<div class="kc-pimg"><span aria-hidden="true">'+esc(letter)+'</span>'+
-      (foto ? '<img src="'+esc(encodeURI(foto))+'" alt="'+esc(alt)+'" loading="lazy" style="object-position:'+esc(pos||'50% 50%')+'" onerror="this.remove()">' : '')+'</div>';
+/* Teks dan teks alternatif foto mengikuti tombol bahasa ID/EN.
+   script.js dimuat dengan defer, jadi bagian ini menunggu halaman selesai dibaca. */
+document.addEventListener('DOMContentLoaded', function () {
+  function cur() { var on = document.querySelector('.lang [aria-pressed="true"]'); return on ? on.getAttribute('data-lang') : 'id'; }
+  function apply() {
+    var en = cur() === 'en';
+    document.querySelectorAll('[data-id][data-en]').forEach(function (el) { el.textContent = el.getAttribute(en ? 'data-en' : 'data-id'); });
+    document.querySelectorAll('img[data-alt-id]').forEach(function (im) { im.alt = im.getAttribute(en ? 'data-alt-en' : 'data-alt-id'); });
   }
-  function cur(){ var on=document.querySelector('.lang [aria-pressed="true"]'); return on?on.getAttribute('data-lang'):'id'; }
-  function texts(lang){
-    document.querySelectorAll('[data-id][data-en]').forEach(function(el){ el.textContent = el.getAttribute(lang==='en'?'data-en':'data-id'); });
-  }
-  
-  function draw(){
-    var en = cur()==='en';
-    document.getElementById('kc-sect').innerHTML = SECTORS.map(function(s){
-      var n = L(s,'nama');
-      return '<article class="pf-card"><div class="pf-img">'+
-        (s.foto ? '<img src="'+esc(encodeURI(s.foto))+'" alt="'+esc(n)+'" loading="lazy" style="object-position:'+esc(s.fotoPos||'50% 50%')+'" onerror="this.remove()">' : '')+
-        '</div><div class="pf-bd"><h2>'+esc(n)+'</h2><p>'+esc(L(s,'ket'))+'</p></div></article>';
-    }).join('');
-  }
-
-  function all(){ var l=cur(); texts(l); if (typeof draw==='function') draw(); }
-  document.querySelectorAll('.lang button').forEach(function(b){
-    b.addEventListener('click', function(){ setTimeout(all,0); });
-    new MutationObserver(all).observe(b,{attributes:true,attributeFilter:['aria-pressed']});
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setTimeout(apply, 0); });
+    new MutationObserver(apply).observe(b, { attributes: true, attributeFilter: ['aria-pressed'] });
   });
-  all();
-})();
+  apply();
+});
 </script>
 
 </body>

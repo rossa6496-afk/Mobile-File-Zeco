@@ -63,6 +63,45 @@
 .sec-lead #types .card .bd .ex{margin-bottom:20px}
 @media (max-width:760px){.sec-lead .grid#types{grid-template-columns:minmax(0,1fr)}}
 </style>
+<style>
+/* Bagian "berbagai kebutuhan": satu kartu foto besar di kiri, tiga kartu ringkas (foto kecil + teks) bertumpuk di kanan. Tinggi total sekitar 400px */
+body[data-page=beranda] #sect{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:repeat(3,128px);gap:14px;align-items:stretch}
+body[data-page=beranda] #sect .card.static{position:relative;display:block;min-width:0;padding:0;border-radius:18px;overflow:hidden}
+body[data-page=beranda] #sect .card.static .pj{height:100%}
+
+/* Kartu 1: foto besar, teks di bagian bawah foto */
+body[data-page=beranda] #sect .card.static:nth-child(1){grid-column:1;grid-row:1/4;isolation:isolate;border:0;background:#12306b;box-shadow:0 18px 34px -24px rgba(15,35,80,.6)}
+body[data-page=beranda] #sect .card.static:nth-child(1) .pj{position:absolute;inset:0;display:block}
+body[data-page=beranda] #sect .card.static:nth-child(1) .pj .pjp{position:absolute;inset:0;aspect-ratio:auto;border-radius:0}
+body[data-page=beranda] #sect .card.static:nth-child(1) .pjp img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+body[data-page=beranda] #sect .card.static:nth-child(1):hover .pjp img{transform:scale(1.04)}
+body[data-page=beranda] #sect .card.static:nth-child(1):after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(10,26,61,0) 55%,rgba(10,26,61,.82))}
+body[data-page=beranda] #sect .card.static:nth-child(1) .pj .bd{position:absolute;left:0;right:0;bottom:0;z-index:2;margin:0;padding:24px 28px 26px;gap:0;background:none;border:0;border-radius:0;box-shadow:none}
+body[data-page=beranda] #sect .card.static:nth-child(1) .pj .bd h2{margin:0;color:#fff;font-size:1.5rem;line-height:1.25}
+body[data-page=beranda] #sect .card.static:nth-child(1) .pj .bd h2:before{content:"";display:block;width:30px;height:3px;border-radius:2px;background:#e0a82e;margin-bottom:10px}
+body[data-page=beranda] #sect .card.static:nth-child(1) .pj .bd .ex{margin:6px 0 0;max-width:44ch;color:rgba(255,255,255,.92);font-size:.95rem;line-height:1.55}
+
+/* Kartu 2-4: foto di kiri, teks di kanan */
+body[data-page=beranda] #sect .card.static:nth-child(n+2){grid-column:2;background:#fff;border:1px solid #dfe8f7;box-shadow:0 10px 24px -20px rgba(15,35,80,.5);transition:border-color .2s,box-shadow .2s,transform .2s}
+body[data-page=beranda] #sect .card.static:nth-child(n+2):hover{border-color:#1d4fd8;box-shadow:0 16px 30px -20px rgba(18,48,107,.55)}
+body[data-page=beranda] #sect .card.static:nth-child(n+2) .pj{position:static;display:flex;flex-direction:row;align-items:stretch}
+body[data-page=beranda] #sect .card.static:nth-child(n+2) .pj .pjp{position:relative;inset:auto;flex:0 0 38%;aspect-ratio:auto;border-radius:0}
+body[data-page=beranda] #sect .card.static:nth-child(n+2) .pjp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+body[data-page=beranda] #sect .card.static:nth-child(n+2) .pj .bd{flex:1;min-width:0;justify-content:center;margin:0;padding:12px 18px;gap:2px;background:none;border:0;border-radius:0;box-shadow:none}
+body[data-page=beranda] #sect .card.static:nth-child(n+2) .pj .bd h2{margin:0;color:#12306b;font-size:1.02rem;line-height:1.3}
+body[data-page=beranda] #sect .card.static:nth-child(n+2) .pj .bd .ex{margin:2px 0 0;color:#5b6577;font-size:.82rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+@media(max-width:760px){
+  body[data-page=beranda] #sect{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-rows:auto;gap:12px}
+  body[data-page=beranda] #sect .card.static:nth-child(n){grid-column:1;grid-row:auto}
+  body[data-page=beranda] #sect .card.static:nth-child(1){height:230px}
+  body[data-page=beranda] #sect .card.static:nth-child(1) .pj .bd{padding:18px 20px 20px}
+  body[data-page=beranda] #sect .card.static:nth-child(1) .pj .bd h2{font-size:1.25rem}
+  body[data-page=beranda] #sect .card.static:nth-child(1) .pj .bd .ex{font-size:.88rem}
+  body[data-page=beranda] #sect .card.static:nth-child(n+2){height:104px}
+}
+@media(prefers-reduced-motion:reduce){body[data-page=beranda] #sect .card.static:nth-child(1) .pjp img{transition:none}body[data-page=beranda] #sect .card.static:nth-child(1):hover .pjp img{transform:none}}
+</style>
 </head>
 <body data-page="beranda">
 <a class="skip" href="#main" data-i18n="skip">Langsung ke konten</a>
