@@ -27,6 +27,5 @@ main{animation:none!important}
   [data-page=beranda] .hero:before,[data-page=beranda] .hero .bgslide,
   body:is([data-page=produk]) .phd:before,body:is([data-page=produk]) .phd .bgslide{filter:none!important}
 }
-/* OPSIONAL, aktifkan setelah file images/background-mobile.webp (lebar sekitar 800px, di bawah 100 KB) ada di GitHub:
+/* Foto hero versi HP (lebar sekitar 800px) */
 @media(max-width:900px){:root{--bg:url(images/background-mobile.webp)}}
-*/
