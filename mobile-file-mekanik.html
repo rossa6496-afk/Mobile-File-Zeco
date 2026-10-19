@@ -17,10 +17,18 @@
 <link rel="stylesheet" href="style.css?v=196">
 <link rel="preload" as="image" href="images/hero-mekanik.webp" fetchpriority="high">
 <style>
-/* Foto hero khusus halaman Mobile File Mekanik (foto sudah dilebarkan di sisi kiri supaya lemari bergeser ke kanan, gradasinya sama dengan halaman lain) */
-body[data-page=produk] .phd:before{background-image:url(images/hero-mekanik.webp)!important;background-size:cover!important;background-position:left center!important;inset:0!important}
+/* Foto hero Mobile File Mekanik.
+   Foto di-zoom (background-size > 100%) dan dikunci ke kiri, jadi lemari terdorong ke kanan seperti di halaman Manual.
+   Atur ZOOM: makin besar (120%) = lemari makin ke kanan & makin besar. Makin kecil (110%) = mendekati semula. */
+body[data-page=produk] .phd:before{
+  background-image:url(images/hero-mekanik.webp)!important;
+  background-size:116% auto!important;
+  background-position:left center!important;
+  background-repeat:no-repeat!important;
+  inset:0!important
+}
 @media(max-width:900px){
-  body[data-page=produk] .phd:before{background-position:72% center!important}
+  body[data-page=produk] .phd:before{background-size:cover!important;background-position:72% center!important}
 }
 </style>
 </head>
