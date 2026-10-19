@@ -17,8 +17,11 @@
 <link rel="stylesheet" href="style.css?v=196">
 <link rel="preload" as="image" href="images/hero-mekanik.webp" fetchpriority="high">
 <style>
-/* Foto hero khusus halaman Mobile File Mekanik */
-body[data-page=produk] .phd:before{background-image:url(images/hero-mekanik.webp)!important;inset:0!important;background-size:cover!important;background-position:center 42%!important}
+/* Foto hero khusus halaman Mobile File Mekanik (foto sudah dilebarkan di sisi kiri supaya lemari bergeser ke kanan, gradasinya sama dengan halaman lain) */
+body[data-page=produk] .phd:before{background-image:url(images/hero-mekanik.webp)!important;background-size:cover!important;background-position:left center!important;inset:0!important}
+@media(max-width:900px){
+  body[data-page=produk] .phd:before{background-position:72% center!important}
+}
 </style>
 </head>
 <body data-page="produk">
