@@ -29,12 +29,16 @@ main{animation:none!important}
 }
 /* Foto hero versi HP (lebar sekitar 800px) */
 @media(max-width:900px){:root{--bg:url(images/background-mobile.webp)}}
-/* Footer HP: semua kolom (Informasi & Kontak) rata tengah, sama seperti logo dan deskripsi di atasnya */
+/* Footer HP: logo & deskripsi rata tengah; kolom Informasi & Kontak berada di tengah halaman
+   dengan lebar yang sama, isinya rata kiri (ikon di samping teks) supaya garis kirinya sejajar.
+   Ubah angka 270px untuk melebarkan / menyempitkan blok. */
 @media(max-width:520px){
-.ft-in>div,.ft-in>div:nth-child(2){text-align:center}
+.ft-in>div:nth-child(2),
+.ft-in #ft-kontak{width:min(100%,270px);max-width:none;margin-left:auto;margin-right:auto;justify-self:center;text-align:left}
 .ft-in>div:nth-child(2) h4,
 .ft-in>div:nth-child(2) h2,
-#ft-kontak h4,#ft-kontak h2{max-width:none;width:100%;margin-left:0;margin-right:0;text-align:center}
-.ft-in>div:nth-child(2) a:not(.logo){max-width:none;width:100%;margin-left:0;margin-right:0;text-align:center}
-.ft-in #ft-kontak a{flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;max-width:none;width:100%;margin-left:0;margin-right:0;text-align:center}
+.ft-in #ft-kontak h4,
+.ft-in #ft-kontak h2{width:100%;max-width:none;margin-left:0;margin-right:0;text-align:left}
+.ft-in>div:nth-child(2) a:not(.logo){width:100%;max-width:none;margin-left:0;margin-right:0;text-align:left}
+.ft-in #ft-kontak a{flex-direction:row;align-items:flex-start;justify-content:flex-start;gap:12px;width:100%;max-width:none;margin-left:0;margin-right:0;text-align:left}
 }
