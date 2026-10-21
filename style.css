@@ -42,3 +42,16 @@ main{animation:none!important}
 .ft-in>div:nth-child(2) a:not(.logo){width:100%;max-width:none;margin-left:0;margin-right:0;text-align:left}
 .ft-in #ft-kontak a{flex-direction:row;align-items:flex-start;justify-content:flex-start;gap:12px;width:100%;max-width:none;margin-left:0;margin-right:0;text-align:left}
 }
+/* ===== Footer lebih ringkas (override, taruh paling bawah) ===== */
+html .ft{padding-top:40px}
+html .ft .ft-in{padding-bottom:24px}
+html .ft .ft-bot{padding:14px 24px 18px!important}
+@media(min-width:901px){
+  html .ft .ft-in{gap:40px}
+  html .ft .ft-logo{width:min(100%,140px)}
+  html .ft .ft-about p{margin-top:10px!important;font-size:13.5px;line-height:1.6}
+  html .ft h4,html .ft h2,html .ft-in>div:nth-child(2) h4,html .ft-in>div:nth-child(2) h2,html #ft-kontak h4,html #ft-kontak h2{margin-bottom:12px}
+  html .ft .ft-in>div:nth-child(2) a:not(.logo){margin-bottom:6px;line-height:1.5}
+  html .ft .ft-in>div:nth-child(2) a:not(.logo):last-child{margin-bottom:0}
+  html .ft .ft-in #ft-kontak a{margin-bottom:10px;line-height:1.5}
+}
