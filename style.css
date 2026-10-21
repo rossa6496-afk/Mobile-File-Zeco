@@ -68,3 +68,16 @@ body[data-page=artikel] .sec,body[data-page=artikel] #art-grid{content-visibilit
   .bt:hover img{transform:none}
   .bt:hover .bt-read i,body[data-page=artikel] #art-grid .bt:hover .bt-read i{transform:none}
 }
+
+/* ===== Patch performa PageSpeed (tempel PALING BAWAH style.css, lalu naikkan ?v=196 jadi ?v=197 di index.html) ===== */
+
+/* 1. Hero: hapus filter pada layer foto besar (selisih visualnya hampir tak terlihat, tapi mahal untuk di-paint di HP) */
+[data-page=beranda] .hero:before{filter:none!important}
+
+/* 2. Header lengket: blur latar (backdrop-filter) berat di HP, ganti putih hampir solid */
+@media(max-width:900px){
+  .hd{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:#fffffff2!important}
+}
+
+/* 3. Bagian di bawah layar tidak dirender dulu sampai mendekati layar */
+.sec,.cta,.ft{content-visibility:auto;contain-intrinsic-size:auto 600px}
