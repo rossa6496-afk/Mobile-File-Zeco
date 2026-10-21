@@ -55,3 +55,16 @@ html .ft .ft-bot{padding:14px 24px 18px!important}
   html .ft .ft-in>div:nth-child(2) a:not(.logo):last-child{margin-bottom:0}
   html .ft .ft-in #ft-kontak a{margin-bottom:10px;line-height:1.5}
 }
+
+/* ===== Artikel di HP: gambar tidak flash teks alt, tanpa animasi tunda, tap tidak nyangkut hover ===== */
+.bt-img img{color:transparent;font-size:0;background:linear-gradient(135deg,var(--navy),var(--blue))}
+body[data-page=artikel] .sec,body[data-page=artikel] #art-grid{content-visibility:visible}
+.bt{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@media(max-width:900px){
+  .bt,.bt:nth-child(n){animation:none!important;opacity:1;transform:none}
+}
+@media(hover:none){
+  .bt:hover,body[data-page=artikel] #art-grid .bt:hover{transform:none}
+  .bt:hover img{transform:none}
+  .bt:hover .bt-read i,body[data-page=artikel] #art-grid .bt:hover .bt-read i{transform:none}
+}
