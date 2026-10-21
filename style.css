@@ -29,9 +29,12 @@ main{animation:none!important}
 }
 /* Foto hero versi HP (lebar sekitar 800px) */
 @media(max-width:900px){:root{--bg:url(images/background-mobile.webp)}}
-/* Footer HP: kolom Informasi & Kontak dibuat selebar sama supaya garis kirinya sejajar */
+/* Footer HP: semua kolom (Informasi & Kontak) rata tengah, sama seperti logo dan deskripsi di atasnya */
 @media(max-width:520px){
+.ft-in>div,.ft-in>div:nth-child(2){text-align:center}
 .ft-in>div:nth-child(2) h4,
 .ft-in>div:nth-child(2) h2,
-.ft-in>div:nth-child(2) a:not(.logo){max-width:320px}
+#ft-kontak h4,#ft-kontak h2{max-width:none;width:100%;margin-left:0;margin-right:0;text-align:center}
+.ft-in>div:nth-child(2) a:not(.logo){max-width:none;width:100%;margin-left:0;margin-right:0;text-align:center}
+.ft-in #ft-kontak a{flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;max-width:none;width:100%;margin-left:0;margin-right:0;text-align:center}
 }
