@@ -29,3 +29,9 @@ main{animation:none!important}
 }
 /* Foto hero versi HP (lebar sekitar 800px) */
 @media(max-width:900px){:root{--bg:url(images/background-mobile.webp)}}
+/* Footer HP: kolom Informasi & Kontak dibuat selebar sama supaya garis kirinya sejajar */
+@media(max-width:520px){
+.ft-in>div:nth-child(2) h4,
+.ft-in>div:nth-child(2) h2,
+.ft-in>div:nth-child(2) a:not(.logo){max-width:320px}
+}
