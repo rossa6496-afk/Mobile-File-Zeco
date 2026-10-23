@@ -81,3 +81,35 @@ body[data-page=artikel] .sec,body[data-page=artikel] #art-grid{content-visibilit
 
 /* 3. Bagian di bawah layar tidak dirender dulu sampai mendekati layar */
 .sec,.cta,.ft{content-visibility:auto;contain-intrinsic-size:auto 600px}
+/* ===== FAQ beranda: judul di atas, daftar di bawah ===== */
+body[data-page=beranda] #faq.sec-split > .w {
+  display: block;
+}
+body[data-page=beranda] #faq.sec-split .sec-h {
+  position: static;
+  max-width: none;
+  margin: 0 0 40px !important;
+}
+body[data-page=beranda] #faq.sec-split .sec-h,
+body[data-page=beranda] #faq.sec-split .sec-h * {
+  text-align: center !important;
+}
+body[data-page=beranda] #faq.sec-split .sec-h h2 {
+  max-width: 26ch;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+body[data-page=beranda] #faq.sec-split .sec-h h2:before {
+  margin: 0 auto 16px;
+}
+body[data-page=beranda] #faq.sec-split .sec-h p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+body[data-page=beranda] #faq.sec-split #faq-list {
+  max-width: 860px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  body[data-page=beranda] #faq.sec-split .sec-h { margin-bottom: 28px !important; }
+}
