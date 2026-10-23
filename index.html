@@ -210,5 +210,31 @@ body[data-page=beranda] #sect .card.static:nth-child(n+2) .pj .bd .ex{margin:2px
   <div class="dl" id="dlg-body"></div>
 </dialog>
 
+<!-- Nomor telepon footer -> WhatsApp -->
+<script>
+(function () {
+  var box = document.getElementById('ft-kontak');
+  if (!box) return;
+
+  var WA = 'https://wa.me/628113301819?text=' +
+    encodeURIComponent('Halo, saya ingin berkonsultasi mengenai solusi dan produk mobile file Zeco. Saya menemukan informasi ini melalui website jualmobilefilejakarta.my.id.');
+
+  function patch() {
+    box.querySelectorAll('a').forEach(function (a) {
+      var href = a.getAttribute('href') || '';
+      var isPhone = /^tel:/i.test(href) || /811[-\s]?330[-\s]?1819/.test(a.textContent);
+      if (!isPhone || a.dataset.wa) return;
+      a.href = WA;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.dataset.wa = '1';
+      a.setAttribute('aria-label', 'Chat WhatsApp');
+    });
+  }
+
+  patch();
+  new MutationObserver(patch).observe(box, { childList: true, subtree: true });
+})();
+</script>
 </body>
 </html>

@@ -113,3 +113,25 @@ body[data-page=beranda] #faq.sec-split #faq-list {
 @media (max-width: 900px) {
   body[data-page=beranda] #faq.sec-split .sec-h { margin-bottom: 28px !important; }
 }
+
+/* Footer: nomor telepon -> WhatsApp */
+.ft-in #ft-kontak a[data-wa]:hover { color: #25D366; }
+
+/* Portofolio: header putih, garis kuning dihapus */
+body[data-page=portofolio] .phd,
+body[data-page=portofolio] .phd.sec,
+body[data-page=portofolio] main > section:first-of-type {
+  background: #fff !important;
+  background-image: none !important;
+}
+body[data-page=portofolio] .phd::before,
+body[data-page=portofolio] .phd::after,
+body[data-page=portofolio] .phd *::before,
+body[data-page=portofolio] .phd *::after,
+body[data-page=portofolio] main > section:first-of-type::before,
+body[data-page=portofolio] main > section:first-of-type::after,
+body[data-page=portofolio] main > section:first-of-type h1::before,
+body[data-page=portofolio] main > section:first-of-type h1::after {
+  content: none !important;
+  display: none !important;
+}
